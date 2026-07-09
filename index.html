@@ -119,7 +119,7 @@ section{padding:64px 0;position:relative}
 /* about */
 .about{display:grid;grid-template-columns:1.5fr 1fr;gap:52px}
 @media(max-width:800px){.about{grid-template-columns:1fr;gap:34px}}
-.about p{margin-bottom:20px;color:var(--ink-soft);font-size:20px}
+.about p{margin-bottom:24px;color:var(--ink-soft);font-size:23px;line-height:1.72}
 .about p b{color:var(--ink);font-weight:500}
 .about-right{max-width:400px}
 @media(max-width:800px){.about-right{margin:0 auto}}
@@ -216,12 +216,6 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
 <div class="mast">
   <div class="mast-in">
     <div class="mast-name">Yunpeng Xu <em>·</em> Oliver</div>
-    <nav class="mast-nav">
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#research">Research</a>
-      <a href="#contact">Contact</a>
-    </nav>
   </div>
 </div>
 
@@ -234,15 +228,12 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
       </div>
       <h1 class="reveal">Yunpeng<br>Xu<em>.</em></h1>
       <p class="hero-lead reveal">
-        A CS undergraduate who is quietly obsessed with how large language models actually
-        <span class="mark">run</span> and <span class="mark">learn</span>. I work across
-        <b>kernel &amp; inference optimization</b>, <b>LLM post-training</b>, and <b>agentic RL</b> —
-        grounding every change in benchmarks, profiling, and end-to-end serving metrics.
+        CS undergraduate working on <b>AI systems</b> — kernel &amp; inference optimization,
+        LLM post-training, and agentic RL. Every result grounded in profiling and end-to-end benchmarks.
       </p>
       <div class="hero-cta reveal">
         <a class="btn btn-p" href="https://github.com/OLIVER-XYP" target="_blank">GitHub &nbsp;↗</a>
         <a class="btn btn-s" href="#work">Read my work</a>
-        <a class="btn btn-s" href="mailto:13588039544@163.com">Say hello</a>
       </div>
     </div>
     <div class="hero-photo reveal">
@@ -250,7 +241,7 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
         <img class="portrait" src="portrait.jpg" alt="Portrait of Yunpeng Xu" loading="lazy">
         <figcaption>Yunpeng Xu · Chengdu</figcaption>
       </figure>
-      <div class="badge">Open to Summer '26 internships</div>
+      <div class="badge"><b>State:</b> Summer '26 internship</div>
     </div>
   </div>
 </header>
@@ -313,16 +304,31 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
     </div>
 
     <div class="proj reveal">
-      <div class="proj-side"><div class="yr">2026.02 — 2026.03</div></div>
+      <div class="proj-side"><div class="yr">2026.06 — 2026.07</div></div>
       <div class="proj-main">
-        <h3>Multi-Role RL — Planner / Coder / Reviewer</h3>
-        <div class="topics"><span class="topic">Post-Training</span><span class="topic">Agentic MARL</span><span class="topic">Reinforcement Learning</span></div>
+        <h3>Efficient AWQ Quantization Tuning (LLM-Compressor)</h3>
+        <div class="topics"><span class="topic">Quantization</span><span class="topic">AWQ</span><span class="topic">Inference Optimization</span></div>
         <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
         <div class="star"><div class="star-inner"><div class="star-pad">
-          <p class="star-intro">Reproduction of arXiv:2602.01244 plus Agentic MARL. (2026.02 – 2026.03)</p>
-          <div class="star-row"><span class="sk">S / T</span><p>Coding agents in the CLI face inherent limitations: planning and execution are decoupled, credit assignment is ambiguous, and role capabilities are highly entangled. Built on the <b>Qwen3-Coder-30B-A3B-Instruct</b> base model, this project uses TerminalTraj (50k single-agent command sequences) and its Docker environment to build a Planner–Coder–Reviewer three-role collaborative multi-agent system, aiming to break the single-agent performance ceiling on TerminalBench (1.0 / 2.0).</p></div>
-          <div class="star-row"><span class="sk">A</span><p>Before training, the 50k single-agent shell trajectories in TerminalTraj were functionally decoupled and cleaned, and new data was mined using the paper's method to adapt them to the Coder role's SFT and RL environment. Training used a staged frozen strategy: the Coder extracts successful trajectories for SFT, then runs <b>GRPO</b> in Docker rewarded by command exit codes and task-completion flags; the Planner reverse-distills successful trajectories into "high-level sub-goal sequences" and is fine-tuned with search-based GRPO using the Coder's validation-set command pass-rate as the reward signal for policy alignment; the Reviewer pairs "failed command + environment error" with "corrected successful command" to generate diagnostic review notes, and is trained with SFT only for stability. The three share one base model, form a collaborative pipeline at inference, and are measured with fine-grained metrics such as plan-executability, first-round pass-rate, and repair-rate.</p></div>
-          <div class="star-row"><span class="sk">R</span><p>The approach achieved a significant breakthrough on TerminalBench. <b>TB 2.0</b> (overall goal): baseline + React (9.6%) → Coder-only + React (17.4%) → MultiModel + Plan-and-Execute (<b>23.2%</b>). <b>TB 1.0</b> (Coder only): baseline (15.3%) → Coder-only (<b>33.0%</b>) → MultiModel (28.3%). This shows that even though the Coder's own capability drops under the Planner/Reviewer roles, the agent as a whole becomes stronger — demonstrating the feasibility of Agentic MARL.</p></div>
+          <p class="star-intro">Model-quantization tuning: efficient AWQ based on LLM-Compressor.</p>
+          <div class="star-row"><span class="sk">S / T</span><p>When deploying <b>Qwen3-32B</b>, it needed 4-bit weight quantization (W4A16) to reduce memory usage. Initially using llm-compressor v0.6.0 with default settings for AWQ, the model scored significantly below the industry benchmark AutoAWQ on GSM8K and MMLU, and generated text with severe formatting chaos (many invalid "*" symbols). This project locates the root cause of llm-compressor's quantization degradation.</p></div>
+          <div class="star-row"><span class="sk">A</span><p>Comparing llm-compressor and AutoAWQ on hyperparameters (calibration sample count, max sequence length) and core algorithm, and ruling out sample-count effects, pinpointed the key difference as the quantization <b>observer type</b>. Source and community analysis revealed llm-compressor defaults to a <b>minmax</b> observer, whereas AutoAWQ actually uses a clipping-based <b>MSE</b> error-minimization strategy. Modified the AWQModifier config to explicitly set <span class="type">observer="mse"</span>, kept 128 calibration samples and sequence length 4096, and re-ran quantization.</p></div>
+          <div class="star-row"><span class="sk">R</span><p>With the mse observer, GSM8K accuracy rose from <b>0.848 to 0.884</b>, close to AutoAWQ; text formatting returned to normal and dialogue quality clearly improved.</p></div>
+        </div></div></div>
+      </div>
+    </div>
+
+    <div class="proj reveal">
+      <div class="proj-side"><div class="yr">2026.05 — 2026.06</div></div>
+      <div class="proj-main">
+        <h3>MoE Expert-Parallel Communication Optimization</h3>
+        <div class="topics"><span class="topic">Expert Parallel</span><span class="topic">Inference Optimization</span><span class="topic">Profiling</span></div>
+        <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
+        <div class="star"><div class="star-inner"><div class="star-pad">
+          <p class="star-intro">Expert-parallel inference profiling around SGLang + DeepEP on 4×A100.</p>
+          <div class="star-row"><span class="sk">S / T</span><p>In a 4×A100 environment, set up expert-parallel inference experiments around <b>SGLang + DeepEP</b> to analyze how communication overhead affects time-to-first-token, per-token latency, and output throughput under different concurrency, input lengths, and expert-routing loads.</p></div>
+          <div class="star-row"><span class="sk">A</span><p>Chose Qwen3-30B-A3B as the test target and, fixing the model, batch, and input/output lengths, tested default communication, DeepEP normal mode, and low-latency mode separately. Recorded total request time, prefill time, decode time, and per-layer expert dispatch/combine time, with a script auto-generating comparison tables across concurrency levels. To locate bottlenecks, used <b>NSYS</b> to capture the timeline across the 4 A100s — focusing on communication kernels, expert-compute kernels, and scheduling gaps — then used <b>NCU</b> to inspect the bandwidth utilization and launch overhead of key communication kernels. Based on results, switched low-concurrency scenarios to low-latency mode and high-concurrency scenarios to normal mode, and compiled communication strategies for three scenario classes: input length, concurrency size, and expert-load imbalance.</p></div>
+          <div class="star-row"><span class="sk">R</span><p>Produced a reproducible MoE distributed-inference profiling workflow on 4×A100. In low-concurrency decode scenarios TTFT dropped by <b>~15%–25%</b>, and in high-concurrency scenarios output throughput rose by <b>~10%–18%</b>; the share of communication time in end-to-end inference and its optimization boundary were also clarified.</p></div>
         </div></div></div>
       </div>
     </div>
@@ -360,21 +366,6 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
     </div>
 
     <div class="proj reveal">
-      <div class="proj-side"><div class="yr">2026.05 — 2026.06</div></div>
-      <div class="proj-main">
-        <h3>MoE Expert-Parallel Communication Optimization</h3>
-        <div class="topics"><span class="topic">Expert Parallel</span><span class="topic">Inference Optimization</span><span class="topic">Profiling</span></div>
-        <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
-        <div class="star"><div class="star-inner"><div class="star-pad">
-          <p class="star-intro">Expert-parallel inference profiling around SGLang + DeepEP on 4×A100.</p>
-          <div class="star-row"><span class="sk">S / T</span><p>In a 4×A100 environment, set up expert-parallel inference experiments around <b>SGLang + DeepEP</b> to analyze how communication overhead affects time-to-first-token, per-token latency, and output throughput under different concurrency, input lengths, and expert-routing loads.</p></div>
-          <div class="star-row"><span class="sk">A</span><p>Chose Qwen3-30B-A3B as the test target and, fixing the model, batch, and input/output lengths, tested default communication, DeepEP normal mode, and low-latency mode separately. Recorded total request time, prefill time, decode time, and per-layer expert dispatch/combine time, with a script auto-generating comparison tables across concurrency levels. To locate bottlenecks, used <b>NSYS</b> to capture the timeline across the 4 A100s — focusing on communication kernels, expert-compute kernels, and scheduling gaps — then used <b>NCU</b> to inspect the bandwidth utilization and launch overhead of key communication kernels. Based on results, switched low-concurrency scenarios to low-latency mode and high-concurrency scenarios to normal mode, and compiled communication strategies for three scenario classes: input length, concurrency size, and expert-load imbalance.</p></div>
-          <div class="star-row"><span class="sk">R</span><p>Produced a reproducible MoE distributed-inference profiling workflow on 4×A100. In low-concurrency decode scenarios TTFT dropped by <b>~15%–25%</b>, and in high-concurrency scenarios output throughput rose by <b>~10%–18%</b>; the share of communication time in end-to-end inference and its optimization boundary were also clarified.</p></div>
-        </div></div></div>
-      </div>
-    </div>
-
-    <div class="proj reveal">
       <div class="proj-side"><div class="yr">2026.03 — 2026.05</div></div>
       <div class="proj-main">
         <h3>Full-Stack Q&amp;A Generation Agent for Data Synthesis</h3>
@@ -390,6 +381,21 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
     </div>
 
     <div class="proj reveal">
+      <div class="proj-side"><div class="yr">2026.02 — 2026.03</div></div>
+      <div class="proj-main">
+        <h3>Multi-Role RL — Planner / Coder / Reviewer</h3>
+        <div class="topics"><span class="topic">Post-Training</span><span class="topic">Agentic MARL</span><span class="topic">Reinforcement Learning</span></div>
+        <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
+        <div class="star"><div class="star-inner"><div class="star-pad">
+          <p class="star-intro">Reproduction of arXiv:2602.01244 plus Agentic MARL. (2026.02 – 2026.03)</p>
+          <div class="star-row"><span class="sk">S / T</span><p>Coding agents in the CLI face inherent limitations: planning and execution are decoupled, credit assignment is ambiguous, and role capabilities are highly entangled. Built on the <b>Qwen3-Coder-30B-A3B-Instruct</b> base model, this project uses TerminalTraj (50k single-agent command sequences) and its Docker environment to build a Planner–Coder–Reviewer three-role collaborative multi-agent system, aiming to break the single-agent performance ceiling on TerminalBench (1.0 / 2.0).</p></div>
+          <div class="star-row"><span class="sk">A</span><p>Before training, the 50k single-agent shell trajectories in TerminalTraj were functionally decoupled and cleaned, and new data was mined using the paper's method to adapt them to the Coder role's SFT and RL environment. Training used a staged frozen strategy: the Coder extracts successful trajectories for SFT, then runs <b>GRPO</b> in Docker rewarded by command exit codes and task-completion flags; the Planner reverse-distills successful trajectories into "high-level sub-goal sequences" and is fine-tuned with search-based GRPO using the Coder's validation-set command pass-rate as the reward signal for policy alignment; the Reviewer pairs "failed command + environment error" with "corrected successful command" to generate diagnostic review notes, and is trained with SFT only for stability. The three share one base model, form a collaborative pipeline at inference, and are measured with fine-grained metrics such as plan-executability, first-round pass-rate, and repair-rate.</p></div>
+          <div class="star-row"><span class="sk">R</span><p>The approach achieved a significant breakthrough on TerminalBench. <b>TB 2.0</b> (overall goal): baseline + React (9.6%) → Coder-only + React (17.4%) → MultiModel + Plan-and-Execute (<b>23.2%</b>). <b>TB 1.0</b> (Coder only): baseline (15.3%) → Coder-only (<b>33.0%</b>) → MultiModel (28.3%). This shows that even though the Coder's own capability drops under the Planner/Reviewer roles, the agent as a whole becomes stronger — demonstrating the feasibility of Agentic MARL.</p></div>
+        </div></div></div>
+      </div>
+    </div>
+
+    <div class="proj reveal">
       <div class="proj-side"><div class="yr">2025.10 — 2025.12</div></div>
       <div class="proj-main">
         <h3>AGRO-SQL — Agentic RL for Text-to-SQL</h3>
@@ -400,21 +406,6 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
           <div class="star-row"><span class="sk">S / T</span><p>Progress in Text-to-SQL has long been constrained by two bottlenecks: a severe shortage of high-quality training data, and insufficient model reasoning on complex queries. Samples from traditional data-synthesis methods suffer from logical misalignment and semantic deviation, hard to use directly for RL training. A holistic solution is needed to crack both "data scarcity" and "weak model reasoning" and push Text-to-SQL to a more advanced level.</p></div>
           <div class="star-row"><span class="sk">A</span><p>Designed a <b>two-stage agentic RL framework</b>: stage one uses a "diversity-aware cold start" to build a robust initial policy from high-quality trajectories; stage two introduces <b>GRPO</b> (Group Relative Policy Optimization), replacing traditional value-network methods by using the relative execution rewards of a group of synthesized trajectories as the optimization basis, iteratively refining the policy through group competition and effectively solving exploration efficiency under sparse rewards.</p></div>
           <div class="star-row"><span class="sk">R</span><p>On the two authoritative benchmarks Spider and BIRD, AGRO-SQL showed top-tier single-model performance — based on Qwen3-8B-Base, it achieved <b>72.10% execution accuracy on BIRD</b>.</p></div>
-        </div></div></div>
-      </div>
-    </div>
-
-    <div class="proj reveal">
-      <div class="proj-side"><div class="yr">2026.06 — 2026.07</div></div>
-      <div class="proj-main">
-        <h3>Efficient AWQ Quantization Tuning (LLM-Compressor)</h3>
-        <div class="topics"><span class="topic">Quantization</span><span class="topic">AWQ</span><span class="topic">Inference Optimization</span></div>
-        <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
-        <div class="star"><div class="star-inner"><div class="star-pad">
-          <p class="star-intro">Model-quantization tuning: efficient AWQ based on LLM-Compressor.</p>
-          <div class="star-row"><span class="sk">S / T</span><p>When deploying <b>Qwen3-32B</b>, it needed 4-bit weight quantization (W4A16) to reduce memory usage. Initially using llm-compressor v0.6.0 with default settings for AWQ, the model scored significantly below the industry benchmark AutoAWQ on GSM8K and MMLU, and generated text with severe formatting chaos (many invalid "*" symbols). This project locates the root cause of llm-compressor's quantization degradation.</p></div>
-          <div class="star-row"><span class="sk">A</span><p>Comparing llm-compressor and AutoAWQ on hyperparameters (calibration sample count, max sequence length) and core algorithm, and ruling out sample-count effects, pinpointed the key difference as the quantization <b>observer type</b>. Source and community analysis revealed llm-compressor defaults to a <b>minmax</b> observer, whereas AutoAWQ actually uses a clipping-based <b>MSE</b> error-minimization strategy. Modified the AWQModifier config to explicitly set <span class="type">observer="mse"</span>, kept 128 calibration samples and sequence length 4096, and re-ran quantization.</p></div>
-          <div class="star-row"><span class="sk">R</span><p>With the mse observer, GSM8K accuracy rose from <b>0.848 to 0.884</b>, close to AutoAWQ; text formatting returned to normal and dialogue quality clearly improved.</p></div>
         </div></div></div>
       </div>
     </div>
