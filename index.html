@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yunpeng Xu — AI Systems &amp; LLM Post-Training</title>
-<meta name="description" content="Yunpeng Xu (Oliver) — AI Infra and LLM post-training. Kernel & inference optimization, vLLM/SGLang, agentic RL. CS undergraduate at Sichuan University.">
+<title>Yunpeng Xu — AI Systems, LLM Training &amp; Agents</title>
+<meta name="description" content="Yunpeng Xu (Oliver) — AI infrastructure, LLM training and post-training, and agent systems. Kernel and inference optimization, vLLM/SGLang, and agentic RL. CS undergraduate at Sichuan University.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
@@ -147,11 +147,33 @@ section{padding:64px 0;position:relative}
 .chip:hover{border-color:var(--clay);color:var(--clay);transform:translateY(-2px) rotate(-1deg)}
 
 /* projects */
-.proj{display:grid;grid-template-columns:150px 1fr;gap:34px;padding:34px 0;border-top:1px solid var(--line)}
-.proj:first-of-type{border-top:0}
-@media(max-width:760px){.proj{grid-template-columns:1fr;gap:14px}}
-.proj-side .yr{font-family:'Courier Prime',monospace;font-size:13px;color:var(--clay)}
+.work-timeline{--timeline-axis:175px;position:relative}
+.work-timeline::before{
+  content:"";position:absolute;z-index:0;left:calc(var(--timeline-axis) - .75px);top:42px;bottom:42px;width:1.5px;
+  background:linear-gradient(to bottom,var(--clay),var(--line) 12%,var(--line) 88%,var(--clay));
+}
+.proj{display:grid;grid-template-columns:150px minmax(0,1fr);gap:52px;padding:15px 0 27px;position:relative;align-items:start}
+.proj::before{
+  content:"";position:absolute;z-index:2;left:calc(var(--timeline-axis) - 7px);top:38px;width:11px;height:11px;
+  border:2px solid var(--clay);border-radius:50%;background:var(--paper);box-shadow:0 0 0 6px var(--paper);
+}
+.proj:first-child::before{background:var(--clay);box-shadow:0 0 0 6px var(--paper),0 0 0 7px rgba(187,90,56,.2)}
+.proj-side{padding-top:17px;text-align:right}
+.proj-side .yr{display:inline-block;font-family:'Courier Prime',monospace;font-size:12.5px;line-height:1.35;color:var(--clay-deep);letter-spacing:.01em}
 .proj-side .cat{margin-top:9px;font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.proj-main{
+  min-width:0;background:rgba(246,240,228,.7);border:1.5px solid var(--line-soft);border-radius:6px;padding:25px 28px;
+  box-shadow:4px 5px 0 rgba(42,37,32,.045);transition:border-color .2s,box-shadow .2s,transform .2s;
+}
+.proj:hover .proj-main{border-color:var(--line);box-shadow:5px 6px 0 rgba(42,37,32,.065);transform:translateY(-1px)}
+@media(max-width:760px){
+  .work-timeline{--timeline-axis:9px}
+  .work-timeline::before{top:27px;bottom:35px}
+  .proj{grid-template-columns:1fr;gap:10px;padding:0 0 28px 39px}
+  .proj::before{top:23px}
+  .proj-side{padding-top:15px;text-align:left}
+  .proj-main{padding:22px 21px}
+}
 .proj h3{font-family:'Fraunces',serif;font-weight:600;font-size:27px;line-height:1.15;letter-spacing:-.015em;margin-bottom:12px}
 .proj h3 a{color:inherit;text-decoration:none;background-image:linear-gradient(var(--clay),var(--clay));background-size:0% 1.5px;background-position:0 100%;background-repeat:no-repeat;transition:background-size .3s}
 .proj h3 a:hover{color:var(--clay);background-size:100% 1.5px}
@@ -164,6 +186,7 @@ section{padding:64px 0;position:relative}
 
 /* topic tags + collapsible STAR */
 .topics{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.topics:last-child{margin-bottom:0}
 .topic{font-family:'Courier Prime',monospace;font-size:12px;letter-spacing:.03em;padding:5px 13px;border-radius:100px;background:rgba(110,106,69,.1);border:1px solid var(--line);color:var(--olive)}
 .toggle{display:inline-flex;align-items:center;gap:9px;font-family:'Courier Prime',monospace;font-size:13px;letter-spacing:.04em;color:var(--clay-deep);background:none;border:0;cursor:pointer;padding:5px 0;border-bottom:1.5px solid transparent;transition:border-color .2s}
 .toggle:hover{border-color:var(--clay)}
@@ -224,11 +247,11 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
     <div class="hero-main">
       <div class="hero-kicker reveal">
         <span class="rule"></span>
-        <span class="kicker">Chengdu, China · AI Systems &amp; Post-Training</span>
+        <span class="kicker">Chengdu, China · AI Systems · LLM Training · Agents</span>
       </div>
       <h1 class="reveal">Yunpeng<br>Xu<em>.</em></h1>
       <p class="hero-lead reveal">
-        CS undergraduate working on <b>AI Infra</b> — kernel &amp; inference optimization, <b>LLM post-training</b> — mid-training &amp; agentic RL, <b>Agent</b> — agent evaluation &amp; framework construction
+        CS undergraduate working on <b>AI infrastructure</b>, <b>LLM training and post-training</b>, and <b>agent systems</b> — with a focus on kernel and inference optimization, mid-training, agentic RL, evaluation, and framework development.
       </p>
       <div class="hero-cta reveal">
         <a class="btn btn-p" href="https://github.com/OLIVER-XYP" target="_blank">GitHub &nbsp;↗</a>
@@ -240,7 +263,7 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
         <img class="portrait" src="portrait.jpg" alt="Portrait of Yunpeng Xu" loading="lazy">
         <figcaption>Yunpeng Xu · Chengdu</figcaption>
       </figure>
-      <div class="badge"><b>State:</b> Summer '26 internship</div>
+      <div class="badge"><b>Now:</b> UCloud · AI Infra Intern</div>
     </div>
   </div>
 </header>
@@ -257,15 +280,16 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
         <p>On the <b>systems</b> side, I ground every optimization in benchmarks, profiling, and
         end-to-end serving metrics — from a single CUDA kernel up through the full vLLM / SGLang path.
         In a two-week sprint I optimized a PagedAttention kernel, went deep on C++ and PyTorch internals,
-        and cleared most of leetgpu.</p>
-        <p>On the <b>algorithms</b> side, I focus on LLM post-training (SFT / GRPO / GSPO) and agentic
+        and completed most LeetGPU challenges.</p>
+        <p>On the <b>algorithms</b> side, I focus on LLM training and post-training — from mid-training to
+        SFT / GRPO / GSPO — and agentic
         multi-agent RL, and I've contributed PRs to open-source projects like Slime.</p>
       </div>
       <div class="about-right">
         <div class="card-facts">
           <div class="row"><div class="k">Education</div><div class="v">Sichuan University — B.Eng, Computer Science<br>2023.9 – 2027.6 · GPA 3.62 / 4.0</div></div>
           <div class="row"><div class="k">Lab</div><div class="v">SCU AI Systems &amp; DB Systems Lab</div></div>
-          <div class="row"><div class="k">Focus</div><div class="v">Inference / kernel optimization · Post-training · Agents</div></div>
+          <div class="row"><div class="k">Focus</div><div class="v">Inference / kernel optimization · LLM training · Agent systems</div></div>
           <div class="row"><div class="k">Languages</div><div class="v">CET-6 554 · IELTS 7.0 — reading English papers &amp; docs daily</div></div>
           <div class="row"><div class="k">Tools of the trade</div><div class="v">
             <div class="tool-grp"><em>Infra &amp; systems</em><div class="chips-sm">
@@ -288,21 +312,31 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
   <div class="wrap">
     <div class="sec-head reveal"><span class="no">02</span><h2>Selected <em>work</em></h2></div>
 
-    <div class="proj reveal">
+    <div class="work-timeline" role="list" aria-label="Selected work timeline">
+    <div class="proj reveal" role="listitem">
+      <div class="proj-side"><div class="yr">2026.07.16 — now</div></div>
+      <div class="proj-main">
+        <h3>UCloud · AI Infra Summer Internship</h3>
+        <p class="desc">Contributing to production-scale LLM inference optimization across a fleet of <b>1,000+ GPUs</b>.</p>
+        <div class="topics"><span class="topic">Inference Optimization</span><span class="topic">LLM Serving</span><span class="topic">GPU Fleet</span></div>
+      </div>
+    </div>
+
+    <div class="proj reveal" role="listitem">
       <div class="proj-side"><div class="yr">2026.05 — now</div></div>
       <div class="proj-main">
         <h3><a href="https://github.com/OLIVER-XYP/OMEGA-Arena" target="_blank">OMEGA-Arena <span class="arr">↗</span></a></h3>
         <div class="topics"><span class="topic">Agent Evaluation</span><span class="topic">Kernel Optimization</span></div>
         <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
         <div class="star"><div class="star-inner"><div class="star-pad">
-          <p class="star-intro">An agent evaluation targeted at optimization and graded with an ELO mechanism.</p>
+          <p class="star-intro">An agent evaluation targeted at optimization and graded with an Elo mechanism.</p>
           <div class="star-row"><span class="sk">S / T</span><p>(1) Current agent evaluation focuses on correctness, but in practice many problems are <b>optimization problems with no absolute right or wrong</b>. (2) Unlike optimizers such as AdamW, an agent tuning parameters often abruptly increases or decreases a parameter when it sees no obvious improvement, causing it to miss the chance of reaching the optimum. Optimization problems therefore test whether an agent can align well with human instructions in a specific optimization scenario.</p></div>
           <div class="star-row"><span class="sk">A</span><p>Built three scenarios (Game: a modified Halite III; AI Infra: kernel optimization on H100; Finance: stock trading), containerized with Docker for sandbox isolation to make later agent testing convenient. The first scenario is complete; the remaining work is still in progress.</p></div>
         </div></div></div>
       </div>
     </div>
 
-    <div class="proj reveal">
+    <div class="proj reveal" role="listitem">
       <div class="proj-side"><div class="yr">2026.06 — 2026.07</div></div>
       <div class="proj-main">
         <h3>Efficient AWQ Quantization Tuning (LLM-Compressor)</h3>
@@ -310,14 +344,14 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
         <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
         <div class="star"><div class="star-inner"><div class="star-pad">
           <p class="star-intro">Model-quantization tuning: efficient AWQ based on LLM-Compressor.</p>
-          <div class="star-row"><span class="sk">S / T</span><p>When deploying <b>Qwen3-32B</b>, it needed 4-bit weight quantization (W4A16) to reduce memory usage. Initially using llm-compressor v0.6.0 with default settings for AWQ, the model scored significantly below the industry benchmark AutoAWQ on GSM8K and MMLU, and generated text with severe formatting chaos (many invalid "*" symbols). This project locates the root cause of llm-compressor's quantization degradation.</p></div>
+          <div class="star-row"><span class="sk">S / T</span><p>Deploying <b>Qwen3-32B</b> required 4-bit weight quantization (W4A16) to reduce memory usage. An AWQ-quantized model produced with llm-compressor v0.6.0 and its default settings scored substantially below an equivalent model produced with the widely used AutoAWQ implementation on GSM8K and MMLU, and generated text with severe formatting errors (including many invalid "*" symbols). This project set out to identify the source of that degradation.</p></div>
           <div class="star-row"><span class="sk">A</span><p>Comparing llm-compressor and AutoAWQ on hyperparameters (calibration sample count, max sequence length) and core algorithm, and ruling out sample-count effects, pinpointed the key difference as the quantization <b>observer type</b>. Source and community analysis revealed llm-compressor defaults to a <b>minmax</b> observer, whereas AutoAWQ actually uses a clipping-based <b>MSE</b> error-minimization strategy. Modified the AWQModifier config to explicitly set <span class="type">observer="mse"</span>, kept 128 calibration samples and sequence length 4096, and re-ran quantization.</p></div>
           <div class="star-row"><span class="sk">R</span><p>With the mse observer, GSM8K accuracy rose from <b>0.848 to 0.884</b>, close to AutoAWQ; text formatting returned to normal and dialogue quality clearly improved.</p></div>
         </div></div></div>
       </div>
     </div>
 
-    <div class="proj reveal">
+    <div class="proj reveal" role="listitem">
       <div class="proj-side"><div class="yr">2026.05 — 2026.06</div></div>
       <div class="proj-main">
         <h3>MoE Expert-Parallel Communication Optimization</h3>
@@ -332,7 +366,7 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
       </div>
     </div>
 
-    <div class="proj reveal">
+    <div class="proj reveal" role="listitem">
       <div class="proj-side"><div class="yr">2026.04 — 2026.05</div></div>
       <div class="proj-main">
         <h3>vLLM Inference &amp; Kernel Optimization on RTX 4050 &amp; A800×2</h3>
@@ -364,7 +398,7 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
       </div>
     </div>
 
-    <div class="proj reveal">
+    <div class="proj reveal" role="listitem">
       <div class="proj-side"><div class="yr">2026.03 — 2026.05</div></div>
       <div class="proj-main">
         <h3>Full-Stack Q&amp;A Generation Agent for Data Synthesis</h3>
@@ -379,7 +413,7 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
       </div>
     </div>
 
-    <div class="proj reveal">
+    <div class="proj reveal" role="listitem">
       <div class="proj-side"><div class="yr">2026.02 — 2026.03</div></div>
       <div class="proj-main">
         <h3>Multi-Role RL — Planner / Coder / Reviewer</h3>
@@ -389,12 +423,12 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
           <p class="star-intro">Reproduction of arXiv:2602.01244 plus Agentic MARL. (2026.02 – 2026.03)</p>
           <div class="star-row"><span class="sk">S / T</span><p>Coding agents in the CLI face inherent limitations: planning and execution are decoupled, credit assignment is ambiguous, and role capabilities are highly entangled. Built on the <b>Qwen3-Coder-30B-A3B-Instruct</b> base model, this project uses TerminalTraj (50k single-agent command sequences) and its Docker environment to build a Planner–Coder–Reviewer three-role collaborative multi-agent system, aiming to break the single-agent performance ceiling on TerminalBench (1.0 / 2.0).</p></div>
           <div class="star-row"><span class="sk">A</span><p>Before training, the 50k single-agent shell trajectories in TerminalTraj were functionally decoupled and cleaned, and new data was mined using the paper's method to adapt them to the Coder role's SFT and RL environment. Training used a staged frozen strategy: the Coder extracts successful trajectories for SFT, then runs <b>GRPO</b> in Docker rewarded by command exit codes and task-completion flags; the Planner reverse-distills successful trajectories into "high-level sub-goal sequences" and is fine-tuned with search-based GRPO using the Coder's validation-set command pass-rate as the reward signal for policy alignment; the Reviewer pairs "failed command + environment error" with "corrected successful command" to generate diagnostic review notes, and is trained with SFT only for stability. The three share one base model, form a collaborative pipeline at inference, and are measured with fine-grained metrics such as plan-executability, first-round pass-rate, and repair-rate.</p></div>
-          <div class="star-row"><span class="sk">R</span><p>The approach achieved a significant breakthrough on TerminalBench. <b>TB 2.0</b> (overall goal): baseline + React (9.6%) → Coder-only + React (17.4%) → MultiModel + Plan-and-Execute (<b>23.2%</b>). <b>TB 1.0</b> (Coder only): baseline (15.3%) → Coder-only (<b>33.0%</b>) → MultiModel (28.3%). This shows that even though the Coder's own capability drops under the Planner/Reviewer roles, the agent as a whole becomes stronger — demonstrating the feasibility of Agentic MARL.</p></div>
+          <div class="star-row"><span class="sk">R</span><p>Under the reported evaluation setup, performance improved on TerminalBench. <b>TB 2.0</b> (overall goal): baseline + ReAct (9.6%) → Coder-only + ReAct (17.4%) → MultiModel + Plan-and-Execute (<b>23.2%</b>). <b>TB 1.0</b> (Coder only): baseline (15.3%) → Coder-only (<b>33.0%</b>) → MultiModel (28.3%). The results suggest that, although the Coder's standalone capability drops when capacity is shared with the Planner and Reviewer roles, the collaborative system performs better overall.</p></div>
         </div></div></div>
       </div>
     </div>
 
-    <div class="proj reveal">
+    <div class="proj reveal" role="listitem">
       <div class="proj-side"><div class="yr">2025.10 — 2025.12</div></div>
       <div class="proj-main">
         <h3>AGRO-SQL — Agentic RL for Text-to-SQL</h3>
@@ -404,9 +438,10 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
           <p class="star-intro">A practice of agentic RL for Text-to-SQL. (2025.10 – 2025.12)</p>
           <div class="star-row"><span class="sk">S / T</span><p>Progress in Text-to-SQL has long been constrained by two bottlenecks: a severe shortage of high-quality training data, and insufficient model reasoning on complex queries. Samples from traditional data-synthesis methods suffer from logical misalignment and semantic deviation, hard to use directly for RL training. A holistic solution is needed to crack both "data scarcity" and "weak model reasoning" and push Text-to-SQL to a more advanced level.</p></div>
           <div class="star-row"><span class="sk">A</span><p>Designed a <b>two-stage agentic RL framework</b>: stage one uses a "diversity-aware cold start" to build a robust initial policy from high-quality trajectories; stage two introduces <b>GRPO</b> (Group Relative Policy Optimization), replacing traditional value-network methods by using the relative execution rewards of a group of synthesized trajectories as the optimization basis, iteratively refining the policy through group competition and effectively solving exploration efficiency under sparse rewards.</p></div>
-          <div class="star-row"><span class="sk">R</span><p>On the two authoritative benchmarks Spider and BIRD, AGRO-SQL showed top-tier single-model performance — based on Qwen3-8B-Base, it achieved <b>72.10% execution accuracy on BIRD</b>.</p></div>
+          <div class="star-row"><span class="sk">R</span><p>Using Qwen3-8B-Base, AGRO-SQL achieved <b>72.10% execution accuracy on BIRD</b>; Spider was also used to evaluate cross-benchmark performance.</p></div>
         </div></div></div>
       </div>
+    </div>
     </div>
   </div>
 </section>
@@ -415,14 +450,14 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
   <div class="wrap">
     <div class="sec-head reveal"><span class="no">03</span><h2>On the <em>page</em></h2></div>
     <div class="pub reveal">
-      <div class="venue">EMNLP · Under Review · Co-First Author</div>
+      <div class="venue">Manuscript under review · Co-first author</div>
       <h3>Everything in Moderation: Dose-Response Effects of Data Coverage and Alignment-Resistant Capability Gaps in Multi-Domain Mid-Training</h3>
       <div class="auth">Yunpeng Xu (co-first author) · 2026</div>
       <p>A systematic test of an unexamined assumption — that uneven domain coverage during mid-training can
-      simply be corrected by later SFT/RL. Across nine coverage configurations on Qwen3-8B-Base, I find that
+      simply be corrected by later SFT/RL. Across nine coverage configurations on Qwen3-8B-Base, we find that
       (1) domain accuracy follows an <b>inverted-U dose-response curve</b> with an identifiable "moderate"
-      regime, and (2) capability gaps seeded in mid-training <b>stubbornly persist</b> into alignment — SFT
-      actually widens them, and compensatory SFT can't reliably close them under a fixed budget.</p>
+      regime, and (2) capability gaps seeded in mid-training <b>persist</b> into alignment — SFT
+      actually widens them, and compensatory SFT cannot reliably close them under a fixed budget.</p>
     </div>
   </div>
 </section>
@@ -440,7 +475,7 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
 <footer>
   <div class="foot-in">
     <span>© 2026 Yunpeng Xu <span class="star">✦</span> Oliver</span>
-    <span>Set in Fraunces &amp; Newsreader <span class="star">✦</span> Hosted on GitHub Pages</span>
+    <span>Hosted on GitHub Pages</span>
   </div>
 </footer>
 
