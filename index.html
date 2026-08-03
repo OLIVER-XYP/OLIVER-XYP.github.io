@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yunpeng Xu — AI Systems, LLM Training &amp; Agents</title>
-<meta name="description" content="Yunpeng Xu (Oliver) — AI infrastructure, LLM training and post-training, and agent systems. Kernel and inference optimization, vLLM/SGLang, and agentic RL. CS undergraduate at Sichuan University.">
+<title>Yunpeng Xu — AI Infra, Post-Training &amp; Agent Frameworks</title>
+<meta name="description" content="Yunpeng Xu (Oliver) — AI infra, post-training, and agent frameworks. Kernel optimization, agentic MARL, and framework development. CS undergraduate at Sichuan University.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
@@ -121,6 +121,8 @@ section{padding:64px 0;position:relative}
 @media(max-width:800px){.about{grid-template-columns:1fr;gap:34px}}
 .about p{margin-bottom:24px;color:var(--ink-soft);font-size:23px;line-height:1.72}
 .about p b{color:var(--ink);font-weight:500}
+.about p a,.card-facts .v a{color:var(--clay-deep);text-decoration-color:rgba(156,69,38,.45);text-decoration-thickness:1px;text-underline-offset:3px}
+.about p a:hover,.card-facts .v a:hover{color:var(--clay)}
 .about-right{max-width:400px}
 @media(max-width:800px){.about-right{margin:0 auto}}
 .card-facts{background:var(--card);border:1.5px solid var(--line);border-radius:6px;padding:6px 24px;box-shadow:5px 6px 0 rgba(42,37,32,.06)}
@@ -208,11 +210,16 @@ section{padding:64px 0;position:relative}
 
 /* research */
 .pub{background:var(--card);border:1.5px solid var(--line);border-radius:6px;padding:34px;position:relative;box-shadow:6px 7px 0 rgba(42,37,32,.06)}
+.pub-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.9fr);gap:30px;align-items:center}
+.pub-copy{min-width:0}
+.pub-figure{margin:0}
+.pub-figure img{display:block;width:100%;height:auto;border:1px solid var(--line-soft)}
 .pub .venue{font-family:'Courier Prime',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--clay)}
 .pub h3{font-family:'Fraunces',serif;font-weight:600;font-size:25px;line-height:1.25;margin:14px 0 8px}
 .pub .auth{font-family:'Courier Prime',monospace;font-size:13px;color:var(--muted);margin-bottom:18px}
 .pub p{color:var(--ink-soft);font-size:18.5px;max-width:760px}
 .pub p b{color:var(--ink);font-weight:500}
+@media(max-width:760px){.pub-grid{grid-template-columns:1fr}.pub-figure{max-width:560px}}
 
 /* contact */
 .contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
@@ -247,11 +254,11 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
     <div class="hero-main">
       <div class="hero-kicker reveal">
         <span class="rule"></span>
-        <span class="kicker">Chengdu, China · AI Systems · LLM Training · Agents</span>
+        <span class="kicker">Chengdu, China · AI Infra · Post-Training · Agent Frameworks</span>
       </div>
       <h1 class="reveal">Yunpeng<br>Xu<em>.</em></h1>
       <p class="hero-lead reveal">
-        CS undergraduate working on <b>AI infrastructure</b>, <b>LLM training and post-training</b>, and <b>agent systems</b> — with a focus on kernel and inference optimization, mid-training, agentic RL, evaluation, and framework development.
+        CS undergraduate working on <b>AI infra (Kernel Optimization)</b>, <b>Post-Training (agentic RL)</b>, and <b>agent frameworks</b>.
       </p>
       <div class="hero-cta reveal">
         <a class="btn btn-p" href="https://github.com/OLIVER-XYP" target="_blank">GitHub &nbsp;↗</a>
@@ -274,32 +281,30 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
     <div class="about reveal">
       <div>
         <p>I'm a Computer Science undergraduate at <b>Sichuan University</b> (2023–2027), doing research in
-        the <b>SCU AI Systems &amp; Database Systems Lab</b>. I'm the kind of person who reads
-        <b>two or three LLM papers a week</b> for fun, and I love building things alongside people who
+        the <a href="https://ids.scu.edu.cn/" target="_blank" rel="noopener noreferrer">SCU IDS Lab</a>. I read
+        two or three LLM papers a week, and I love building things alongside people who
         care about the same problems.</p>
-        <p>On the <b>systems</b> side, I ground every optimization in benchmarks, profiling, and
-        end-to-end serving metrics — from a single CUDA kernel up through the full vLLM / SGLang path.
-        In a two-week sprint I optimized a PagedAttention kernel, went deep on C++ and PyTorch internals,
-        and completed most LeetGPU challenges.</p>
-        <p>On the <b>algorithms</b> side, I focus on LLM training and post-training — from mid-training to
-        SFT / GRPO / GSPO — and agentic
-        multi-agent RL, and I've contributed PRs to open-source projects like Slime.</p>
+        <p>On the <b>systems</b> side, I like using benchmarks, profiling, and end-to-end serving metrics to
+        guide optimizations — from a single CUDA kernel through the full vLLM / SGLang path. On the <b>algorithms</b>
+        side, I focus on post-training, especially Agentic MARL, and I've contributed PRs to open-source projects like
+        Slime. On the <b>application</b> side, I learned from the leaked Claude source code and LangGraph, and am now
+        working on an agent evaluation project.</p>
       </div>
       <div class="about-right">
         <div class="card-facts">
           <div class="row"><div class="k">Education</div><div class="v">Sichuan University — B.Eng, Computer Science<br>2023.9 – 2027.6 · GPA 3.62 / 4.0</div></div>
-          <div class="row"><div class="k">Lab</div><div class="v">SCU AI Systems &amp; DB Systems Lab</div></div>
-          <div class="row"><div class="k">Focus</div><div class="v">Inference / kernel optimization · LLM training · Agent systems</div></div>
+          <div class="row"><div class="k">Lab</div><div class="v"><a href="https://ids.scu.edu.cn/" target="_blank" rel="noopener noreferrer">SCU IDS Lab</a></div></div>
+          <div class="row"><div class="k">Focus</div><div class="v">AI Infra (Kernel Optimization) · Post-Training (Agentic MARL) · Agent Frameworks</div></div>
           <div class="row"><div class="k">Languages</div><div class="v">CET-6 554 · IELTS 7.0 — reading English papers &amp; docs daily</div></div>
           <div class="row"><div class="k">Tools of the trade</div><div class="v">
             <div class="tool-grp"><em>Infra &amp; systems</em><div class="chips-sm">
-              <span class="chip-sm">CUDA</span><span class="chip-sm">Triton</span><span class="chip-sm">Kernel Optimization</span><span class="chip-sm">vLLM</span><span class="chip-sm">SGLang</span><span class="chip-sm">FlashInfer</span><span class="chip-sm">DeepEP</span><span class="chip-sm">Nsight NSYS / NCU</span><span class="chip-sm">AWQ Quantization</span>
+              <span class="chip-sm">CUDA</span><span class="chip-sm">Triton</span><span class="chip-sm">Kernel Optimization</span><span class="chip-sm">vLLM</span><span class="chip-sm">SGLang</span><span class="chip-sm">FlashInfer</span><span class="chip-sm">DeepEP</span><span class="chip-sm">Nsight NSYS / NCU</span><span class="chip-sm">Model Quantization</span>
             </div></div>
             <div class="tool-grp"><em>Training &amp; post-training</em><div class="chips-sm">
               <span class="chip-sm">PyTorch</span><span class="chip-sm">Megatron-LM</span><span class="chip-sm">SFT / RL</span><span class="chip-sm">GRPO / GSPO</span><span class="chip-sm">VERL</span><span class="chip-sm">Slime</span>
             </div></div>
             <div class="tool-grp"><em>Agents</em><div class="chips-sm">
-              <span class="chip-sm">LangGraph</span><span class="chip-sm">Agentic MARL</span><span class="chip-sm">Agent Evaluation</span><span class="chip-sm">Docker Sandboxing</span><span class="chip-sm">C++</span>
+              <span class="chip-sm">LangGraph</span><span class="chip-sm">Agent Evaluation</span>
             </div></div>
           </div></div>
         </div>
@@ -448,16 +453,23 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
 
 <section id="research">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="no">03</span><h2>On the <em>page</em></h2></div>
+    <div class="sec-head reveal"><span class="no">03</span><h2><em>Paper</em></h2></div>
     <div class="pub reveal">
-      <div class="venue">Manuscript under review · Co-first author</div>
-      <h3>Everything in Moderation: Dose-Response Effects of Data Coverage and Alignment-Resistant Capability Gaps in Multi-Domain Mid-Training</h3>
-      <div class="auth">Yunpeng Xu (co-first author) · 2026</div>
-      <p>A systematic test of an unexamined assumption — that uneven domain coverage during mid-training can
-      simply be corrected by later SFT/RL. Across nine coverage configurations on Qwen3-8B-Base, we find that
-      (1) domain accuracy follows an <b>inverted-U dose-response curve</b> with an identifiable "moderate"
-      regime, and (2) capability gaps seeded in mid-training <b>persist</b> into alignment — SFT
-      actually widens them, and compensatory SFT cannot reliably close them under a fixed budget.</p>
+      <div class="pub-grid">
+        <div class="pub-copy">
+          <div class="venue">Manuscript under review · EMNLP26 · Co-first author</div>
+          <h3>Everything in Moderation: Dose-Response Effects of Data Coverage and Alignment-Resistant Capability Gaps in Multi-Domain Mid-Training</h3>
+          <div class="auth">Yunpeng Xu (co-first author) · 2026</div>
+          <p>A systematic test of an unexamined assumption — that uneven domain coverage during mid-training can
+          simply be corrected by later SFT/RL. Across nine coverage configurations on Qwen3-8B-Base, we find that
+          (1) domain accuracy follows an <b>inverted-U dose-response curve</b> with an identifiable "moderate"
+          regime, and (2) capability gaps seeded in mid-training <b>persist</b> into alignment — SFT
+          actually widens them, and compensatory SFT cannot reliably close them under a fixed budget.</p>
+        </div>
+        <figure class="pub-figure">
+          <img src="mid-training-coverage.png" alt="Mid-only accuracy across mid-training data coverage levels" loading="lazy">
+        </figure>
+      </div>
     </div>
   </div>
 </section>
