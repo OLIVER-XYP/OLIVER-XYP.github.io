@@ -214,6 +214,9 @@ section{padding:64px 0;position:relative}
 .pub-copy{min-width:0}
 .pub-figure{margin:0}
 .pub-figure img{display:block;width:100%;height:auto;border:1px solid var(--line-soft)}
+.pub-figure figcaption{margin-top:10px;font-family:'Courier Prime',monospace;font-size:11.5px;letter-spacing:.02em;color:var(--muted);line-height:1.65}
+.pub-figure figcaption a{color:var(--clay-deep);text-decoration-color:rgba(156,69,38,.45);text-decoration-thickness:1px;text-underline-offset:3px}
+.pub-figure figcaption a:hover{color:var(--clay)}
 .pub .venue{font-family:'Courier Prime',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--clay)}
 .pub h3{font-family:'Fraunces',serif;font-weight:600;font-size:25px;line-height:1.25;margin:14px 0 8px}
 .pub .auth{font-family:'Courier Prime',monospace;font-size:13px;color:var(--muted);margin-bottom:18px}
@@ -1478,6 +1481,7 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
         </div>
         <figure class="pub-figure">
           <img src="fig_midtrain_domain_lines.svg" alt="Per-domain evaluation accuracy plotted against the domain's portion of mid-training coverage, showing an interior optimum for each of the five KOR-Bench domains" loading="lazy">
+          <figcaption>Per-domain accuracy vs. mid-training portion · <a href="fig_midtrain_domain_lines.pdf" download>Download PDF</a></figcaption>
         </figure>
       </div>
     </div>
