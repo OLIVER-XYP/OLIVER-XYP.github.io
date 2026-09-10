@@ -217,6 +217,8 @@ section{padding:64px 0;position:relative}
 .pub .venue{font-family:'Courier Prime',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--clay)}
 .pub h3{font-family:'Fraunces',serif;font-weight:600;font-size:25px;line-height:1.25;margin:14px 0 8px}
 .pub .auth{font-family:'Courier Prime',monospace;font-size:13px;color:var(--muted);margin-bottom:18px}
+.pub .auth a{color:var(--clay-deep);text-decoration-color:rgba(156,69,38,.45);text-underline-offset:3px}
+.pub .auth a:hover{color:var(--clay)}
 .pub p{color:var(--ink-soft);font-size:18.5px;max-width:760px}
 .pub p b{color:var(--ink);font-weight:500}
 @media(max-width:760px){.pub-grid{grid-template-columns:1fr}.pub-figure{max-width:560px}}
@@ -258,7 +260,7 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
       </div>
       <h1 class="reveal">Yunpeng<br>Xu<em>.</em></h1>
       <p class="hero-lead reveal">
-        CS undergraduate working on <b>AI infra (Kernel Optimization)</b>, <b>Post-Training (agentic RL)</b>, and <b>agent frameworks</b>.
+        CS undergraduate working on <b>AI Infra — kernel &amp; inference optimization, distributed parallelism</b>, <b>mid- &amp; post-training</b>, and <b>agent frameworks</b>.
       </p>
       <div class="hero-cta reveal">
         <a class="btn btn-p" href="https://github.com/OLIVER-XYP" target="_blank">GitHub &nbsp;↗</a>
@@ -294,8 +296,10 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
         <div class="card-facts">
           <div class="row"><div class="k">Education</div><div class="v">Sichuan University — B.Eng, Computer Science<br>2023.9 – 2027.6 · GPA 3.62 / 4.0</div></div>
           <div class="row"><div class="k">Lab</div><div class="v"><a href="https://ids.scu.edu.cn/" target="_blank" rel="noopener noreferrer">SCU IDS Lab</a></div></div>
-          <div class="row"><div class="k">Focus</div><div class="v">AI Infra (Kernel Optimization) · Post-Training (Agentic MARL) · Agent Frameworks</div></div>
+          <div class="row"><div class="k">Focus</div><div class="v">AI Infra (Inference Optimization · TP·DP·PP·CP·SP · PD Disaggregation) · Mid- &amp; Post-Training (Agentic MARL) · Agent Frameworks</div></div>
           <div class="row"><div class="k">Languages</div><div class="v">CET-6 554 · IELTS 7.0 — reading English papers &amp; docs daily</div></div>
+          <div class="row"><div class="k">Coursework</div><div class="v">Introduction to AI · Data Mining · Computer Architecture · Operating Systems · Machine Learning Fundamentals · Deep Learning · Statistics · Data Structures &amp; Algorithms · Computer Vision · Database Principles · Data Analysis · Probability · Computer Organization</div></div>
+          <div class="row"><div class="k">Interests</div><div class="v">Football (playing &amp; watching) · Music · Games</div></div>
           <div class="row"><div class="k">Tools of the trade</div><div class="v">
             <div class="tool-grp"><em>Infra &amp; systems</em><div class="chips-sm">
               <span class="chip-sm">CUDA</span><span class="chip-sm">Triton</span><span class="chip-sm">Kernel Optimization</span><span class="chip-sm">vLLM</span><span class="chip-sm">SGLang</span><span class="chip-sm">FlashInfer</span><span class="chip-sm">DeepEP</span><span class="chip-sm">Nsight NSYS / NCU</span><span class="chip-sm">Model Quantization</span>
@@ -322,8 +326,15 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
       <div class="proj-side"><div class="yr">2026.07.16 — now</div></div>
       <div class="proj-main">
         <h3>UCloud · AI Infra Summer Internship</h3>
-        <p class="desc">Contributing to production-scale LLM inference optimization across a fleet of <b>1,000+ GPUs</b>.</p>
-        <div class="topics"><span class="topic">Inference Optimization</span><span class="topic">LLM Serving</span><span class="topic">GPU Fleet</span></div>
+        <p class="desc">Operator-level and distributed inference optimization on a <b>1,000-GPU</b> production cluster — covering <b>GLM-5.2</b>, <b>DeepSeek-V4-Flash-0731</b>, <b>Kimi-K3</b> and others.</p>
+        <div class="topics"><span class="topic">Inference Optimization</span><span class="topic">TP · DP · PP · CP · SP</span><span class="topic">PD Disaggregation</span><span class="topic">Cluster Scheduling</span></div>
+        <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
+        <div class="star"><div class="star-inner"><div class="star-pad">
+          <p class="star-intro">Operator paths, parallel schemes and cluster-level scheduling on a production cluster. (2026.07 – now)</p>
+          <div class="star-row"><span class="sk">S / T</span><p>Testing operator-level and distributed / parallel schemes for <b>DeepSeek-V4-Flash-0731</b> — <b>TP, DP, PP, CP, SP</b> and <b>PD disaggregation</b> — plus cluster-level scheduling with <b>dynamo</b> and <b>llm-d</b>.</p></div>
+          <div class="star-row"><span class="sk">A</span><p>Profiling and operator-level optimization around the vLLM bottlenecks — fusing operators, then testing and analysing them — with a series of technical write-ups covering single-operator, module, and end-to-end tests. Write-ups: <a href="https://github.com/OLIVER-XYP/Technological-Documents" target="_blank" rel="noopener noreferrer">Technological-Documents ↗</a></p></div>
+          <div class="star-row"><span class="sk">R</span><p>(Ongoing.) On the operator path, end-to-end latency drops <b>~2–3%</b> in low-prefill / high-decode scenarios; PD disaggregation raises throughput <b>~13%</b> and cuts TTFT <b>~6%</b>.</p></div>
+        </div></div></div>
       </div>
     </div>
 
@@ -436,7 +447,7 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
     <div class="proj reveal" role="listitem">
       <div class="proj-side"><div class="yr">2025.10 — 2025.12</div></div>
       <div class="proj-main">
-        <h3>AGRO-SQL — Agentic RL for Text-to-SQL</h3>
+        <h3><a href="https://github.com/OLIVER-XYP/agro_sql" target="_blank">AGRO-SQL — Agentic RL for Text-to-SQL <span class="arr">↗</span></a></h3>
         <div class="topics"><span class="topic">Agentic RL</span><span class="topic">Text-to-SQL</span><span class="topic">GRPO</span></div>
         <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
         <div class="star"><div class="star-inner"><div class="star-pad">
@@ -444,6 +455,21 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
           <div class="star-row"><span class="sk">S / T</span><p>Progress in Text-to-SQL has long been constrained by two bottlenecks: a severe shortage of high-quality training data, and insufficient model reasoning on complex queries. Samples from traditional data-synthesis methods suffer from logical misalignment and semantic deviation, hard to use directly for RL training. A holistic solution is needed to crack both "data scarcity" and "weak model reasoning" and push Text-to-SQL to a more advanced level.</p></div>
           <div class="star-row"><span class="sk">A</span><p>Designed a <b>two-stage agentic RL framework</b>: stage one uses a "diversity-aware cold start" to build a robust initial policy from high-quality trajectories; stage two introduces <b>GRPO</b> (Group Relative Policy Optimization), replacing traditional value-network methods by using the relative execution rewards of a group of synthesized trajectories as the optimization basis, iteratively refining the policy through group competition and effectively solving exploration efficiency under sparse rewards.</p></div>
           <div class="star-row"><span class="sk">R</span><p>Using Qwen3-8B-Base, AGRO-SQL achieved <b>72.10% execution accuracy on BIRD</b>; Spider was also used to evaluate cross-benchmark performance.</p></div>
+        </div></div></div>
+      </div>
+    </div>
+
+    <div class="proj reveal" role="listitem">
+      <div class="proj-side"><div class="yr">2025.07 — 2025.08</div></div>
+      <div class="proj-main">
+        <h3>Tmall Campus · AI Engineering Intern</h3>
+        <div class="topics"><span class="topic">Computer Vision</span><span class="topic">Model Deployment</span></div>
+        <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
+        <div class="star"><div class="star-inner"><div class="star-pad">
+          <p class="star-intro">A lightweight recognition model for smart-shelf product detection. (2025.07 – 2025.08)</p>
+          <div class="star-row"><span class="sk">S / T</span><p>The smart-shelf product-recognition scenario needed a lightweight model that was both accurate and deployable.</p></div>
+          <div class="star-row"><span class="sk">A</span><p>Trained and deployed <b>MobileNet</b>, adapting it to real shelf scenes: <a href="https://github.com/OLIVER-XYP/MB_V2" target="_blank" rel="noopener noreferrer">MB_V2 ↗</a></p></div>
+          <div class="star-row"><span class="sk">R</span><p>Reached <b>86%</b> recognition accuracy in the real shelf scene.</p></div>
         </div></div></div>
       </div>
     </div>
@@ -457,14 +483,15 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
     <div class="pub reveal">
       <div class="pub-grid">
         <div class="pub-copy">
-          <div class="venue">Manuscript under review · EMNLP26 · Co-first author</div>
-          <h3>Everything in Moderation: Dose-Response Effects of Data Coverage and Alignment-Resistant Capability Gaps in Multi-Domain Mid-Training</h3>
-          <div class="auth">Yunpeng Xu (co-first author) · 2026</div>
-          <p>A systematic test of an unexamined assumption — that uneven domain coverage during mid-training can
-          simply be corrected by later SFT/RL. Across nine coverage configurations on Qwen3-8B-Base, we find that
-          (1) domain accuracy follows an <b>inverted-U dose-response curve</b> with an identifiable "moderate"
-          regime, and (2) capability gaps seeded in mid-training <b>persist</b> into alignment — SFT
-          actually widens them, and compensatory SFT cannot reliably close them under a fixed budget.</p>
+          <div class="venue">arXiv preprint · preparing for ICLR · Co-first author</div>
+          <h3>Everything in Moderation: Per-Domain Coverage Optima and Alignment-Resistant Domain Gaps in Multi-Domain Mid-Training</h3>
+          <div class="auth">Yunpeng Xu (co-first author) · 2025.3 – present · <a href="https://arxiv.org/abs/2609.09081" target="_blank" rel="noopener noreferrer">arXiv:2609.09081</a></div>
+          <p>A systematic test of a rarely-examined assumption — that uneven domain coverage during mid-training can
+          simply be corrected by later SFT/RL. Training 30 allocations over five rule-disjoint KOR-Bench domains on
+          Qwen3-8B-Base, we find that
+          (1) each domain has an <b>interior coverage optimum</b>, with a "moderate" regime best for all five, and
+          (2) capability gaps seeded in mid-training <b>persist</b> into alignment — a fixed-budget SFT pass lifts
+          most cells yet closes essentially none of the gap pairs.</p>
         </div>
         <figure class="pub-figure">
           <img src="mid-training-coverage.png" alt="Mid-only accuracy across mid-training data coverage levels" loading="lazy">
@@ -474,9 +501,2050 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
   </div>
 </section>
 
+<!-- ====================================================================
+     MODULE: On GitHub - curated repo cards + in-page README preview
+     ==================================================================== -->
+
+<section id="github" class="gh-sec">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">04</span><h2>On <em>GitHub</em></h2></div>
+
+    <p class="gh-lede reveal">
+      The public repos worth a look - not a mirror of the whole account. Open one and
+      its README renders right here; every card still links out to GitHub.
+    </p>
+
+    <div class="gh-grid reveal" id="gh-grid"></div>
+
+    <noscript>
+      <p class="gh-foot">
+        JavaScript is off, so the cards can't render.
+        <a href="https://github.com/OLIVER-XYP/OMEGA-Arena">OMEGA-Arena</a>,
+        <a href="https://github.com/OLIVER-XYP/puzzle_generation_agent">puzzle_generation_agent</a>,
+        <a href="https://github.com/OLIVER-XYP/agro_sql">agro_sql</a>,
+        <a href="https://github.com/OLIVER-XYP/MB_V2">MB_V2</a>,
+        <a href="https://github.com/OLIVER-XYP/claude_code_leaked_repaired">claude_code_leaked_repaired</a>,
+        <a href="https://github.com/OLIVER-XYP/Paper-Everything-in-Moderation">Paper-Everything-in-Moderation</a>.
+      </p>
+    </noscript>
+
+    <div class="gh-stage" id="gh-stage" hidden>
+      <div class="gh-stage-head">
+        <div class="gh-stage-id">
+          <div class="gh-stage-kicker">README preview</div>
+          <h3 class="gh-stage-title"><a href="#" id="gh-stage-link" target="_blank" rel="noopener noreferrer">repo</a></h3>
+          <div class="gh-stage-meta" id="gh-stage-meta"></div>
+        </div>
+        <button type="button" class="gh-btn gh-btn-s gh-close" id="gh-close">Close <span aria-hidden="true">✕</span></button>
+      </div>
+      <div class="gh-status" id="gh-status" role="status" aria-live="polite"></div>
+      <div class="gh-doc" id="gh-doc" tabindex="-1"></div>
+    </div>
+
+    <p class="gh-foot">
+      Curated list · READMEs are fetched straight from
+      <span class="type">raw.githubusercontent.com</span> and rendered in the page ·
+      no API polling, no tracking.
+    </p>
+  </div>
+</section>
+
+<style>
+/* ---------------------------------------------------------------------------
+   GitHub section - every selector is namespaced under .gh- so nothing here
+   can affect the rest of the page.
+--------------------------------------------------------------------------- */
+.gh-lede{max-width:660px;margin:-24px 0 30px;color:var(--muted);font-size:18px;line-height:1.6}
+.gh-lede b{color:var(--ink);font-weight:500}
+.gh-foot{font-family:'Courier Prime',monospace;font-size:11.5px;letter-spacing:.02em;color:var(--faint);margin-top:20px;line-height:1.7}
+.gh-foot a{color:var(--clay-deep)}
+
+/* grid + cards */
+.gh-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(272px,100%),1fr));gap:16px}
+.gh-card{
+  display:flex;flex-direction:column;gap:13px;min-width:0;
+  background:rgba(246,240,228,.72);border:1.5px solid var(--line-soft);border-radius:6px;
+  padding:22px 22px 18px;box-shadow:4px 5px 0 rgba(42,37,32,.045);
+  transition:border-color .2s,box-shadow .2s,transform .2s;
+}
+.gh-card:hover{border-color:var(--line);box-shadow:5px 6px 0 rgba(42,37,32,.065);transform:translateY(-1px)}
+.gh-card.active{border-color:var(--clay);box-shadow:4px 5px 0 rgba(187,90,56,.16)}
+.gh-name{
+  font-family:'Fraunces',Georgia,'Noto Serif CJK SC','Source Han Serif SC','Songti SC','SimSun',serif;
+  font-weight:600;font-size:20.5px;line-height:1.2;letter-spacing:-.015em;min-width:0;overflow-wrap:anywhere;
+}
+.gh-name a{
+  color:inherit;text-decoration:none;background-image:linear-gradient(var(--clay),var(--clay));
+  background-size:0% 1.5px;background-position:0 100%;background-repeat:no-repeat;transition:background-size .3s;
+}
+.gh-name a:hover{color:var(--clay);background-size:100% 1.5px}
+.gh-name a:focus-visible{outline:2.5px solid var(--clay);outline-offset:3px;border-radius:2px}
+.gh-topics{display:flex;flex-wrap:wrap;gap:6px}
+.gh-topics .topic{font-size:11px;padding:4px 10px}
+.gh-blurb{
+  font-family:'Newsreader',Georgia,'Noto Serif CJK SC','Songti SC','SimSun',serif;
+  color:var(--ink-soft);font-size:17px;line-height:1.55;margin:0;
+}
+.gh-meta{font-family:'Courier Prime',monospace;font-size:11.5px;letter-spacing:.06em;color:var(--muted);margin-top:-2px}
+.gh-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+.gh-btn{
+  font-family:'Courier Prime',monospace;font-size:12.5px;letter-spacing:.04em;line-height:1;
+  display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:4px;
+  background:none;cursor:pointer;text-decoration:none;transition:border-color .2s,color .2s,background .2s;
+}
+.gh-btn:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px}
+.gh-btn-s{border:1.5px solid var(--line);color:var(--ink-soft)}
+.gh-btn-s:hover{border-color:var(--clay);color:var(--clay)}
+.gh-card.active .gh-btn-s{border-color:var(--clay);color:var(--clay-deep)}
+.gh-tri{display:inline-block;font-size:9.5px;transition:transform .3s ease}
+.gh-card.active .gh-tri{transform:rotate(90deg)}
+.gh-link{
+  font-family:'Courier Prime',monospace;font-size:12.5px;letter-spacing:.04em;color:var(--ink-soft);
+  text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:2px;transition:.2s;
+}
+.gh-link:hover{color:var(--clay);border-color:var(--clay)}
+.gh-link:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px}
+
+/* shared preview stage */
+.gh-stage{
+  margin-top:26px;background:var(--card);border:1.5px solid var(--line);border-radius:6px;
+  box-shadow:6px 7px 0 rgba(42,37,32,.06);overflow:hidden;
+  animation:ghfade .35s cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes ghfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.gh-stage[hidden]{display:none}
+.gh-stage-head{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  padding:20px 26px 16px;border-bottom:1.5px dashed var(--line);
+}
+.gh-stage-id{min-width:0}
+.gh-stage-kicker{font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--clay)}
+.gh-stage-title{
+  font-family:'Fraunces',Georgia,'Noto Serif CJK SC','Songti SC','SimSun',serif;
+  font-weight:600;font-size:23px;line-height:1.2;letter-spacing:-.015em;margin:8px 0 0;overflow-wrap:anywhere;
+}
+.gh-stage-title a{color:var(--ink);text-decoration:none}
+.gh-stage-title a:hover{color:var(--clay)}
+.gh-stage-title a:focus-visible{outline:2.5px solid var(--clay);outline-offset:3px;border-radius:2px}
+.gh-stage-meta{font-family:'Courier Prime',monospace;font-size:12px;color:var(--muted);margin-top:7px}
+.gh-close{flex:none}
+.gh-status{font-family:'Courier Prime',monospace;font-size:12.5px;line-height:1.6;color:var(--muted)}
+.gh-status.is-on{padding:16px 26px 4px}
+.gh-status.is-err{color:var(--clay-deep)}
+.gh-spin{
+  display:inline-block;width:11px;height:11px;margin-right:9px;vertical-align:-1px;
+  border:1.5px solid var(--line);border-top-color:var(--clay);border-radius:50%;
+  animation:ghspin .8s linear infinite;
+}
+@keyframes ghspin{to{transform:rotate(360deg)}}
+.gh-retry{margin-left:10px;font:inherit;color:var(--clay-deep);background:none;border:0;border-bottom:1.5px solid currentColor;cursor:pointer;padding:0 0 1px}
+.gh-retry:hover{color:var(--clay)}
+.gh-notice{font-family:'Newsreader',Georgia,'Noto Serif CJK SC','Songti SC','SimSun',serif;font-size:17.5px;line-height:1.6;color:var(--ink-soft)}
+.gh-notice a{color:var(--clay-deep)}
+
+/* rendered README surface */
+.gh-doc{
+  padding:22px 26px 28px;max-width:800px;
+  font-family:'Newsreader',Georgia,'Noto Serif CJK SC','Source Han Serif SC','Songti SC','STSong','SimSun',serif;
+  font-size:17px;line-height:1.72;color:var(--ink-soft);overflow-wrap:anywhere;
+}
+.gh-doc:empty{display:none}
+.gh-doc>*:first-child{margin-top:0}
+.gh-doc h1,.gh-doc h2,.gh-doc h3,.gh-doc h4,.gh-doc h5,.gh-doc h6{
+  font-family:'Fraunces',Georgia,'Noto Serif CJK SC','Source Han Serif SC','Songti SC','SimSun',serif;
+  font-weight:600;color:var(--ink);line-height:1.28;letter-spacing:-.015em;margin:28px 0 10px;
+}
+.gh-doc h1{font-size:27px}
+.gh-doc h2{font-size:23px;padding-bottom:6px;border-bottom:1px solid var(--line-soft)}
+.gh-doc h3{font-size:20px}
+.gh-doc h4{font-size:18px}
+.gh-doc h5,.gh-doc h6{font-size:16.5px;color:var(--ink-soft)}
+.gh-doc p{margin:0 0 14px}
+.gh-doc ul,.gh-doc ol{margin:0 0 14px;padding-left:24px}
+.gh-doc li{margin-bottom:6px}
+.gh-doc li>ul,.gh-doc li>ol{margin:6px 0 4px}
+.gh-doc .gh-lpara{margin:6px 0 0;color:var(--ink-soft)}
+.gh-doc a{color:var(--clay-deep);text-decoration-color:rgba(156,69,38,.45);text-decoration-thickness:1px;text-underline-offset:3px;overflow-wrap:anywhere}
+.gh-doc a:hover{color:var(--clay)}
+.gh-doc strong{color:var(--ink);font-weight:600}
+.gh-doc em{font-style:italic}
+.gh-doc del{color:var(--muted)}
+.gh-doc code{
+  font-family:'Courier Prime','Noto Sans Mono CJK SC','Sarasa Mono SC','Microsoft YaHei',Consolas,monospace;
+  font-size:13.5px;background:rgba(110,106,69,.1);border:1px solid var(--line-soft);
+  border-radius:3px;padding:1px 5px;overflow-wrap:anywhere;
+}
+.gh-doc pre{
+  font-family:'Courier Prime','Noto Sans Mono CJK SC','Sarasa Mono SC','Microsoft YaHei',Consolas,monospace;
+  font-size:13px;line-height:1.6;background:rgba(110,106,69,.08);border:1px solid var(--line-soft);
+  border-radius:4px;padding:14px 16px;margin:0 0 16px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+}
+.gh-doc pre code{background:none;border:0;padding:0;font-size:13px;white-space:pre;overflow-wrap:normal}
+.gh-doc blockquote{margin:0 0 16px;padding:2px 0 2px 16px;border-left:2.5px solid var(--line);color:var(--muted)}
+.gh-doc blockquote p:last-child{margin-bottom:0}
+.gh-doc hr{border:0;border-top:1.5px solid var(--line-soft);margin:26px 0}
+.gh-doc img{max-width:100%;height:auto;border-radius:3px;vertical-align:middle}
+.gh-doc .gh-tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 16px}
+.gh-doc table{border-collapse:collapse;width:100%;font-size:15.5px}
+.gh-doc th,.gh-doc td{border:1px solid var(--line);padding:7px 11px;text-align:left;vertical-align:top}
+.gh-doc th{
+  background:rgba(110,106,69,.09);color:var(--ink);font-weight:600;
+  font-family:'Fraunces',Georgia,'Noto Serif CJK SC','Songti SC','SimSun',serif;white-space:nowrap;
+}
+.gh-doc [align="center"]{text-align:center}
+.gh-doc [align="right"]{text-align:right}
+.gh-imgfail{
+  display:inline-block;font-family:'Courier Prime',monospace;font-size:11.5px;color:var(--muted);
+  border:1px dashed var(--line);border-radius:3px;padding:3px 8px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .gh-card,.gh-card:hover{transform:none;transition:none}
+  .gh-tri,.gh-doc *{transition:none!important}
+  .gh-spin{animation:none;border-top-color:var(--line)}
+  .gh-stage{animation:none}
+}
+@media (max-width:640px){
+  .gh-doc{padding:18px 18px 22px;font-size:16.5px}
+  .gh-stage-head{padding:16px 18px 13px}
+  .gh-status.is-on{padding:14px 18px 2px}
+  .gh-lede{margin-top:-18px}
+}
+</style>
+
+<script>
+/* ===========================================================================
+   GitHub section: curated repo cards + in-page README preview.
+   Vanilla JS, no dependencies. One IIFE, no globals leaked.
+   =========================================================================== */
+(function () {
+  'use strict';
+
+  var OWNER = 'OLIVER-XYP';
+
+  /* -------------------------------------------------------------------------
+     1. THE CURATED LIST.
+     This array is the ONLY thing that decides what appears on the page.
+     Forks (vllm, slime, deepseek-harness) and private repos are absent, so
+     they can never show up. `branch` is the verified default branch; if it is
+     ever wrong the fetcher falls back to the other of main/master.
+     Optional per entry: `dir` (README's folder if not the repo root),
+     `notice` (show this text instead of fetching a README).
+  ------------------------------------------------------------------------- */
+  var REPOS = [
+    {
+      repo: 'OMEGA-Arena',
+      branch: 'master',
+      lang: 'JavaScript',
+      blurb: 'Optimization-oriented, Elo-graded agent arena: 283+ RL policies and script bots fight it out in a real Halite III C++ engine.',
+      topics: ['Agent Evaluation', 'Kernel Optimization', 'Elo', 'Halite III']
+    },
+    {
+      repo: 'puzzle_generation_agent',
+      branch: 'main',
+      lang: 'Python',
+      blurb: 'LangGraph Generator-Solver-Reviewer pipeline that writes, self-corrects and structurally validates puzzles across 25 rule types.',
+      topics: ['Multi-Agent', 'LangGraph', 'Data Synthesis', 'LLM']
+    },
+    {
+      repo: 'agro_sql',
+      branch: 'master',
+      lang: 'Python',
+      blurb: 'Two-stage agentic RL for Text-to-SQL - diversity-aware cold start plus GRPO; 72.10% execution accuracy on BIRD with Qwen3-8B.',
+      topics: ['Agentic RL', 'Text-to-SQL', 'GRPO']
+    },
+    {
+      repo: 'MB_V2',
+      branch: 'master',
+      lang: 'Jupyter Notebook',
+      blurb: 'PyQt5 desktop toolkit for MobileNetV2 SSD-Lite detection - built-in labelling, dataset split, training and photo inference.',
+      topics: ['Object Detection', 'MobileNetV2', 'PyQt5', 'PyTorch']
+    },
+    {
+      repo: 'claude_code_leaked_repaired',
+      branch: 'main',
+      lang: 'TypeScript',
+      blurb: 'The leaked Claude Code CLI, repaired until it actually bundles and runs a real conversation end to end.',
+      topics: ['TypeScript', 'CLI', 'Agent Harness', 'Bun']
+    },
+    {
+      repo: 'Paper-Everything-in-Moderation',
+      branch: 'main',
+      lang: '',
+      blurb: 'arXiv preprint (co-first author) on per-domain coverage optima and alignment-resistant capability gaps in mid-training.',
+      topics: ['Paper', 'Mid-Training', 'Alignment'],
+      notice: 'This repository ships the manuscript only - there is no README to preview. ' +
+              'The paper itself is on GitHub.'
+    }
+  ];
+
+  var TIMEOUT_MS = 8000;      // per fetch attempt
+  var DEADLINE_MS = 14000;    // whole load, all attempts included
+
+  /* -------------------------------------------------------------------------
+     2. tiny helpers
+  ------------------------------------------------------------------------- */
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // Percent-encode ONE path segment. Never feed this a whole path: it would
+  // encode the "/" separators too and flatten the URL.
+  // DECODE FIRST: README image targets are frequently ALREADY percent-encoded
+  // (e.g. "图片和附件/image%201.png"), and encoding that verbatim produces
+  // "image%25201.png" - a guaranteed 404. decode -> encode is idempotent.
+  function encSeg(s) {
+    var v = String(s);
+    try { v = decodeURIComponent(v); } catch (e) { /* literal '%': keep as-is */ }
+    try {
+      return encodeURIComponent(v).replace(/[!'()*]/g, function (c) {
+        return '%' + c.charCodeAt(0).toString(16).toUpperCase();
+      });
+    } catch (e) {
+      return v;
+    }
+  }
+
+  // Encode a multi-segment path, one segment at a time, then rejoin.
+  function encPath(p) {
+    return String(p).split('/').map(encSeg).join('/');
+  }
+
+  function repoPage(name) { return 'https://github.com/' + OWNER + '/' + encSeg(name); }
+
+  function makeBase(name, branch, dir) {
+    var d = String(dir || '').replace(/^\/+|\/+$/g, '');
+    return {
+      dir: d,
+      page: 'https://github.com/' + OWNER + '/' + encSeg(name),
+      raw: 'https://raw.githubusercontent.com/' + OWNER + '/' + encSeg(name) + '/' + encSeg(branch),
+      html: 'https://github.com/' + OWNER + '/' + encSeg(name) + '/blob/' + encSeg(branch)
+    };
+  }
+
+  // A README's "…/…/releases" points at a REPO-ROOT route (github.com/o/r/releases),
+  // NOT a file - "<page>/blob/<branch>/releases" would 404. Real case: the
+  // OMEGA-Arena README links [GitHub Releases](../../releases).
+  var REPO_ROUTE = /^(?:releases|wiki|issues|pulls|actions|discussions|security|graphs|projects|packages|branches|tags|compare|archive|tree|blob|settings|contributors|stargazers|forks)(?:\/|$)/i;
+
+  // Resolve one URL found in a README against that README's directory.
+  //   kind === 'img'  -> raw.githubusercontent.com (a plain file fetch)
+  //   kind === 'link' -> github.com/…/blob/…  (a readable page)
+  // Absolute URLs (http:, https:, data:, mailto:, //host), and #fragments are
+  // returned untouched. Anything unresolvable returns null (caller drops it).
+  function resolveURL(base, value, kind) {
+    var raw = String(value == null ? '' : value).trim();
+    if (!raw) return null;
+    if (/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(raw)) return raw;   // absolute / protocol-relative
+    if (raw.charAt(0) === '#') return raw;                       // in-page anchor
+
+    var m = /^([^?#]*)([?#][\s\S]*)?$/.exec(raw);
+    var path = m[1] || '';
+    var suffix = m[2] || '';
+
+    var stack = base.dir ? base.dir.split('/') : [];
+    if (path.charAt(0) === '/') stack = [];                      // repo-root absolute
+    path.split('/').forEach(function (seg) {
+      if (seg === '' || seg === '.') return;
+      if (seg === '..') { if (stack.length) stack.pop(); return; }
+      stack.push(seg);
+    });
+    if (!stack.length) return null;
+
+    var joined = stack.join('/');
+    if (kind !== 'img' && base.page && REPO_ROUTE.test(joined)) {
+      return base.page + '/' + encPath(joined) + suffix;
+    }
+
+    var root = (kind === 'img') ? base.raw : base.html;
+    return root + '/' + encPath(joined) + suffix;
+  }
+
+  var BAD_URL = /^\s*(?:javascript|vbscript|data:text\/html)/i;
+  function safeUrl(u) { return !BAD_URL.test(String(u || '')); }
+
+  // "path.png" | 'path.png "Title"' | 'path with spaces.png'
+  // Markdown allows a title after the URL; a raw space inside the URL is also
+  // tolerated here because several of the owner's paths contain spaces.
+  function splitUrlTitle(inner) {
+    var t = String(inner == null ? '' : inner).trim();
+    var m = /^(\S*)\s+(?:"([^"]*)"|'([^']*)')\s*$/.exec(t);
+    if (m) return { url: m[1], title: m[2] || m[3] || '' };
+    return { url: t, title: '' };
+  }
+
+  /* -------------------------------------------------------------------------
+     3. Minimal Markdown -> HTML. Handles exactly what the curated READMEs use:
+        ATX headings, paragraphs, nested lists, pipe tables, fenced + inline
+        code, blockquotes, hr, images, links, bold/italic/strike and passthrough
+        raw HTML. Anything it does not understand stays visible as plain text.
+  ------------------------------------------------------------------------- */
+  function slugify(text) {
+    return String(text).replace(/<[^>]*>/g, '').trim().toLowerCase()
+      .replace(/[^\w\u3000-\u303f\u4e00-\u9fff\u3040-\u30ff\uff00-\uffef\s-]/g, '')
+      .replace(/\s+/g, '-');
+  }
+
+  function inline(s, base) {
+    if (!s) return '';
+    var spans = [];
+    s = String(s);
+
+    // 3a. protect inline code first (its content must survive untouched)
+    s = s.replace(/`([^`]*)`/g, function (m, c) {
+      spans.push('<code>' + esc(c) + '</code>');
+      return '\u0001' + (spans.length - 1) + '\u0001';
+    });
+
+    // 3b. drop HTML comments, then protect autolinks and raw inline tags
+    // NOTE: the opening angle bracket below is written \x3C on purpose. In an
+    // INLINE script, a literal HTML comment opener flips the HTML tokenizer
+    // into "script data escaped" state, after which the script end tag no
+    // longer closes the element, and the rest of the document is swallowed as
+    // script text. Spelling that opener out here - or a literal script end tag
+    // - would reintroduce exactly the bug this line avoids.
+    s = s.replace(/\x3C!--[\s\S]*?-->/g, '');
+    s = s.replace(/<((?:https?:\/\/|mailto:)[^>\s]+)>/g, function (m, u) {
+      var href = /^https?:\/\//i.test(u) ? u : u;
+      if (!safeUrl(href)) return esc(u);
+      spans.push('<a href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">' + esc(u.replace(/^mailto:/i, '')) + '</a>');
+      return '\u0001' + (spans.length - 1) + '\u0001';
+    });
+    s = s.replace(/<\/?[a-zA-Z][^>]*>/g, function (m) {
+      spans.push(m);                        // raw inline HTML passes through
+      return '\u0001' + (spans.length - 1) + '\u0001';
+    });
+
+    // 3c. images, then links (images first: they begin with "!")
+    // The URL group tolerates ONE level of nested parens, so a rejected
+    // "[a](javascript:alert(1))" is consumed whole instead of leaving a stray ")".
+    s = s.replace(/!\[([^\]]*)\]\(((?:[^()]|\([^()]*\))*)\)/g, function (m, alt, inner) {
+      var p = splitUrlTitle(inner);
+      var u = resolveURL(base, p.url, 'img');
+      if (!u || !safeUrl(u)) return esc(alt || '');
+      spans.push('<img src="' + esc(u) + '" alt="' + esc(alt || '') + '"' +
+                 (p.title ? ' title="' + esc(p.title) + '"' : '') + ' loading="lazy">');
+      return '' + (spans.length - 1) + '';
+    });
+    s = s.replace(/\[([^\]]*)\]\(((?:[^()]|\([^()]*\))*)\)/g, function (m, text, inner) {
+      var p = splitUrlTitle(inner);
+      var u = resolveURL(base, p.url, 'link');
+      if (!u || !safeUrl(u)) return text;
+      var ext = /^(?:https?:)?\/\//i.test(u);
+      spans.push('<a href="' + esc(u) + '"' + (p.title ? ' title="' + esc(p.title) + '"' : '') +
+                 (ext ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + text + '</a>');
+      return '' + (spans.length - 1) + '';
+    });
+
+    // 3d. escape what is left, keeping already-valid entities intact
+    s = s.replace(/&(?!(?:[a-zA-Z][a-zA-Z0-9]{1,31}|#\d{1,7}|#x[0-9a-fA-F]{1,6});)/g, '&amp;')
+         .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+    // 3e. emphasis (single-underscore italics are intentionally NOT supported:
+    //     they mangle identifiers such as some_var_name)
+    s = s.replace(/\*\*(?=\S)([\s\S]*?\S)\*\*/g, '<strong>$1</strong>');
+    s = s.replace(/(^|[\s(\[“‘>])\*(?=\S)([^*\n]*?\S)\*/g, '$1<em>$2</em>');
+    s = s.replace(/~~(?=\S)([\s\S]*?\S)~~/g, '<del>$1</del>');
+
+    // 3f. put the protected pieces back. Looped, because one span can itself
+    // contain a token from an earlier pass - e.g. a shields.io badge written as
+    // [![alt](img)](link), where the anchor wraps the image's own token.
+    for (var pass = 0; pass < 8 && s.indexOf('\u0001') !== -1; pass++) {
+      s = s.replace(/\u0001(\d+)\u0001/g, function (m, n) { return spans[+n]; });
+    }
+    return s;
+  }
+
+  function splitRow(line) {
+    var s = String(line).trim().replace(/^\|/, '').replace(/\|$/, '');
+    var out = [], cur = '', i = 0;
+    while (i < s.length) {
+      var ch = s.charAt(i);
+      if (ch === '\\' && i + 1 < s.length) { cur += s.charAt(i + 1); i += 2; continue; }
+      if (ch === '|') { out.push(cur); cur = ''; i++; continue; }
+      cur += ch; i++;
+    }
+    out.push(cur);
+    return out.map(function (c) { return c.trim(); });
+  }
+
+  function listMarker(line) {
+    var m = /^(\s*)([-*+]|\d+[.)])\s+(.*)$/.exec(line);
+    if (!m) return null;
+    return { indent: m[1].replace(/\t/g, '    ').length, ordered: /^\d/.test(m[2]), text: m[3] };
+  }
+
+  function mdToHtml(src, base) {
+    var lines = String(src == null ? '' : src).replace(/\r\n?/g, '\n').replace(/^\uFEFF/, '').split('\n');
+    var out = [];
+    var para = [];
+    var listStack = [];           // {tag:'ul'|'ol', indent:n}
+    var i = 0;
+
+    function flushPara() {
+      if (!para.length) return;
+      out.push('<p>' + inline(para.join(' '), base) + '</p>');
+      para = [];
+    }
+
+    // close open <li>/<ul> pairs until the top of the stack is <= `indent`
+    function closeLists(indent) {
+      while (listStack.length && listStack[listStack.length - 1].indent > indent) {
+        var top = listStack.pop();
+        out.push('</li></' + top.tag + '>');
+      }
+    }
+
+    var HTML_BLOCK = /^\s*(?:\x3C!--|<\/?(?:div|p|center|table|thead|tbody|tfoot|tr|td|th|pre|code|ul|ol|li|h[1-6]|blockquote|hr|br|img|a|strong|em|b|i|u|del|details|summary|figure|figcaption|section|article|span|small|sub|sup|dl|dt|dd|kbd|mark|font|script|style|textarea|video|picture|source)\b)/i;
+    var VOID_TAG = { img: 1, br: 1, hr: 1, input: 1, meta: 1, link: 1, source: 1, col: 1, area: 1, base: 1, embed: 1, param: 1, track: 1, wbr: 1 };
+
+    // How many block tags does this line leave OPEN? Used so a raw HTML block
+    // (e.g. <img ...> or the <div align="center"> one README opens with) ends as
+    // soon as its tags balance instead of swallowing the markdown that follows.
+    function tagDepth(str) {
+      var d = 0, m;
+      var re = /<(\/?)([a-zA-Z][a-zA-Z0-9]*)([^>]*)>/g;
+      while ((m = re.exec(str))) {
+        if (m[1] === '/') { d -= 1; continue; }
+        if (/\/\s*$/.test(m[3])) continue;
+        if (VOID_TAG[m[2].toLowerCase()]) continue;
+        d += 1;
+      }
+      return d;
+    }
+
+    while (i < lines.length) {
+      var line = lines[i];
+
+      /* blank */
+      if (/^\s*$/.test(line)) { flushPara(); i++; if (listStack.length) { /* loose list: keep items open */ } continue; }
+
+      /* fenced code block */
+      if (/^\s*(```|~~~)/.test(line)) {
+        flushPara();
+        closeLists(-1);
+        var fence = /^\s*(```|~~~)/.exec(line)[1];
+        var info = line.replace(/^\s*(```|~~~)\s*/, '').trim();
+        var buf = [];
+        i++;
+        while (i < lines.length && !(new RegExp('^\\s*' + fence)).test(lines[i])) { buf.push(lines[i]); i++; }
+        i++; // closing fence
+        out.push('<pre class="gh-code"><code' + (info ? ' class="language-' + esc(info.split(/\s+/)[0]) + '"' : '') +
+                 '>' + esc(buf.join('\n')) + '</code></pre>');
+        continue;
+      }
+
+      /* ATX heading */
+      var h = /^(#{1,6})\s+(.*?)\s*#*\s*$/.exec(line);
+      if (h) {
+        flushPara();
+        closeLists(-1);
+        var lvl = h[1].length;
+        var text = inline(h[2], base);
+        var id = slugify(h[2]);
+        out.push('<h' + lvl + (id ? ' id="' + esc(id) + '"' : '') + '>' + text + '</h' + lvl + '>');
+        i++;
+        continue;
+      }
+
+      /* horizontal rule */
+      if (/^\s*(?:-{3,}|\*{3,}|_{3,})\s*$/.test(line)) {
+        flushPara(); closeLists(-1); out.push('<hr>'); i++; continue;
+      }
+
+      /* blockquote - recurses so lists/tables/code inside still work */
+      if (/^\s*>\s?/.test(line)) {
+        flushPara();
+        closeLists(-1);
+        var q = [];
+        while (i < lines.length && /^\s*>/.test(lines[i])) {
+          q.push(lines[i].replace(/^\s*>\s?/, ''));
+          i++;
+        }
+        out.push('<blockquote>' + mdToHtml(q.join('\n'), base) + '</blockquote>');
+        continue;
+      }
+
+      /* pipe table: a header row whose NEXT line is a :---: separator */
+      if (line.indexOf('|') !== -1 && i + 1 < lines.length &&
+          /^[\s|:-]+$/.test(lines[i + 1]) && lines[i + 1].indexOf('-') !== -1) {
+        flushPara();
+        closeLists(-1);
+        var head = splitRow(line);
+        var aligns = splitRow(lines[i + 1]).map(function (c) {
+          var l = c.charAt(0) === ':', r = c.charAt(c.length - 1) === ':';
+          return l && r ? 'center' : (r ? 'right' : (l ? 'left' : ''));
+        });
+        i += 2;
+        var rows = [];
+        while (i < lines.length && lines[i].indexOf('|') !== -1 && !/^\s*$/.test(lines[i])) {
+          rows.push(splitRow(lines[i])); i++;
+        }
+        var t = '<div class="gh-tablewrap"><table><thead><tr>';
+        head.forEach(function (c, n) {
+          t += '<th' + (aligns[n] ? ' style="text-align:' + aligns[n] + '"' : '') + '>' + inline(c, base) + '</th>';
+        });
+        t += '</tr></thead><tbody>';
+        rows.forEach(function (r) {
+          t += '<tr>';
+          for (var n = 0; n < head.length; n++) {
+            t += '<td' + (aligns[n] ? ' style="text-align:' + aligns[n] + '"' : '') + '>' + inline(r[n] || '', base) + '</td>';
+          }
+          t += '</tr>';
+        });
+        out.push(t + '</tbody></table></div>');
+        continue;
+      }
+
+      /* list item */
+      var mk = listMarker(line);
+      if (mk) {
+        flushPara();
+        var tag = mk.ordered ? 'ol' : 'ul';
+        var top = listStack.length ? listStack[listStack.length - 1] : null;
+        if (top && top.indent < mk.indent) {
+          out.push('<' + tag + '>');                                   // deeper: nested list
+          listStack.push({ tag: tag, indent: mk.indent });
+        } else {
+          closeLists(mk.indent);                                       // unwind any deeper list
+          top = listStack.length ? listStack[listStack.length - 1] : null;
+          if (!top) {
+            out.push('<' + tag + '>');
+            listStack.push({ tag: tag, indent: mk.indent });
+          } else if (top.tag !== tag) {
+            // marker type changed at the same depth: "1." after "-" is a new list
+            out.push('</li></' + top.tag + '>');
+            listStack.pop();
+            out.push('<' + tag + '>');
+            listStack.push({ tag: tag, indent: mk.indent });
+          } else {
+            out.push('</li>');
+          }
+        }
+        out.push('<li>' + inline(mk.text, base));
+        i++;
+        // lazy continuation lines that belong to this item
+        while (i < lines.length) {
+          var nl = lines[i];
+          if (/^\s*$/.test(nl)) break;
+          if (/^\s*(```|~~~)/.test(nl)) break;
+          if (/^#{1,6}\s/.test(nl)) break;
+          if (listMarker(nl)) break;
+          var ind = nl.replace(/\t/g, '    ').match(/^\s*/)[0].length;
+          if (ind > mk.indent) {
+            out.push('<div class="gh-lpara">' + inline(nl.trim(), base) + '</div>');
+            i++;
+            continue;
+          }
+          break;
+        }
+        continue;
+      }
+
+      /* raw HTML block (e.g. the <div align="center"> that opens one README) */
+      if (HTML_BLOCK.test(line)) {
+        flushPara();
+        closeLists(-1);
+        var blk = [line];
+        var depth = tagDepth(line);
+        i++;
+        while (i < lines.length && depth > 0 && !/^\s*$/.test(lines[i])) {
+          blk.push(lines[i]);
+          depth += tagDepth(lines[i]);
+          i++;
+        }
+        out.push(blk.join('\n'));
+        continue;
+      }
+
+      /* paragraph */
+      // A paragraph at or left of the open list's indent ENDS the list. Without
+      // this it is emitted while <li> is still open and nests inside the last
+      // item (six real cases in the agro_sql README).
+      if (listStack.length) {
+        var pind = line.replace(/\t/g, '    ').match(/^\s*/)[0].length;
+        if (pind <= listStack[listStack.length - 1].indent) { flushPara(); closeLists(-1); }
+      }
+      para.push(line.trim());
+      i++;
+    }
+
+    flushPara();
+    closeLists(-1);
+    return out.join('\n');
+  }
+
+  /* -------------------------------------------------------------------------
+     4. Sanitise + resolve URLs, on an INERT <template> fragment.
+        Template content is not rendered, so scripts never execute and images
+        never load while we are still cleaning up - the nodes are only moved
+        into the live stage afterwards, already safe.
+  ------------------------------------------------------------------------- */
+  var DROP = {
+    SCRIPT: 1, IFRAME: 1, OBJECT: 1, EMBED: 1, FORM: 1, INPUT: 1, BUTTON: 1,
+    TEXTAREA: 1, SELECT: 1, OPTION: 1, STYLE: 1, LINK: 1, META: 1, BASE: 1,
+    NOSCRIPT: 1, FRAME: 1, FRAMESET: 1, APPLET: 1, AUDIO: 1, VIDEO: 1,
+    SOURCE: 1, TRACK: 1, CANVAS: 1, SVG: 1, MATH: 1, MARQUEE: 1, TEMPLATE: 1
+  };
+  var KEEP_ATTR = {
+    href: 1, src: 1, alt: 1, title: 1, width: 1, height: 1, align: 1, id: 1,
+    colspan: 1, rowspan: 1, start: 1, open: 1, datetime: 1, cite: 1, class: 1
+  };
+
+  function cleanHTML(html, base) {
+    var tpl = document.createElement('template');
+    tpl.innerHTML = String(html == null ? '' : html);
+    var frag = tpl.content;
+
+    // strip comments
+    var comments = [];
+    var cit = document.createTreeWalker(frag, NodeFilter.SHOW_COMMENT, null, false);
+    var cn;
+    while ((cn = cit.nextNode())) comments.push(cn);
+    comments.forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
+
+    // walk elements
+    var drops = [];
+    var it = document.createTreeWalker(frag, NodeFilter.SHOW_ELEMENT, null, false);
+    var el;
+    while ((el = it.nextNode())) {
+      // Foreign-namespace nodes (SVG/MathML) keep a LOWER-CASE tagName, so a
+      // plain DROP[el.tagName] lookup never matches them and an <svg><script>
+      // would sail through. Judge by the canonical upper-case name, and drop
+      // anything that is not plain HTML.
+      var tn = String(el.tagName || '').toUpperCase();
+      if (DROP[tn] || (el.namespaceURI && el.namespaceURI !== 'http://www.w3.org/1999/xhtml')) {
+        drops.push(el);
+        continue;
+      }
+
+      var attrs = [];
+      for (var k = 0; k < el.attributes.length; k++) attrs.push(el.attributes[k]);
+      attrs.forEach(function (a) {
+        var n = a.name.toLowerCase();
+        // on* handlers, style, srcdoc, action/formaction: always gone
+        if (n.slice(0, 2) === 'on' || n === 'style' || n === 'srcdoc' ||
+            n === 'action' || n === 'formaction' || n === 'srcset' || n === 'ping') {
+          el.removeAttribute(a.name);
+          return;
+        }
+        if (!KEEP_ATTR[n]) { el.removeAttribute(a.name); return; }
+        if (n === 'href' || n === 'src') {
+          if (!safeUrl(a.value)) { el.removeAttribute(a.name); return; }
+          var fixed = resolveURL(base, a.value, n === 'src' ? 'img' : 'link');
+          if (fixed === null) el.removeAttribute(a.name);
+          else el.setAttribute(a.name, fixed);
+        }
+      });
+
+      // NOTE: `continue` here skips to the NEXT NODE. It must never be `return`,
+      // which would exit cleanHTML() mid-walk and hand back `undefined`.
+      if (tn === 'IMG') {
+        el.setAttribute('loading', 'lazy');
+        if (!el.getAttribute('src')) { drops.push(el); continue; }
+      } else if (tn === 'A') {
+        var href = el.getAttribute('href');
+        if (!href) continue;
+        if (/^https?:/i.test(href)) {
+          el.setAttribute('target', '_blank');
+          el.setAttribute('rel', 'noopener noreferrer');
+        } else if (href.charAt(0) === '#') {
+          el.removeAttribute('target');
+        } else if (/^data:/i.test(href)) {
+          el.removeAttribute('href');   // a data: link is never useful here
+        }
+      }
+    }
+    drops.forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
+
+    // A README heading id must never hijack an anchor that already exists on the
+    // page (the site's own #about / #work / #research / #contact). Only on collision,
+    // and only the id - the README's own in-page links keep working everywhere else.
+    var withIds = frag.querySelectorAll('[id]');
+    var q, want;
+    for (q = 0; q < withIds.length; q++) {
+      want = withIds[q].getAttribute('id');
+      if (want && document.getElementById(want)) withIds[q].removeAttribute('id');
+    }
+
+    var holder = document.createElement('div');
+    holder.appendChild(frag);
+    return holder.innerHTML;
+  }
+
+  /* -------------------------------------------------------------------------
+     5. network
+  ------------------------------------------------------------------------- */
+  function fetchText(url, ms) {
+    var ctl = (typeof AbortController === 'function') ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, ms);
+    var opts = { mode: 'cors', credentials: 'omit', redirect: 'follow' };
+    if (ctl) opts.signal = ctl.signal;
+    return fetch(url, opts).then(function (r) {
+      return r.text().then(function (t) {
+        clearTimeout(timer);
+        return { ok: r.ok, status: r.status, text: t };
+      });
+    }, function (err) {
+      clearTimeout(timer);
+      throw err;
+    });
+  }
+
+  function candidates(entry) {
+    var out = [];
+    var other = (entry.branch === 'main') ? 'master' : 'main';
+    var branches = [entry.branch];
+    if (other && other !== entry.branch) branches.push(other);
+    branches.forEach(function (b) {
+      ['README.md', 'readme.md'].forEach(function (f) {
+        out.push({
+          url: 'https://raw.githubusercontent.com/' + OWNER + '/' + encSeg(entry.repo) + '/' + encSeg(b) +
+               (entry.dir ? '/' + encPath(entry.dir) : '') + '/' + encPath(f),
+          branch: b
+        });
+      });
+    });
+    return out;
+  }
+
+  function fetchFirst(entry) {
+    var list = candidates(entry);
+    var n = 0;
+    var deadline = Date.now() + DEADLINE_MS;
+
+    function step() {
+      if (n >= list.length) return Promise.resolve({ status: 'error', msg: 'No README found in this repository.' });
+      var left = deadline - Date.now();
+      if (left <= 0) return Promise.resolve({ status: 'error', msg: 'Loading the README timed out.' });
+      var c = list[n++];
+      return fetchText(c.url, Math.min(TIMEOUT_MS, left)).then(function (r) {
+        if (r.ok) {
+          var text = String(r.text || '').replace(/^\uFEFF/, '');
+          if (!text.trim()) return { status: 'empty', msg: 'This repository has an empty README.' };
+          var base = makeBase(entry.repo, c.branch, entry.dir);
+          var html = '';
+          try { html = cleanHTML(mdToHtml(text, base), base); } catch (e) { html = ''; }
+          if (!String(html).trim()) return { status: 'empty', msg: 'This repository has an empty README.' };
+          return { status: 'ok', html: html };
+        }
+        return step();                       // 404 (wrong branch / no README) or any error: try the next candidate
+      }, function () { return step(); });
+    }
+    return step();
+  }
+
+  /* -------------------------------------------------------------------------
+     6. UI
+  ------------------------------------------------------------------------- */
+  var grid = document.getElementById('gh-grid');
+  var stage = document.getElementById('gh-stage');
+  var statusEl = document.getElementById('gh-status');
+  var docEl = document.getElementById('gh-doc');
+  var stageLink = document.getElementById('gh-stage-link');
+  var stageMeta = document.getElementById('gh-stage-meta');
+  var closeBtn = document.getElementById('gh-close');
+  if (!grid || !stage) return;
+
+  var state = {};       // repo -> {status, html|msg}     memoised, never re-fetched
+  var inflight = {};    // repo -> Promise
+  var active = null;    // repo name currently in the stage
+
+  function cardHTML(entry) {
+    var url = repoPage(entry.repo);
+    var topics = entry.topics.map(function (t) { return '<span class="topic">' + esc(t) + '</span>'; }).join('');
+    var meta = esc(entry.branch) + (entry.lang ? ' · ' + esc(entry.lang) : '');
+    return '' +
+      '<article class="gh-card" data-repo="' + esc(entry.repo) + '">' +
+        '<h3 class="gh-name"><a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + esc(entry.repo) + '</a></h3>' +
+        '<div class="gh-topics">' + topics + '</div>' +
+        '<p class="gh-blurb">' + esc(entry.blurb) + '</p>' +
+        '<div class="gh-meta">' + meta + '</div>' +
+        '<div class="gh-actions">' +
+          '<button type="button" class="gh-btn gh-btn-s gh-preview" aria-expanded="false" ' +
+            'aria-controls="gh-stage" aria-label="Preview the README of ' + esc(entry.repo) + '">' +
+            '<span class="gh-tri" aria-hidden="true">▸</span><span class="gh-lbl">Preview README</span>' +
+          '</button>' +
+          '<a class="gh-link" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>' +
+        '</div>' +
+      '</article>';
+  }
+
+  grid.innerHTML = REPOS.map(cardHTML).join('');
+
+  function byName(name) { return REPOS.filter(function (r) { return r.repo === name; })[0] || null; }
+
+  function setActive(name) {
+    active = name;
+    var cards = grid.querySelectorAll('.gh-card');
+    for (var i = 0; i < cards.length; i++) {
+      var on = cards[i].getAttribute('data-repo') === name;
+      cards[i].classList.toggle('active', on);
+      var btn = cards[i].querySelector('.gh-preview');
+      if (!btn) continue;
+      btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+      var lbl = btn.querySelector('.gh-lbl');
+      if (lbl) lbl.textContent = on ? 'Hide README' : 'Preview README';
+    }
+  }
+
+  function setStatus(kind, html) {
+    statusEl.className = 'gh-status' + (html ? ' is-on' : '') + (kind === 'err' ? ' is-err' : '');
+    statusEl.innerHTML = html || '';
+  }
+
+  function renderOk(html) {
+    setStatus('', '');
+    docEl.innerHTML = html;
+  }
+
+  function closeStage() {
+    if (!active) return;
+    setActive(null);
+    stage.hidden = true;
+  }
+
+  function load(entry, force) {
+    var key = entry.repo;
+    if (!force && state[key]) return Promise.resolve(state[key]);
+    if (inflight[key]) return inflight[key];
+    if (navigator.onLine === false) {
+      state[key] = { status: 'error', msg: 'You appear to be offline.' };
+      return Promise.resolve(state[key]);
+    }
+    var p = fetchFirst(entry).then(function (res) {
+      state[key] = res;
+      delete inflight[key];
+      return res;
+    }, function () {
+      var res = { status: 'error', msg: 'Could not load the README.' };
+      state[key] = res;
+      delete inflight[key];
+      return res;
+    });
+    inflight[key] = p;
+    return p;
+  }
+
+  function openStage(entry, force) {
+    var url = repoPage(entry.repo);
+    stage.hidden = false;
+    stageLink.textContent = entry.repo + ' ↗';
+    stageLink.href = url;
+    stageMeta.textContent = entry.branch + (entry.lang ? ' · ' + entry.lang : '');
+    setActive(entry.repo);
+
+    // curated entries with no README at all: explain, do not fetch
+    if (entry.notice) {
+      setStatus('', '');
+      docEl.innerHTML = '<p class="gh-notice">' + esc(entry.notice) +
+        ' <a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">Open ' + esc(entry.repo) + ' ↗</a></p>';
+      return;
+    }
+
+    var cached = state[entry.repo];
+    if (!force && cached && cached.status === 'ok') { renderOk(cached.html); return; }
+
+    setStatus('', '<span class="gh-spin" aria-hidden="true"></span>Fetching README…');
+    docEl.innerHTML = '';
+
+    load(entry, force).then(function (res) {
+      if (active !== entry.repo) return;             // visitor moved to another card
+      if (res.status === 'ok') { renderOk(res.html); return; }
+      var msg = esc(res.msg || 'Could not load the README.');
+      var retry = (res.status === 'error') ? ' <button type="button" class="gh-retry">Try again</button>' : '';
+      setStatus(res.status === 'error' ? 'err' : '', msg + retry +
+        ' The repository itself is always available from the card above.');
+    });
+  }
+
+  /* broken images inside a README degrade to a small note instead of a hole */
+  docEl.addEventListener('error', function (ev) {
+    var t = ev.target;
+    if (!t || t.tagName !== 'IMG' || t.getAttribute('data-gh-failed')) return;
+    t.setAttribute('data-gh-failed', '1');
+    var note = document.createElement('span');
+    note.className = 'gh-imgfail';
+    note.textContent = t.getAttribute('alt') ? 'image unavailable · ' + t.getAttribute('alt') : 'image unavailable';
+    if (t.parentNode) t.parentNode.replaceChild(note, t);
+  }, true);
+
+  grid.addEventListener('click', function (ev) {
+    var btn = ev.target.closest ? ev.target.closest('.gh-preview') : null;
+    if (!btn) return;
+    var card = btn.closest('.gh-card');
+    if (!card) return;
+    var entry = byName(card.getAttribute('data-repo'));
+    if (!entry) return;
+    if (active === entry.repo) { closeStage(); return; }
+    openStage(entry, false);
+  });
+
+  closeBtn.addEventListener('click', closeStage);
+
+  stage.addEventListener('click', function (ev) {
+    var r = ev.target.closest ? ev.target.closest('.gh-retry') : null;
+    if (!r) return;
+    var entry = active ? byName(active) : null;
+    if (entry) openStage(entry, true);
+  });
+
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key !== 'Escape' && ev.keyCode !== 27) return;
+    if (!stage.hidden) closeStage();
+  });
+})();
+</script>
+
+<!-- ====================================================================
+     MODULE: UCloud writes - Technological-Documents browser
+     ==================================================================== -->
+
+<section id="tech" class="td-sec">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">05</span><h2>UCloud <em>writes</em></h2></div>
+
+    <p class="td-lede reveal">
+      The working log of the <b>UCloud · AI Infra internship</b>, copied straight from
+      <span class="type">Technological-Documents</span>. Every entry is a real report; each
+      screenshot it cites is pulled from the folder's sibling
+      <span class="type">图片和附件/</span> and shown here.
+    </p>
+
+    <div class="td-status" id="td-status" role="status" aria-live="polite"></div>
+
+    <div class="td-cols">
+      <nav class="td-list" aria-label="Technical documents">
+        <ul id="td-ol" class="td-ol">
+          <noscript>
+            <li class="td-item">
+              <a class="td-github-link" href="https://github.com/OLIVER-XYP/Technological-Documents" target="_blank" rel="noopener noreferrer">Browse the docs on GitHub <span aria-hidden="true">↗</span></a>
+            </li>
+          </noscript>
+        </ul>
+      </nav>
+
+      <aside class="td-pane" id="td-pane" aria-label="Document preview" hidden>
+        <div class="td-pane-head">
+          <div class="td-pane-id">
+            <div class="td-kicker">Technical document</div>
+            <h3 class="td-pane-title" id="td-pane-title"></h3>
+            <div class="td-pane-meta" id="td-pane-meta"></div>
+          </div>
+          <a class="td-pane-link" id="td-pane-link" target="_blank" rel="noopener noreferrer" href="#">Open on GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="td-doc" id="td-doc" tabindex="-1"></div>
+      </aside>
+    </div>
+
+    <p class="td-foot">
+      Files and images stream from <span class="type">raw.githubusercontent.com</span> ·
+      one listing call per session, then nothing ·
+      <a href="https://github.com/OLIVER-XYP/Technological-Documents" target="_blank" rel="noopener noreferrer">the whole repo ↗</a>.
+    </p>
+  </div>
+</section>
+
+<style>
+/* ---------------------------------------------------------------------------
+   Technical-Documents section. Every selector is namespaced under .td- so
+   nothing here can collide with the .gh- repo module or the rest of the page.
+--------------------------------------------------------------------------- */
+.td-sec{position:relative}
+.td-lede{max-width:660px;margin:-24px 0 28px;color:var(--muted);font-size:18px;line-height:1.6}
+.td-lede b{color:var(--ink);font-weight:500}
+.td-lede .type{font-size:15.5px}
+.td-foot{font-family:'Courier Prime',monospace;font-size:11.5px;letter-spacing:.02em;color:var(--faint);margin-top:20px;line-height:1.7}
+.td-foot a{color:var(--clay-deep)}
+.td-foot a:hover{color:var(--clay)}
+
+/* status line - present for every state, never a permanent spinner */
+.td-status{font-family:'Courier Prime','Noto Sans Mono CJK SC','Microsoft YaHei',monospace;font-size:12.5px;line-height:1.6;margin-bottom:16px;min-height:1.3em}
+.td-status.is-load,.td-status.is-err{margin-bottom:18px}
+.td-status.is-err{color:var(--clay-deep)}
+.td-status.is-err a{color:var(--clay-deep);font-weight:700}
+.td-status.is-err a:hover{color:var(--clay)}
+.td-spin{
+  display:inline-block;width:11px;height:11px;margin-right:8px;vertical-align:-1px;
+  border:1.5px solid var(--line);border-top-color:var(--clay);border-radius:50%;
+  animation:tdspin .8s linear infinite;
+}
+@keyframes tdspin{to{transform:rotate(360deg)}}
+
+/* two columns: list | pane; single column below 880px */
+.td-cols{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:880px){.td-cols{grid-template-columns:1fr;gap:18px}}
+
+/* the document list */
+.td-list{border:1.5px solid var(--line-soft);border-radius:6px;background:rgba(246,240,228,.5);overflow:hidden;min-width:0}
+.td-ol{list-style:none;margin:0;padding:6px 0}
+.td-item{margin:0;padding:0}
+.td-item + .td-item{border-top:1px dashed var(--line)}
+.td-docbtn{
+  display:block;width:100%;text-align:left;cursor:pointer;border:0;background:none;
+  font-family:'Newsreader',Georgia,'Noto Serif CJK SC','Source Han Serif SC','Songti SC','STSong','SimSun',serif;
+  font-size:16.5px;line-height:1.4;color:var(--ink-soft);padding:12px 30px 12px 36px;position:relative;
+  transition:color .2s,background .2s;
+}
+.td-docbtn::before{
+  content:"";position:absolute;left:15px;top:50%;transform:translateY(-50%);
+  width:7px;height:7px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);
+  transition:background .2s,border-color .2s;
+}
+.td-docbtn .td-tri{display:inline-block;position:absolute;right:13px;top:50%;transform:translateY(-50%);font-size:9px;color:var(--faint);transition:transform .3s ease}
+.td-docbtn:hover{background:rgba(110,106,69,.06);color:var(--ink)}
+.td-docbtn:hover .td-tri{color:var(--clay)}
+.td-docbtn[aria-selected="true"]{background:rgba(187,90,56,.09);color:var(--ink);font-weight:500}
+.td-docbtn[aria-selected="true"]::before{background:var(--clay);border-color:var(--clay)}
+.td-docbtn[aria-selected="true"] .td-tri{transform:translateY(-50%) rotate(90deg);color:var(--clay)}
+.td-docbtn:focus-visible{outline:2.5px solid var(--clay);outline-offset:-2.5px;position:relative;z-index:1}
+
+.td-note{
+  font-family:'Newsreader',Georgia,'Noto Serif CJK SC','Songti SC','SimSun',serif;
+  color:var(--muted);font-size:16px;line-height:1.55;margin:0;
+}
+.td-list .td-note{padding:12px 16px}
+.td-note a{color:var(--clay-deep)}
+.td-note a:hover{color:var(--clay)}
+.td-github-link{
+  font-family:'Courier Prime',monospace;font-size:13px;letter-spacing:.04em;color:var(--clay-deep);
+  text-decoration:none;border:1.5px solid var(--line);border-radius:4px;padding:9px 14px;display:inline-block;margin:10px 12px;
+  transition:border-color .2s,color .2s;
+}
+.td-github-link:hover{border-color:var(--clay);color:var(--clay)}
+.td-github-link:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px}
+
+/* the shared reading pane */
+.td-pane{
+  background:var(--card);border:1.5px solid var(--line);border-radius:6px;min-width:0;
+  box-shadow:6px 7px 0 rgba(42,37,32,.06);overflow:hidden;
+  animation:tdfade .35s cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes tdfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.td-pane[hidden]{display:none}
+.td-pane-head{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:20px 26px 16px;border-bottom:1.5px dashed var(--line);
+}
+.td-pane-id{min-width:0}
+.td-kicker{font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--clay)}
+.td-pane-title{
+  font-family:'Fraunces',Georgia,'Noto Serif CJK SC','Source Han Serif SC','Songti SC','STSong','SimSun',serif;
+  font-weight:600;font-size:23px;line-height:1.25;letter-spacing:-.015em;margin:8px 0 0;overflow-wrap:anywhere;
+}
+.td-pane-meta{font-family:'Courier Prime','Noto Sans Mono CJK SC','Microsoft YaHei',monospace;font-size:12px;color:var(--muted);margin-top:7px}
+.td-pane-link{
+  flex:none;font-family:'Courier Prime',monospace;font-size:12.5px;letter-spacing:.04em;line-height:1;
+  padding:9px 14px;border:1.5px solid var(--line);border-radius:4px;color:var(--ink-soft);
+  text-decoration:none;transition:border-color .2s,color .2s;
+}
+.td-pane-link:hover{border-color:var(--clay);color:var(--clay)}
+.td-pane-link:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px}
+
+/* the rendered markdown surface */
+.td-doc{
+  padding:22px 26px 30px;max-width:820px;
+  font-family:'Newsreader',Georgia,'Noto Serif CJK SC','Source Han Serif SC','Songti SC','STSong','SimSun',serif;
+  font-size:17px;line-height:1.72;color:var(--ink-soft);overflow-wrap:anywhere;
+}
+.td-doc:empty{display:none}
+.td-doc>*:first-child{margin-top:0}
+.td-doc h1,.td-doc h2,.td-doc h3,.td-doc h4,.td-doc h5,.td-doc h6{
+  font-family:'Fraunces',Georgia,'Noto Serif CJK SC','Source Han Serif SC','Songti SC','STSong','SimSun',serif;
+  font-weight:600;color:var(--ink);line-height:1.28;letter-spacing:-.015em;margin:28px 0 10px;
+}
+.td-doc h1{font-size:27px}
+.td-doc h2{font-size:23px;padding-bottom:6px;border-bottom:1px solid var(--line-soft)}
+.td-doc h3{font-size:20px;color:var(--ink)}
+.td-doc h4,.td-doc h5,.td-doc h6{font-size:17px;color:var(--ink-soft)}
+.td-doc p{margin:0 0 14px}
+.td-doc ul,.td-doc ol{margin:0 0 14px;padding-left:24px}
+.td-doc li{margin-bottom:6px}
+.td-doc li>ul,.td-doc li>ol{margin:6px 0 4px}
+.td-doc .td-lpara{margin:6px 0 0}
+.td-doc a{color:var(--clay-deep);text-decoration-color:rgba(156,69,38,.45);text-decoration-thickness:1px;text-underline-offset:3px;overflow-wrap:anywhere}
+.td-doc a:hover{color:var(--clay)}
+.td-doc a:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px;border-radius:2px}
+.td-doc strong{color:var(--ink);font-weight:600}
+.td-doc em{font-style:italic}
+.td-doc del{color:var(--muted)}
+.td-doc code{
+  font-family:'Courier Prime','Noto Sans Mono CJK SC','Sarasa Mono SC','Microsoft YaHei',Consolas,monospace;
+  font-size:13.5px;background:rgba(110,106,69,.1);border:1px solid var(--line-soft);
+  border-radius:3px;padding:1px 5px;overflow-wrap:anywhere;
+}
+.td-doc pre{
+  font-family:'Courier Prime','Noto Sans Mono CJK SC','Sarasa Mono SC','Microsoft YaHei',Consolas,monospace;
+  font-size:13px;line-height:1.6;background:rgba(110,106,69,.08);border:1px solid var(--line-soft);
+  border-radius:4px;padding:14px 16px;margin:0 0 16px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+}
+.td-doc pre code{background:none;border:0;padding:0;font-size:13px;white-space:pre;overflow-wrap:normal}
+.td-doc blockquote{margin:0 0 16px;padding:2px 0 2px 16px;border-left:2.5px solid var(--line);color:var(--muted)}
+.td-doc blockquote p:last-child{margin-bottom:0}
+.td-doc hr{border:0;border-top:1.5px solid var(--line-soft);margin:26px 0}
+.td-doc img{max-width:100%;height:auto;border-radius:3px;border:1px solid var(--line-soft);vertical-align:middle}
+.td-doc .td-imgfail{
+  display:block;font-family:'Courier Prime','Noto Sans Mono CJK SC','Microsoft YaHei',monospace;
+  font-size:11.5px;color:var(--muted);border:1px dashed var(--line);border-radius:3px;
+  padding:14px 12px;margin:0 0 16px;background:rgba(242,235,221,.4);overflow-wrap:anywhere;
+}
+.td-doc .td-tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 16px}
+.td-doc table{border-collapse:collapse;width:100%;font-size:15.5px}
+.td-doc th,.td-doc td{border:1px solid var(--line);padding:7px 11px;text-align:left;vertical-align:top}
+.td-doc th{
+  background:rgba(110,106,69,.09);color:var(--ink);font-weight:600;white-space:nowrap;
+  font-family:'Fraunces',Georgia,'Noto Serif CJK SC','Songti SC','STSong','SimSun',serif;
+}
+.td-retry{
+  margin-left:8px;font:inherit;color:inherit;background:none;border:0;
+  border-bottom:1.5px solid currentColor;cursor:pointer;padding:0 0 1px;font-family:inherit;
+}
+.td-retry:hover{color:var(--clay)}
+.td-retry:focus-visible{outline:2px solid var(--clay);outline-offset:2px}
+
+@media (prefers-reduced-motion: reduce){
+  .td-spin{animation:none;border-top-color:var(--line)}
+  .td-pane{animation:none}
+  .td-docbtn,.td-docbtn .td-tri,.td-doc *{transition:none!important}
+}
+@media (max-width:640px){
+  .td-doc{padding:18px 18px 22px;font-size:16.5px}
+  .td-pane-head{padding:16px 18px 13px}
+  .td-docbtn{padding:11px 26px 11px 32px;font-size:16px}
+  .td-docbtn::before{left:13px}
+}
+</style>
+
+<script>
+/* ===========================================================================
+   Technical-Documents section: live repository listing + in-page markdown
+   viewer.  Vanilla JS, no dependencies, one IIFE, no globals leaked.
+   =========================================================================== */
+(function () {
+  'use strict';
+
+  // The module runs unless the page explicitly opts out before this script.
+  if (window.TECHDOCS_BOOT === false) return;
+  var DEMO = /(?:[?&])demo=1/.test(location.search);
+
+  var OWNER  = 'OLIVER-XYP';
+  var REPO   = 'Technological-Documents';
+  var BRANCH = 'main';
+  var ROOT   = 'https://github.com/' + OWNER + '/' + REPO;
+  var RAW    = 'https://raw.githubusercontent.com/' + OWNER + '/' + REPO + '/' + BRANCH;
+  var API    = 'https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/';
+
+  var FETCH_MS = 9000;
+
+  var CACHE_LIST = 'td:list:' + OWNER + '/' + REPO;
+  var FIX_PREFIX = 'td:fix:' + OWNER + '/' + REPO + ':';   /* folder -> real .md name */
+  var DOC_PREFIX = 'td:doc:' + OWNER + '/' + REPO + ':';   /* document -> rendered html */
+
+  /* A tiny offline snapshot so ?demo=1 can exercise the whole UI with zero
+     network calls. It mirrors the real shape (folder docs + loose root .md). */
+  var DEMO_LIST = [
+    { name: 'GLM-5.2-FP8用hpc_ops作为后端的适配.md', kind: 'file', location: 'root' },
+    { name: 'DSA indexer多流重叠优化记录', kind: 'dir', location: 'folder' },
+    { name: 'NCU报错记录.md', kind: 'file', location: 'root' },
+    { name: 'B300 GLM-5.2-FP8 部署', kind: 'dir', location: 'folder' }
+  ];
+  var DEMO_MD = [
+    '# GLM\\-5\\.2\\-FP8用hpc\\_ops作为后端的适配（demo 快照）',
+    '',
+    '> DEMO MODE — \\?demo=1 时不请求 api.github.com；正式环境会从',
+    '> `raw.githubusercontent.com/OLIVER-XYP/Technological-Documents` 拉取仓库里的同名文件。',
+    '',
+    '**改动分四个阶段：**',
+    '',
+    '1. 后端盘点与维度适配判定',
+    '2. 算子库维度修复（`fused_rmsnorm_with_scale` 增加 hidden=6144）',
+    '3. A/B 压测 —— 4 组配置 × 每组 4 次 seeded 压测',
+    '4. 瓶颈定位与算子重写',
+    '',
+    '参考：https://docs\\.vllm\\.ai/en/stable/design/debug\\_vllm\\_compile/\\#use\\-tlparse',
+    '',
+    '```C++',
+    '  // 关键改动示意',
+    '  gemm_bf16xfp32::configure(split_k);',
+    '```',
+    '',
+    '截图（demo 下会显示“图片不可用”的回退提示）：',
+    '',
+    '![image.png](图片和附件/image.png)'
+  ].join('\n');
+
+  /* -------------------------------------------------------------------------
+     1. small helpers
+  ------------------------------------------------------------------------- */
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // Percent-encode ONE path segment. Never pass a whole path: encodeURIComponent
+  // would eat the "/" separators. Real paths here contain spaces, 、, ：, full
+  // width （） and CJK, so each segment is encoded and the path rejoined.
+  // DECODE FIRST: the documents reference their screenshots with ALREADY
+  // percent-encoded targets ("图片和附件/image%201.png"). Encoding those verbatim
+  // yields "image%25201.png", which 404s. decode -> encode is idempotent.
+  function encSeg(s) {
+    var v = String(s);
+    try { v = decodeURIComponent(v); } catch (e) { /* literal '%': keep as-is */ }
+    try {
+      return encodeURIComponent(v).replace(/[!'()*]/g, function (c) {
+        return '%' + c.charCodeAt(0).toString(16).toUpperCase();
+      });
+    } catch (e) { return v; }
+  }
+  function encPath(p) { return String(p).split('/').map(encSeg).join('/'); }
+
+  /* A built-in fallback listing. The unauthenticated api.github.com quota is
+     only 60 requests/hour PER CLIENT IP, and a visitor behind a shared
+     campus/office NAT routinely has none left - so the listing call must never
+     be what decides whether the section works. Fetching the documents
+     themselves goes through raw.githubusercontent.com (CDN-backed, no such
+     limit). The API call is therefore pure ENRICHMENT: when it does succeed it
+     can pick up documents added since this list was last updated.
+     Paths are exact; "vllm DSV4 mhc调优" deliberately breaks the
+     "<folder>/<folder>.md" convention, which is why it is listed explicitly. */
+  var KNOWN = [
+    { name: 'B300 GLM-5.2-FP8 部署', kind: 'dir', location: 'folder', docPath: 'B300 GLM-5.2-FP8 部署/B300 GLM-5.2-FP8 部署.md' },
+    { name: 'DSA indexer多流重叠优化记录', kind: 'dir', location: 'folder', docPath: 'DSA indexer多流重叠优化记录/DSA indexer多流重叠优化记录.md' },
+    { name: 'GLM-5.2-FP8用hpc_ops作为后端的适配.md', kind: 'file', location: 'root', docPath: 'GLM-5.2-FP8用hpc_ops作为后端的适配.md' },
+    { name: 'GLM-5.2-NVFP4、Kimi-K3测试报告（B300）', kind: 'dir', location: 'folder', docPath: 'GLM-5.2-NVFP4、Kimi-K3测试报告（B300）/GLM-5.2-NVFP4、Kimi-K3测试报告（B300）.md' },
+    { name: 'NCCL 通信算法', kind: 'dir', location: 'folder', docPath: 'NCCL 通信算法/NCCL 通信算法.md' },
+    { name: 'NCU讲解', kind: 'dir', location: 'folder', docPath: 'NCU讲解/NCU讲解.md' },
+    { name: 'Profiling细节', kind: 'dir', location: 'folder', docPath: 'Profiling细节/Profiling细节.md' },
+    { name: 'SGLang PD 分离梳理', kind: 'dir', location: 'folder', docPath: 'SGLang PD 分离梳理/SGLang PD 分离梳理.md' },
+    { name: 'vLLM PD分离性能测试', kind: 'dir', location: 'folder', docPath: 'vLLM PD分离性能测试/vLLM PD分离性能测试.md' },
+    { name: 'vllm DSV4 mhc调优', kind: 'dir', location: 'folder', docPath: 'vllm DSV4 mhc调优/TileLang 3. vllm DSV4 mhc调优.md' },
+    { name: 'vllm backend kernel benchmark', kind: 'dir', location: 'folder', docPath: 'vllm backend kernel benchmark/vllm backend kernel benchmark.md' },
+    { name: 'NCU报错记录.md', kind: 'file', location: 'root', docPath: 'NCU报错记录.md' },
+    { name: 'dynamo.md', kind: 'file', location: 'root', docPath: 'dynamo.md' },
+    { name: 'profile-deepseek-v4-complete.md', kind: 'file', location: 'root', docPath: 'profile-deepseek-v4-complete.md' },
+    { name: 'vLLM可用后端扫描：性能 & 精度.md', kind: 'file', location: 'root', docPath: 'vLLM可用后端扫描：性能 & 精度.md' },
+    { name: '完整流程与算子选择方法.md', kind: 'file', location: 'root', docPath: '完整流程与算子选择方法.md' }
+  ];
+
+  // The GitHub blob page for a document - derived when the entry carries no
+  // explicit .fallback (the API-derived entries set one; KNOWN does not).
+  function docFallback(doc) {
+    return doc.fallback || (ROOT + '/blob/' + BRANCH + '/' + encPath(doc.docPath));
+  }
+
+  // "3\.", "GLM\-5\.2", "debug\_vllm" -> the backslash escapes punctuation.
+  function unescapePunct(s) {
+    return String(s).replace(/\\([\\`*_{}\[\]()#+\-.!|>~])/g, '$1');
+  }
+
+  function slugify(text) {
+    return String(text).replace(/<[^>]*>/g, '').trim().toLowerCase()
+      .replace(/[^\w\u3000-\u303f\u4e00-\u9fff\u3040-\u30ff\uff00-\uffef\s-]/g, '')
+      .replace(/\s+/g, '-');
+  }
+
+  /* storage - always try/catch: private mode or a full quota degrades to memory */
+  function store(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }
+  function retrieve(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
+
+  /* -------------------------------------------------------------------------
+     2. network - one helper, hard timeout, never rejects on an HTTP status
+  ------------------------------------------------------------------------- */
+  function fetchText(url, ms) {
+    var ctl = (typeof AbortController === 'function') ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, ms || FETCH_MS);
+    var opts = { mode: 'cors', credentials: 'omit', redirect: 'follow' };
+    if (ctl) opts.signal = ctl.signal;
+    return fetch(url, opts).then(function (r) {
+      return r.text().then(function (t) {
+        clearTimeout(timer);
+        return { ok: r.ok, status: r.status, text: t };
+      });
+    }, function (err) {
+      clearTimeout(timer);
+      throw err;
+    });
+  }
+
+  /* -------------------------------------------------------------------------
+     3. the listing - the ONE api.github.com call of the happy path
+  ------------------------------------------------------------------------- */
+  function flatten(json) {
+    var out = [], i, e, name;
+    if (!json || !json.length) return out;
+    for (i = 0; i < json.length; i++) {
+      e = json[i];
+      if (!e || !e.name) continue;
+      name = String(e.name);
+      if (e.type === 'dir') {
+        if (name === '图片和附件') continue;              // an asset folder, not a doc
+        out.push({
+          name: name,
+          kind: 'dir',
+          location: 'folder',
+          docPath: name + '/' + name + '.md',             // convention; self-healed on 404
+          fallback: ROOT + '/blob/' + BRANCH + '/' + encPath(name + '/' + name + '.md')
+        });
+      } else if (/\.md$/i.test(name)) {
+        out.push({
+          name: name,
+          kind: 'file',
+          location: 'root',
+          docPath: name,
+          fallback: ROOT + '/blob/' + BRANCH + '/' + encPath(name)
+        });
+      }
+      /* anything else at the root is not a document and is ignored */
+    }
+    return out;
+  }
+
+  function loadListing() {
+    if (DEMO) return Promise.resolve({ list: DEMO_LIST, meta: 'demo · ' + DEMO_LIST.length + ' documents' });
+
+    var cached = retrieve(CACHE_LIST);
+    if (cached) {
+      try {
+        var p = JSON.parse(cached);
+        if (p && p.list && p.list.length) {
+          return Promise.resolve({ list: p.list, meta: 'cached · ' + p.list.length + ' documents' });
+        }
+      } catch (e) { /* corrupt entry - fall through to the network */ }
+    }
+
+    return fetchText(API + '?ref=' + encodeURIComponent(BRANCH), FETCH_MS).then(function (r) {
+      var json = null;
+      try { json = JSON.parse(r.text); } catch (e) { json = null; }
+      var list = flatten(json);
+      if (!r.ok || !list.length) return { list: [], meta: '', error: true };
+      store(CACHE_LIST, JSON.stringify({ list: list, at: Date.now() }));
+      return { list: list, meta: 'live · ' + list.length + ' documents' };
+    }, function () {
+      return { list: [], meta: '', error: true };
+    });
+  }
+
+  /* -------------------------------------------------------------------------
+     4. markdown -> html
+  ------------------------------------------------------------------------- */
+  // bare URLs: stop at whitespace, quotes, ASCII/CJK punctuation and our
+  // placeholder character; a leading char is captured and re-emitted so that
+  // URLs sitting after CJK punctuation ("…/38684、https://…") still split.
+  var RE_URL = /(^|[\s(\[（【「《〔、，。；：!！?？"'“”‘’»])((?:https?:\/\/)[^\s<>"'`\u0001\u3000-\u303f\uff01-\uff5f(),;\[\]]+)/g;
+  var BAD_URL = /^\s*(?:javascript|vbscript|data:text\/html)/i;
+
+  function isAbsolute(u) { return /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(u); }
+  function safeUrl(u) { return !BAD_URL.test(String(u || '')); }
+
+  // Resolve a markdown-relative target against the document's own folder.
+  //   kind 'img'  -> raw.githubusercontent.com (a plain file)
+  //   kind 'link' -> github.com/…/blob/…  (a readable page)
+  function resolveRel(base, value, kind) {
+    var raw = String(value == null ? '' : value).trim();
+    if (!raw) return null;
+    if (isAbsolute(raw) || raw.charAt(0) === '#') return raw;
+    var m = /^([^?#]*)([?#][\s\S]*)?$/.exec(raw);
+    var path = m[1] || '', suffix = m[2] || '';
+    var stack = base.dir ? base.dir.split('/') : [];
+    if (path.charAt(0) === '/') stack = [];               // repo-root absolute
+    path.split('/').forEach(function (seg) {
+      if (seg === '' || seg === '.') return;
+      if (seg === '..') { if (stack.length) stack.pop(); return; }
+      stack.push(seg);
+    });
+    if (!stack.length) return null;
+    return (kind === 'img' ? base.raw : base.html) + '/' + encPath(stack.join('/')) + suffix;
+  }
+
+  function inline(s, base) {
+    if (!s) return '';
+    s = String(s);
+    var spans = [];
+
+    // (a) inline code is protected first - its content must survive untouched
+    s = s.replace(/`([^`]*)`/g, function (m, c) {
+      spans.push('<code>' + esc(c) + '</code>');
+      return '\u0001' + (spans.length - 1) + '\u0001';
+    });
+
+    // (b) images (relative -> the sibling 图片和附件/ folder, via raw)
+    s = s.replace(/!\[([^\]]*)\]\(\s*([^)\s]+)(?:\s+[^)]*?)?\s*\)/g, function (m, alt, url) {
+      var txt = unescapePunct(alt) || '图片';
+      var u = resolveRel(base, unescapePunct(url), 'img');
+      if (!u || !safeUrl(u)) return esc(txt);
+      spans.push('<img src="' + esc(u) + '" alt="' + esc(txt) + '" loading="lazy">');
+      return '\u0001' + (spans.length - 1) + '\u0001';
+    });
+
+    // (c) markdown links
+    s = s.replace(/\[([^\]]*)\]\(\s*([^)\s]+)(?:\s+[^)]*?)?\s*\)/g, function (m, text, url) {
+      var u = resolveRel(base, unescapePunct(url), 'link');
+      if (!u || !safeUrl(u)) return unescapePunct(text);
+      var ext = /^(?:https?:)?\/\//i.test(u);
+      spans.push('<a href="' + esc(u) + '"' + (ext ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + unescapePunct(text) + '</a>');
+      return '\u0001' + (spans.length - 1) + '\u0001';
+    });
+
+    // (d) bare URLs, including backslash-escaped ones
+    s = s.replace(RE_URL, function (m, lead, url) {
+      var clean = unescapePunct(url).replace(/[.,;:]+$/, '');
+      if (!clean || !safeUrl(clean)) return m;
+      spans.push('<a href="' + esc(clean) + '" target="_blank" rel="noopener noreferrer">' + esc(clean) + '</a>');
+      return lead + '\u0001' + (spans.length - 1) + '\u0001';
+    });
+
+    // (e) escape the raw text left in place (real entities are kept), then
+    //     do emphasis - tags emitted by emphasis are created after the escape
+    //     pass, so they survive as markup instead of becoming &lt;strong&gt;
+    s = s.replace(/&(?!(?:[a-zA-Z][a-zA-Z0-9]{1,12}|#\d{1,7}|#x[0-9a-fA-F]{1,6});)/g, '&amp;')
+         .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+    s = s.replace(/\*\*(?=\S)([\s\S]*?\S)\*\*/g, '<strong>$1</strong>');
+    s = s.replace(/(^|[\s(\[“‘>])\*(?=\S)([^*\n]*?\S)\*/g, '$1<em>$2</em>');
+    s = s.replace(/~~(?=\S)([\s\S]*?\S)~~/g, '<del>$1</del>');
+
+    // (f) then unwrap the remaining backslash escapes, so an author's \* is
+    //     a literal asterisk (never re-read as markup) and \1. 概述 renders
+    //     as "1. 概述"
+    s = unescapePunct(s);
+
+    // (g) restore the protected pieces
+    s = s.replace(/\u0001(\d+)\u0001/g, function (m, n) { return spans[+n]; });
+    return s;
+  }
+
+  function listMarker(line) {
+    var m = /^(\s*)([-*+]|\d+[.)])\s+(.*)$/.exec(line);
+    if (!m) return null;
+    return { indent: m[1].replace(/\t/g, '    ').length, ordered: /^\d/.test(m[2]), text: m[3] };
+  }
+
+  function splitRow(line) {
+    var s = String(line).trim().replace(/^\|/, '').replace(/\|$/, '');
+    var out = [], cur = '', i = 0;
+    while (i < s.length) {
+      var ch = s.charAt(i);
+      if (ch === '\\' && i + 1 < s.length) { cur += s.charAt(i + 1); i += 2; continue; }
+      if (ch === '|') { out.push(cur); cur = ''; i++; continue; }
+      cur += ch; i++;
+    }
+    out.push(cur);
+    return out.map(function (c) { return c.trim(); });
+  }
+
+  function mdToHtml(src, base) {
+    var lines = String(src == null ? '' : src).replace(/\r\n?/g, '\n').replace(/^﻿/, '').split('\n');
+    var out = [], para = [], listStack = [], i = 0;
+
+    function flushPara() {
+      if (!para.length) return;
+      out.push('<p>' + inline(para.join(' '), base) + '</p>');
+      para = [];
+    }
+    function closeLists(indent) {
+      while (listStack.length && listStack[listStack.length - 1].indent > indent) {
+        var top = listStack.pop();
+        out.push('</li></' + top.tag + '>');
+      }
+    }
+
+    while (i < lines.length) {
+      var line = lines[i];
+
+      if (/^\s*$/.test(line)) { flushPara(); i++; continue; }
+
+      /* fenced code: contents are raw, never markdown */
+      if (/^\s*(`{3,}|~{3,})/.test(line)) {
+        flushPara(); closeLists(-1);
+        var fence = /^\s*(`{3,}|~{3,})\s*([^\s]*)/.exec(line);
+        var lang = fence ? fence[2] : '';
+        var buf = [];
+        i++;
+        while (i < lines.length && !/^\s*(`{3,}|~{3,})/.test(lines[i])) { buf.push(lines[i]); i++; }
+        i++;
+        out.push('<pre><code' + (lang ? ' class="language-' + esc(lang) + '"' : '') + '>' +
+                 esc(buf.join('\n')) + '</code></pre>');
+        continue;
+      }
+
+      /* ATX heading - ids are prefixed so they can never clash with the page.
+         Test and capture in ONE regex: testing on the raw line but capturing
+         from line.trim() used to disagree on a bare "## " (a heading with no
+         text after the hashes - two of them live in NCU讲解.md), which made
+         the match null and threw, blanking the whole document. */
+      var hm = /^\s*(#{1,6})(?:\s+(.*))?$/.exec(line);
+      if (hm) {
+        flushPara(); closeLists(-1);
+        var lvl = hm[1].length;
+        var htxt = hm[2] || '';
+        var id = slugify(htxt);
+        out.push('<h' + lvl + (id ? ' id="td-h-' + esc(id) + '"' : '') + '>' + inline(htxt, base) + '</h' + lvl + '>');
+        i++;
+        continue;
+      }
+
+      /* horizontal rule */
+      if (/^\s*(?:-{3,}|\*{3,}|_{3,})\s*$/.test(line)) { flushPara(); closeLists(-1); out.push('<hr>'); i++; continue; }
+
+      /* blockquote - recursed, so lists/code inside still work */
+      if (/^\s*>\s?/.test(line)) {
+        flushPara(); closeLists(-1);
+        var q = [];
+        while (i < lines.length && /^\s*>/.test(lines[i])) { q.push(lines[i].replace(/^\s*>\s?/, '')); i++; }
+        out.push('<blockquote>' + mdToHtml(q.join('\n'), base) + '</blockquote>');
+        continue;
+      }
+
+      /* pipe table (header row followed by a :---: separator row) */
+      if (line.indexOf('|') !== -1 && i + 1 < lines.length &&
+          /^[\s|:-]+$/.test(lines[i + 1]) && lines[i + 1].indexOf('-') !== -1) {
+        flushPara(); closeLists(-1);
+        var head = splitRow(line);
+        var aligns = splitRow(lines[i + 1]).map(function (c) {
+          var l = c.charAt(0) === ':', r = c.charAt(c.length - 1) === ':';
+          return l && r ? 'center' : (r ? 'right' : (l ? 'left' : ''));
+        });
+        i += 2;
+        var rows = [];
+        while (i < lines.length && lines[i].indexOf('|') !== -1 && !/^\s*$/.test(lines[i])) { rows.push(splitRow(lines[i])); i++; }
+        var t = '<div class="td-tablewrap"><table><thead><tr>';
+        head.forEach(function (c, n) {
+          t += '<th' + (aligns[n] ? ' style="text-align:' + aligns[n] + '"' : '') + '>' + inline(c, base) + '</th>';
+        });
+        t += '</tr></thead><tbody>';
+        rows.forEach(function (r) {
+          t += '<tr>';
+          for (var n = 0; n < head.length; n++) {
+            t += '<td' + (aligns[n] ? ' style="text-align:' + aligns[n] + '"' : '') + '>' + inline(r[n] || '', base) + '</td>';
+          }
+          t += '</tr>';
+        });
+        out.push(t + '</tbody></table></div>');
+        continue;
+      }
+
+      /* list item */
+      var mk = listMarker(line);
+      if (mk) {
+        flushPara();
+        var tag = mk.ordered ? 'ol' : 'ul';
+        if (listStack.length && listStack[listStack.length - 1].indent === mk.indent) {
+          out.push('</li>');
+        } else if (listStack.length && listStack[listStack.length - 1].indent < mk.indent) {
+          out.push('<' + tag + '>'); listStack.push({ tag: tag, indent: mk.indent });
+        } else {
+          closeLists(mk.indent);
+          if (listStack.length && listStack[listStack.length - 1].indent === mk.indent) { out.push('</li>'); }
+          else { out.push('<' + tag + '>'); listStack.push({ tag: tag, indent: mk.indent }); }
+        }
+        out.push('<li>' + inline(mk.text, base));
+        i++;
+        while (i < lines.length) {
+          var nl = lines[i];
+          if (/^\s*$/.test(nl)) break;
+          if (/^\s*(`{3,}|~{3,})/.test(nl)) break;
+          if (/^#{1,6}\s+/.test(nl)) break;
+          if (listMarker(nl)) break;
+          if (nl.replace(/\t/g, '    ').match(/^\s*/)[0].length > mk.indent) {
+            out.push('<div class="td-lpara">' + inline(nl.trim(), base) + '</div>');
+            i++;
+            continue;
+          }
+          break;
+        }
+        continue;
+      }
+
+      /* paragraph */
+      // A paragraph at or left of the open list's indent ENDS the list. Without
+      // this it is emitted while <li> is still open and nests inside the last item.
+      if (listStack.length) {
+        var pind = line.replace(/\t/g, '    ').match(/^\s*/)[0].length;
+        if (pind <= listStack[listStack.length - 1].indent) { flushPara(); closeLists(-1); }
+      }
+      para.push(line.trim());
+      i++;
+    }
+
+    flushPara(); closeLists(-1);
+    return out.join('\n');
+  }
+
+  /* -------------------------------------------------------------------------
+     5. sanitise. Script/iframe/object/form elements, every on* attribute and
+        javascript: URL are removed from the markdown-derived HTML before it is
+        inserted - on an INERT <template> fragment, where scripts cannot run
+        and images cannot load.
+  ------------------------------------------------------------------------- */
+  var DROP = { SCRIPT:1, IFRAME:1, OBJECT:1, EMBED:1, FORM:1, INPUT:1, BUTTON:1,
+    TEXTAREA:1, SELECT:1, OPTION:1, DATALIST:1, STYLE:1, LINK:1, META:1, BASE:1,
+    NOSCRIPT:1, FRAME:1, FRAMESET:1, APPLET:1, AUDIO:1, VIDEO:1, SOURCE:1,
+    TRACK:1, CANVAS:1, SVG:1, MATH:1, MARQUEE:1, TEMPLATE:1 };
+  var KEEP_ATTR = { href:1, src:1, alt:1, title:1, width:1, height:1, align:1,
+    id:1, colspan:1, rowspan:1, start:1, open:1, datetime:1, cite:1, class:1 };
+
+  function cleanHTML(html, base) {
+    var tpl = document.createElement('template');
+    tpl.innerHTML = String(html == null ? '' : html);
+    var frag = tpl.content;
+    var i;
+
+    /* comments */
+    var comments = [], cn;
+    var cit = document.createTreeWalker(frag, NodeFilter.SHOW_COMMENT, null, false);
+    while ((cn = cit.nextNode())) comments.push(cn);
+    comments.forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
+
+    var drops = [], el;
+    var it = document.createTreeWalker(frag, NodeFilter.SHOW_ELEMENT, null, false);
+    while ((el = it.nextNode())) {
+      // Foreign-namespace nodes (SVG/MathML) keep a LOWER-CASE tagName, so a
+      // plain DROP[el.tagName] lookup never matches them and an <svg><script>
+      // would sail through. Judge by the canonical upper-case name, and drop
+      // anything that is not plain HTML.
+      var tn = String(el.tagName || '').toUpperCase();
+      if (DROP[tn] || (el.namespaceURI && el.namespaceURI !== 'http://www.w3.org/1999/xhtml')) {
+        drops.push(el);
+        continue;
+      }
+
+      var attrs = [];
+      for (i = 0; i < el.attributes.length; i++) attrs.push(el.attributes[i]);
+      attrs.forEach(function (a) {
+        var n = a.name.toLowerCase();
+        if (n.slice(0, 2) === 'on' || n === 'style' || n === 'srcdoc' ||
+            n === 'action' || n === 'formaction' || n === 'srcset' || n === 'ping') {
+          el.removeAttribute(a.name);
+          return;
+        }
+        if (n !== 'href' && n !== 'src' && !KEEP_ATTR[n]) { el.removeAttribute(a.name); return; }
+        if (!safeUrl(a.value)) { el.removeAttribute(a.name); return; }
+        // ONLY href/src are URLs. Every other kept attribute (id, class, alt,
+        // width, height, align, colspan, start, datetime, cite) is literal text
+        // and must survive untouched - resolving it turned
+        // class="td-tablewrap" into "https://github.com/.../td-tablewrap",
+        // silently breaking the wide-table scroll wrapper, the code-language
+        // classes and the heading anchors.
+        if (n === 'href' || n === 'src') {
+          var fixed = resolveRel(base, a.value, n === 'src' ? 'img' : 'link');
+          if (fixed === null) el.removeAttribute(a.name);
+          else el.setAttribute(a.name, fixed);
+        }
+      });
+
+      if (tn === 'IMG') {
+        el.setAttribute('loading', 'lazy');
+        if (!el.getAttribute('src')) drops.push(el);
+      } else if (tn === 'A') {
+        var href = el.getAttribute('href');
+        if (!href) continue;
+        if (/^https?:/i.test(href)) { el.setAttribute('target', '_blank'); el.setAttribute('rel', 'noopener noreferrer'); }
+        else if (href.charAt(0) === '#') { el.removeAttribute('target'); }
+        else if (/^data:/i.test(href)) { el.removeAttribute('href'); }
+      }
+    }
+    drops.forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
+
+    var holder = document.createElement('div');
+    holder.appendChild(frag);
+    return holder.innerHTML;
+  }
+
+  /* -------------------------------------------------------------------------
+     6. UI
+  ------------------------------------------------------------------------- */
+  var statusEl = document.getElementById('td-status');
+  var listEl   = document.getElementById('td-ol');
+  var paneEl   = document.getElementById('td-pane');
+  var titleEl  = document.getElementById('td-pane-title');
+  var metaEl   = document.getElementById('td-pane-meta');
+  var linkEl   = document.getElementById('td-pane-link');
+  var docEl    = document.getElementById('td-doc');
+  if (!statusEl || !listEl || !paneEl || !titleEl || !metaEl || !linkEl || !docEl) return;
+
+  var listing = [];        /* flattened documents */
+  var state = {};          /* document name -> {html} | {error} */
+  var inflight = {};       /* document name -> Promise */
+  var activeIdx = -1;
+
+  function setStatus(kind, html) {
+    statusEl.className = 'td-status' + (kind ? ' is-' + kind : '');
+    statusEl.innerHTML = html || '';
+  }
+
+  function repoFallbackHTML() {
+    return '<li class="td-item"><a class="td-github-link" href="' + esc(ROOT) +
+      '" target="_blank" rel="noopener noreferrer">Browse the docs on GitHub <span aria-hidden="true">↗</span></a></li>';
+  }
+
+  function renderList() {
+    if (!listing.length) { listEl.innerHTML = repoFallbackHTML(); return; }
+    var html = '';
+    for (var i = 0; i < listing.length; i++) {
+      html += '<li class="td-item">' +
+        '<button type="button" class="td-docbtn" data-i="' + i + '"' +
+        ' aria-selected="false" aria-expanded="false" aria-controls="td-pane"' +
+        ' aria-label="Open document: ' + esc(listing[i].name) + '">' +
+        esc(listing[i].name) +
+        '<span class="td-tri" aria-hidden="true">▸</span>' +
+        '</button></li>';
+    }
+    listEl.innerHTML = html;
+  }
+
+  function markActive(i) {
+    activeIdx = i;
+    var btns = listEl.querySelectorAll('.td-docbtn');
+    for (var k = 0; k < btns.length; k++) {
+      var on = (+btns[k].getAttribute('data-i')) === i;
+      btns[k].setAttribute('aria-selected', on ? 'true' : 'false');
+      btns[k].setAttribute('aria-expanded', on ? 'true' : 'false');
+      if (on) btns[k].setAttribute('aria-current', 'true');
+      else btns[k].removeAttribute('aria-current');
+    }
+  }
+
+  function setPane(doc) {
+    paneEl.hidden = false;
+    titleEl.textContent = doc.name;
+    metaEl.textContent = (doc.location === 'folder')
+      ? 'folder document · ' + BRANCH
+      : 'markdown file · ' + BRANCH;
+    linkEl.href = docFallback(doc);
+  }
+
+  // Resolve-relative-targets against the document's own folder. base.raw and
+  // base.html point at the REPO ROOT; the folder itself lives only in base.dir,
+  // which resolveRel() seeds into the path stack. (Both are used exactly once -
+  // duplicating the folder here would produce "folder/folder/…" image paths.)
+  function baseFor(doc) {
+    return {
+      dir: (doc.location === 'folder') ? doc.name : '',
+      raw: RAW,
+      html: ROOT + '/blob/' + BRANCH
+    };
+  }
+
+  function markdownURL(relPath) { return RAW + '/' + encPath(relPath); }
+
+  // Self-heal: a folder's document is normally "<folder>/<folder>.md", but one
+  // folder in this repo breaks that rule ("vllm DSV4 mhc调优" holds
+  // "TileLang 3. vllm DSV4 mhc调优.md"). Only when the conventional raw URL
+  // 404s do we spend ONE extra contents call to learn the real name, and the
+  // answer is cached for the session (FIX_PREFIX).
+  function resolveDocPath(doc) {
+    var key = FIX_PREFIX + doc.name;
+    var known = retrieve(key);
+    if (known) return Promise.resolve(doc.name + '/' + known);
+    return fetchText(API + encPath(doc.name) + '?ref=' + encodeURIComponent(BRANCH), FETCH_MS).then(function (r) {
+      var json = null;
+      try { json = JSON.parse(r.text); } catch (e) { json = null; }
+      if (!r.ok || !json || !json.length) return null;
+      var md = null;
+      for (var i = 0; i < json.length; i++) {
+        if (/\.md$/i.test((json[i] && json[i].name) || '')) { md = json[i].name; break; }
+      }
+      if (!md) return null;
+      store(key, md);
+      return doc.name + '/' + md;
+    }, function () { return null; });
+  }
+
+  function fetchDocText(doc) {
+    return fetchText(markdownURL(doc.docPath), FETCH_MS).then(function (r) {
+      if (r.ok) return { text: r.text };
+      if (doc.kind !== 'dir') return null;
+      return resolveDocPath(doc).then(function (rel) {
+        if (!rel) return null;
+        return fetchText(markdownURL(rel), FETCH_MS).then(function (r2) {
+          if (!r2.ok) return null;
+          doc.docPath = rel;                       /* remember for the GitHub link */
+          doc.fallback = ROOT + '/blob/' + BRANCH + '/' + encPath(rel);
+          return { text: r2.text };
+        });
+      });
+    });
+  }
+
+  function loadDoc(doc) {
+    var key = doc.name;
+    if (state[key] && state[key].html) return Promise.resolve(state[key].html);
+    if (inflight[key]) return inflight[key];
+
+    if (DEMO) {
+      var demoHTML = cleanHTML(mdToHtml(DEMO_MD, baseFor(doc)), baseFor(doc));
+      state[key] = { html: demoHTML };
+      return Promise.resolve(demoHTML);
+    }
+    if (navigator.onLine === false) {
+      state[key] = { error: 'You appear to be offline.' };
+      return Promise.resolve(null);
+    }
+
+    var p = fetchDocText(doc).then(function (res) {
+      if (!res || !String(res.text).trim()) {
+        state[key] = { error: res ? 'The document is empty.' : 'Could not load this document.' };
+        return null;
+      }
+      var base = baseFor(doc), html = '';
+      try { html = cleanHTML(mdToHtml(res.text, base), base); } catch (e) { html = ''; }
+      if (!html.trim()) { state[key] = { error: 'The document could not be rendered.' }; return null; }
+      state[key] = { html: html };
+      store(DOC_PREFIX + key, html);
+      return html;
+    }, function () {
+      state[key] = { error: 'Could not load this document.' };
+      return null;
+    });
+
+    inflight[key] = p.then(function (html) { delete inflight[key]; return html; },
+                           function () { delete inflight[key]; return null; });
+    return inflight[key];
+  }
+
+  function renderDoc(doc, html) {
+    setStatus('', '');
+    docEl.innerHTML = html;
+    docEl.scrollTop = 0;
+  }
+
+  function renderDocError(doc, msg) {
+    setStatus('err', esc(msg) + ' <button type="button" class="td-retry">Try again</button>');
+    docEl.innerHTML = '<p class="td-note">' + esc(msg) + ' The file is always on GitHub: ' +
+      '<a href="' + esc(docFallback(doc)) + '" target="_blank" rel="noopener noreferrer">open ' +
+      esc(doc.name) + ' ↗</a>.</p>';
+  }
+
+  function openDoc(idx, force) {
+    var doc = listing[idx];
+    if (!doc) return;
+    if (idx === activeIdx && !paneEl.hidden && !force) return;
+
+    setPane(doc);
+    markActive(idx);
+
+    var cached = (state[doc.name] && state[doc.name].html) || retrieve(DOC_PREFIX + doc.name);
+    if (cached) { state[doc.name] = { html: cached }; renderDoc(doc, cached); return; }
+
+    setStatus('load', '<span class="td-spin" aria-hidden="true"></span>Fetching <span class="type">' + esc(doc.name) + '</span>…');
+    docEl.innerHTML = '<p class="td-note">Loading…</p>';
+
+    loadDoc(doc).then(function (html) {
+      if (activeIdx !== idx) return;                 /* the visitor moved on */
+      setPane(doc);                                  /* refresh the link after a self-heal */
+      if (html) { renderDoc(doc, html); return; }
+      renderDocError(doc, (state[doc.name] || {}).error || 'Could not load this document.');
+    });
+  }
+
+  /* ---- events ---- */
+  listEl.addEventListener('click', function (ev) {
+    var btn = ev.target.closest ? ev.target.closest('.td-docbtn') : null;
+    if (!btn) return;
+    var idx = +btn.getAttribute('data-i');
+    if (idx === activeIdx && !paneEl.hidden) return;   /* tapping the open doc does nothing */
+    openDoc(idx);
+  });
+
+  listEl.addEventListener('keydown', function (ev) {
+    var k = ev.key;
+    if (k !== 'ArrowDown' && k !== 'ArrowUp' && k !== 'Home' && k !== 'End') return;
+    if (!listing.length) return;
+    ev.preventDefault();
+    var idx = activeIdx < 0 ? 0 : activeIdx;
+    if (k === 'ArrowDown') idx = Math.min(idx + 1, listing.length - 1);
+    else if (k === 'ArrowUp') idx = Math.max(idx - 1, 0);
+    else if (k === 'Home') idx = 0;
+    else idx = listing.length - 1;
+    var btn = listEl.querySelectorAll('.td-docbtn')[idx];
+    if (btn) btn.focus();
+    openDoc(idx);
+  });
+
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key !== 'Escape' && ev.keyCode !== 27) return;
+    if (paneEl.hidden) return;
+    var prev = activeIdx;
+    paneEl.hidden = true;
+    markActive(-1);
+    var btn = listEl.querySelectorAll('.td-docbtn')[prev];
+    if (btn) btn.focus();
+  });
+
+  /* a broken screenshot becomes a note, never a hole in the page */
+  docEl.addEventListener('error', function (ev) {
+    var img = ev.target;
+    if (!img || img.tagName !== 'IMG' || img.getAttribute('data-td-failed')) return;
+    var note = document.createElement('span');
+    note.className = 'td-imgfail';
+    note.textContent = img.getAttribute('alt') ? '图片不可用 · ' + img.getAttribute('alt') : '图片不可用';
+    if (img.parentNode) img.parentNode.replaceChild(note, img);
+  }, true);
+
+  function retryFrom(ev) {
+    var hit = ev.target.closest ? ev.target.closest('.td-retry') : null;
+    if (!hit || activeIdx < 0) return;
+    var doc = listing[activeIdx];
+    if (!doc) return;
+    delete state[doc.name];
+    try { sessionStorage.removeItem(DOC_PREFIX + doc.name); } catch (e) {}
+    openDoc(activeIdx, true);
+  }
+  docEl.addEventListener('click', retryFrom);
+  statusEl.addEventListener('click', retryFrom);
+
+  /* ---- boot ---- */
+  var booted = false;
+  function start() {
+    if (booted) return;
+    booted = true;
+    setStatus('load', '<span class="td-spin" aria-hidden="true"></span>Loading documents…');
+    loadListing().then(function (res) {
+      if (res.error || !res.list.length) {
+        // The listing is ENRICHMENT ONLY. Rate-limited (60/hour per client IP),
+        // offline, or a transient 403 must never empty the section - fall back
+        // to the built-in list and carry on. The documents themselves come from
+        // raw.githubusercontent.com, which is unaffected.
+        listing = KNOWN;
+        renderList();
+        setStatus('', 'Could not refresh the index just now · <a href="' + esc(ROOT) +
+          '" target="_blank" rel="noopener noreferrer">browse the repo ↗</a>');
+        if (location.hash !== '#list') openDoc(0);
+        return;
+      }
+      listing = res.list;
+      renderList();
+      setStatus('', esc(res.meta) + ' · <a href="' + esc(ROOT) +
+        '" target="_blank" rel="noopener noreferrer">browse the repo ↗</a>');
+      /* default: open the first document (see A4 in the header comment) */
+      if (location.hash !== '#list') openDoc(0);
+    });
+  }
+
+  // Boot lazily: the section sits far down the page, so a visitor who never
+  // scrolls this far costs ZERO api.github.com calls. The listing (and the
+  // first document) are only fetched once the section is within 400px of the
+  // viewport. Browsers without IntersectionObserver just boot immediately.
+  var secEl = document.getElementById('tech');
+  if (!DEMO && secEl && typeof IntersectionObserver === 'function') {
+    var bio = new IntersectionObserver(function (entries) {
+      for (var n = 0; n < entries.length; n++) {
+        if (entries[n].isIntersecting) { bio.disconnect(); start(); return; }
+      }
+    }, { rootMargin: '400px 0px' });
+    bio.observe(secEl);
+  } else {
+    start();
+  }
+})();
+</script>
+
 <section id="contact">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="no">04</span><h2>Let's <em>talk</em></h2></div>
+    <div class="sec-head reveal"><span class="no">06</span><h2>Let's <em>talk</em></h2></div>
     <div class="contact-grid reveal">
       <a class="cc" href="mailto:13588039544@163.com"><div class="k">Email</div><div class="v">13588039544@163.com</div></a>
       <a class="cc" href="https://github.com/OLIVER-XYP" target="_blank"><div class="k">GitHub</div><div class="v">github.com/OLIVER-XYP</div></a>

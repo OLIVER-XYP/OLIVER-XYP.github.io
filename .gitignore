@@ -1,0 +1,8 @@
+# Local scratch + tooling for working on this site: draft module sources, the
+# jsdom test harness (and its node_modules), the docx dump, and design notes.
+# None of it is part of the published page.
+.agents/
+
+# The resume .docx contains a phone number and a WeChat ID. This repository is
+# PUBLIC (it serves the GitHub Pages user site), so the file stays out of git.
+徐云鹏简历.docx
