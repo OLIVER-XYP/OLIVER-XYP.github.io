@@ -334,6 +334,989 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
           <div class="star-row"><span class="sk">S / T</span><p>Testing operator-level and distributed / parallel schemes for <b>DeepSeek-V4-Flash-0731</b> — <b>TP, DP, PP, CP, SP</b> and <b>PD disaggregation</b> — plus cluster-level scheduling with <b>dynamo</b> and <b>llm-d</b>.</p></div>
           <div class="star-row"><span class="sk">A</span><p>Profiling and operator-level optimization around the vLLM bottlenecks — fusing operators, then testing and analysing them — with a series of technical write-ups covering single-operator, module, and end-to-end tests. Write-ups: <a href="https://github.com/OLIVER-XYP/Technological-Documents" target="_blank" rel="noopener noreferrer">Technological-Documents ↗</a></p></div>
           <div class="star-row"><span class="sk">R</span><p>(Ongoing.) On the operator path, end-to-end latency drops <b>~2–3%</b> in low-prefill / high-decode scenarios; PD disaggregation raises throughput <b>~13%</b> and cuts TTFT <b>~6%</b>.</p></div>
+<div class="td-embed" id="td-embed">
+  <div class="td-head">
+    <span class="td-kicker">Technical write-ups</span>
+    <span class="td-status" id="td-status" role="status" aria-live="polite"></span>
+  </div>
+  <ul id="td-ol" class="td-ol">
+    <noscript>
+      <li class="td-item">
+        <a class="td-github-link" href="https://github.com/OLIVER-XYP/Technological-Documents" target="_blank" rel="noopener noreferrer">Browse the write-ups on GitHub <span aria-hidden="true">↗</span></a>
+      </li>
+    </noscript>
+  </ul>
+  <p class="td-foot">
+    Sourced from <span class="type">Technological-Documents</span>; files and images stream from
+    <span class="type">raw.githubusercontent.com</span>.
+  </p>
+</div>
+
+<style>
+/* ---------------------------------------------------------------------------
+   Technical write-ups, embedded inside the UCloud project entry. Every
+   selector is namespaced under .td- so nothing leaks into the rest of the page.
+   Each row is COLLAPSED by default: only its English title shows until the row
+   is expanded.
+--------------------------------------------------------------------------- */
+.td-embed{position:relative;margin-top:22px;padding-top:18px;border-top:1px dashed var(--line);min-width:0}
+.td-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.td-status{font-family:'Courier Prime',monospace;font-size:11.5px;letter-spacing:.02em;color:var(--muted);line-height:1.5;min-height:1em}
+.td-status.is-err{color:var(--clay-deep)}
+.td-status a{color:var(--clay-deep)}
+.td-status a:hover{color:var(--clay)}
+.td-spin{
+  display:inline-block;width:10px;height:10px;margin-right:7px;vertical-align:-1px;
+  border:1.5px solid var(--line);border-top-color:var(--clay);border-radius:50%;
+  animation:tdspin .8s linear infinite;
+}
+@keyframes tdspin{to{transform:rotate(360deg)}}
+
+/* the collapsed row list */
+.td-ol{list-style:none;margin:0;padding:0;border:1.5px solid var(--line-soft);border-radius:6px;background:rgba(246,240,228,.5);overflow:hidden;min-width:0}
+.td-item{margin:0;padding:0}
+.td-item + .td-item{border-top:1px dashed var(--line)}
+.td-docbtn{
+  display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;cursor:pointer;
+  border:0;background:none;
+  font-family:'Fraunces',Georgia,'Noto Serif CJK SC','Source Han Serif SC','Songti SC','STSong','SimSun',serif;
+  font-size:17px;line-height:1.4;font-weight:500;color:var(--ink);
+  padding:13px 16px;transition:background .2s,color .2s;
+}
+.td-docbtn:hover{background:rgba(110,106,69,.07)}
+.td-docbtn:focus-visible{outline:2.5px solid var(--clay);outline-offset:-2.5px;position:relative;z-index:1}
+.td-docbtn .td-tri{
+  flex:none;display:inline-block;font-size:10px;color:var(--clay);
+  line-height:1.9;transition:transform .3s ease;
+}
+.td-docbtn[aria-expanded="true"]{background:rgba(187,90,56,.09)}
+.td-docbtn[aria-expanded="true"] .td-tri{transform:rotate(90deg)}
+.td-docbtn .td-t{min-width:0;overflow-wrap:anywhere}
+
+.td-note{
+  font-family:'Newsreader',Georgia,'Noto Serif CJK SC','Songti SC','SimSun',serif;
+  color:var(--muted);font-size:15.5px;line-height:1.55;margin:0;
+}
+.td-list .td-note{padding:12px 16px}
+.td-note a{color:var(--clay-deep)}
+.td-note a:hover{color:var(--clay)}
+.td-github-link{
+  font-family:'Courier Prime',monospace;font-size:12.5px;letter-spacing:.04em;color:var(--clay-deep);
+  text-decoration:none;border:1.5px solid var(--line);border-radius:4px;padding:9px 14px;display:inline-block;margin:10px 12px;
+  transition:border-color .2s,color .2s;
+}
+.td-github-link:hover{border-color:var(--clay);color:var(--clay)}
+
+/* the expanded body */
+.td-doc[hidden]{display:none}
+.td-doc{
+  padding:0 16px 20px 37px;
+  font-family:'Newsreader',Georgia,'Noto Serif CJK SC','Source Han Serif SC','Songti SC','STSong','SimSun',serif;
+  font-size:16px;line-height:1.7;color:var(--ink-soft);overflow-wrap:anywhere;
+}
+.td-dochead{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  padding:0 0 12px;margin-bottom:14px;border-bottom:1.5px dashed var(--line);
+}
+.td-kicker{font-family:'Courier Prime',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--clay)}
+.td-docname{
+  font-family:'Courier Prime',monospace;font-size:13px;color:var(--muted);
+  margin-top:6px;overflow-wrap:anywhere;
+}
+.td-docmeta{font-family:'Courier Prime',monospace;font-size:11.5px;color:var(--faint);margin-top:3px}
+.td-pane-link{
+  flex:none;font-family:'Courier Prime',monospace;font-size:11.5px;letter-spacing:.04em;line-height:1;
+  padding:8px 12px;border:1.5px solid var(--line);border-radius:4px;color:var(--ink-soft);
+  text-decoration:none;transition:border-color .2s,color .2s;
+}
+.td-pane-link:hover{border-color:var(--clay);color:var(--clay)}
+.td-pane-link:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px}
+
+.td-doc>*:first-child{margin-top:0}
+.td-doc h1,.td-doc h2,.td-doc h3,.td-doc h4,.td-doc h5,.td-doc h6{
+  font-family:'Fraunces',Georgia,'Noto Serif CJK SC','Source Han Serif SC','Songti SC','STSong','SimSun',serif;
+  font-weight:600;color:var(--ink);line-height:1.28;letter-spacing:-.015em;margin:24px 0 9px;
+}
+.td-doc h1{font-size:22px}
+.td-doc h2{font-size:19px;padding-bottom:5px;border-bottom:1px solid var(--line-soft)}
+.td-doc h3{font-size:17.5px}
+.td-doc h4,.td-doc h5,.td-doc h6{font-size:16px;color:var(--ink-soft)}
+.td-doc p{margin:0 0 13px}
+.td-doc ul,.td-doc ol{margin:0 0 13px;padding-left:22px}
+.td-doc li{margin-bottom:5px}
+.td-doc li>ul,.td-doc li>ol{margin:5px 0 4px}
+.td-doc .td-lpara{margin:5px 0 0}
+.td-doc a{color:var(--clay-deep);text-decoration-color:rgba(156,69,38,.45);text-decoration-thickness:1px;text-underline-offset:3px;overflow-wrap:anywhere}
+.td-doc a:hover{color:var(--clay)}
+.td-doc a:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px;border-radius:2px}
+.td-doc strong{color:var(--ink);font-weight:600}
+.td-doc del{color:var(--muted)}
+.td-doc code{
+  font-family:'Courier Prime','Noto Sans Mono CJK SC','Sarasa Mono SC','Microsoft YaHei',Consolas,monospace;
+  font-size:12.5px;background:rgba(110,106,69,.1);border:1px solid var(--line-soft);
+  border-radius:3px;padding:1px 5px;overflow-wrap:anywhere;
+}
+.td-doc pre{
+  font-family:'Courier Prime','Noto Sans Mono CJK SC','Sarasa Mono SC','Microsoft YaHei',Consolas,monospace;
+  font-size:12px;line-height:1.6;background:rgba(110,106,69,.08);border:1px solid var(--line-soft);
+  border-radius:4px;padding:12px 14px;margin:0 0 15px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+}
+.td-doc pre code{background:none;border:0;padding:0;font-size:12px;white-space:pre;overflow-wrap:normal}
+.td-doc blockquote{margin:0 0 15px;padding:2px 0 2px 14px;border-left:2.5px solid var(--line);color:var(--muted)}
+.td-doc blockquote p:last-child{margin-bottom:0}
+.td-doc hr{border:0;border-top:1.5px solid var(--line-soft);margin:22px 0}
+.td-doc img{max-width:100%;height:auto;border-radius:3px;border:1px solid var(--line-soft);vertical-align:middle}
+.td-doc .td-imgfail{
+  display:block;font-family:'Courier Prime','Noto Sans Mono CJK SC','Microsoft YaHei',monospace;
+  font-size:11px;color:var(--muted);border:1px dashed var(--line);border-radius:3px;
+  padding:13px 11px;margin:0 0 15px;background:rgba(242,235,221,.4);overflow-wrap:anywhere;
+}
+.td-doc .td-tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 15px}
+.td-doc table{border-collapse:collapse;width:100%;font-size:14.5px}
+.td-doc th,.td-doc td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.td-doc th{
+  background:rgba(110,106,69,.09);color:var(--ink);font-weight:600;white-space:nowrap;
+  font-family:'Fraunces',Georgia,'Noto Serif CJK SC','Songti SC','STSong','SimSun',serif;
+}
+.td-retry{
+  margin-left:6px;font:inherit;color:inherit;background:none;border:0;
+  border-bottom:1.5px solid currentColor;cursor:pointer;padding:0 0 1px;font-family:inherit;
+}
+.td-retry:hover{color:var(--clay)}
+.td-retry:focus-visible{outline:2px solid var(--clay);outline-offset:2px}
+
+.td-foot{font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:.02em;color:var(--faint);margin-top:12px;line-height:1.7}
+.td-foot a{color:var(--clay-deep)}
+
+@media (prefers-reduced-motion: reduce){
+  .td-spin{animation:none;border-top-color:var(--line)}
+  .td-docbtn .td-tri{transition:none}
+  .td-doc *{transition:none!important}
+}
+@media (max-width:560px){
+  .td-doc{padding:0 13px 18px 13px;font-size:15.5px}
+  .td-docbtn{padding:12px 13px;font-size:16px}
+}
+</style>
+
+<script>
+
+/* ===========================================================================
+   Technical-Documents section: live repository listing + in-page markdown
+   viewer.  Vanilla JS, no dependencies, one IIFE, no globals leaked.
+   =========================================================================== */
+(function () {
+  'use strict';
+
+  // The module runs unless the page explicitly opts out before this script.
+  if (window.TECHDOCS_BOOT === false) return;
+  var DEMO = /(?:[?&])demo=1/.test(location.search);
+
+  var OWNER  = 'OLIVER-XYP';
+  var REPO   = 'Technological-Documents';
+  var BRANCH = 'main';
+  var ROOT   = 'https://github.com/' + OWNER + '/' + REPO;
+  var RAW    = 'https://raw.githubusercontent.com/' + OWNER + '/' + REPO + '/' + BRANCH;
+  var API    = 'https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/';
+
+  var FETCH_MS = 9000;
+
+  var CACHE_LIST = 'td:list:' + OWNER + '/' + REPO;
+  var FIX_PREFIX = 'td:fix:' + OWNER + '/' + REPO + ':';   /* folder -> real .md name */
+  var DOC_PREFIX = 'td:doc:' + OWNER + '/' + REPO + ':';   /* document -> rendered html */
+
+  /* A tiny offline snapshot so ?demo=1 can exercise the whole UI with zero
+     network calls. It mirrors the real shape (folder docs + loose root .md). */
+  var DEMO_LIST = [
+    { name: 'GLM-5.2-FP8用hpc_ops作为后端的适配.md', kind: 'file', location: 'root' },
+    { name: 'DSA indexer多流重叠优化记录', kind: 'dir', location: 'folder' },
+    { name: 'NCU报错记录.md', kind: 'file', location: 'root' },
+    { name: 'B300 GLM-5.2-FP8 部署', kind: 'dir', location: 'folder' }
+  ];
+  var DEMO_MD = [
+    '# GLM\\-5\\.2\\-FP8用hpc\\_ops作为后端的适配（demo 快照）',
+    '',
+    '> DEMO MODE — \\?demo=1 时不请求 api.github.com；正式环境会从',
+    '> `raw.githubusercontent.com/OLIVER-XYP/Technological-Documents` 拉取仓库里的同名文件。',
+    '',
+    '**改动分四个阶段：**',
+    '',
+    '1. 后端盘点与维度适配判定',
+    '2. 算子库维度修复（`fused_rmsnorm_with_scale` 增加 hidden=6144）',
+    '3. A/B 压测 —— 4 组配置 × 每组 4 次 seeded 压测',
+    '4. 瓶颈定位与算子重写',
+    '',
+    '参考：https://docs\\.vllm\\.ai/en/stable/design/debug\\_vllm\\_compile/\\#use\\-tlparse',
+    '',
+    '```C++',
+    '  // 关键改动示意',
+    '  gemm_bf16xfp32::configure(split_k);',
+    '```',
+    '',
+    '截图（demo 下会显示“图片不可用”的回退提示）：',
+    '',
+    '![image.png](图片和附件/image.png)'
+  ].join('\n');
+
+  /* -------------------------------------------------------------------------
+     1. small helpers
+  ------------------------------------------------------------------------- */
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // Percent-encode ONE path segment. Never pass a whole path: encodeURIComponent
+  // would eat the "/" separators. Real paths here contain spaces, 、, ：, full
+  // width （） and CJK, so each segment is encoded and the path rejoined.
+  // DECODE FIRST: the documents reference their screenshots with ALREADY
+  // percent-encoded targets ("图片和附件/image%201.png"). Encoding those verbatim
+  // yields "image%25201.png", which 404s. decode -> encode is idempotent.
+  function encSeg(s) {
+    var v = String(s);
+    try { v = decodeURIComponent(v); } catch (e) { /* literal '%': keep as-is */ }
+    try {
+      return encodeURIComponent(v).replace(/[!'()*]/g, function (c) {
+        return '%' + c.charCodeAt(0).toString(16).toUpperCase();
+      });
+    } catch (e) { return v; }
+  }
+  function encPath(p) { return String(p).split('/').map(encSeg).join('/'); }
+
+  /* A built-in fallback listing. The unauthenticated api.github.com quota is
+     only 60 requests/hour PER CLIENT IP, and a visitor behind a shared
+     campus/office NAT routinely has none left - so the listing call must never
+     be what decides whether the section works. Fetching the documents
+     themselves goes through raw.githubusercontent.com (CDN-backed, no such
+     limit). The API call is therefore pure ENRICHMENT: when it does succeed it
+     can pick up documents added since this list was last updated.
+     Paths are exact; "vllm DSV4 mhc调优" deliberately breaks the
+     "<folder>/<folder>.md" convention, which is why it is listed explicitly. */
+  var KNOWN = [
+    { name: 'B300 GLM-5.2-FP8 部署', kind: 'dir', location: 'folder', docPath: 'B300 GLM-5.2-FP8 部署/B300 GLM-5.2-FP8 部署.md' },
+    { name: 'DSA indexer多流重叠优化记录', kind: 'dir', location: 'folder', docPath: 'DSA indexer多流重叠优化记录/DSA indexer多流重叠优化记录.md' },
+    { name: 'GLM-5.2-FP8用hpc_ops作为后端的适配.md', kind: 'file', location: 'root', docPath: 'GLM-5.2-FP8用hpc_ops作为后端的适配.md' },
+    { name: 'GLM-5.2-NVFP4、Kimi-K3测试报告（B300）', kind: 'dir', location: 'folder', docPath: 'GLM-5.2-NVFP4、Kimi-K3测试报告（B300）/GLM-5.2-NVFP4、Kimi-K3测试报告（B300）.md' },
+    { name: 'NCCL 通信算法', kind: 'dir', location: 'folder', docPath: 'NCCL 通信算法/NCCL 通信算法.md' },
+    { name: 'NCU讲解', kind: 'dir', location: 'folder', docPath: 'NCU讲解/NCU讲解.md' },
+    { name: 'Profiling细节', kind: 'dir', location: 'folder', docPath: 'Profiling细节/Profiling细节.md' },
+    { name: 'SGLang PD 分离梳理', kind: 'dir', location: 'folder', docPath: 'SGLang PD 分离梳理/SGLang PD 分离梳理.md' },
+    { name: 'vLLM PD分离性能测试', kind: 'dir', location: 'folder', docPath: 'vLLM PD分离性能测试/vLLM PD分离性能测试.md' },
+    { name: 'vllm DSV4 mhc调优', kind: 'dir', location: 'folder', docPath: 'vllm DSV4 mhc调优/TileLang 3. vllm DSV4 mhc调优.md' },
+    { name: 'vllm backend kernel benchmark', kind: 'dir', location: 'folder', docPath: 'vllm backend kernel benchmark/vllm backend kernel benchmark.md' },
+    { name: 'NCU报错记录.md', kind: 'file', location: 'root', docPath: 'NCU报错记录.md' },
+    { name: 'dynamo.md', kind: 'file', location: 'root', docPath: 'dynamo.md' },
+    { name: 'profile-deepseek-v4-complete.md', kind: 'file', location: 'root', docPath: 'profile-deepseek-v4-complete.md' },
+    { name: 'vLLM可用后端扫描：性能 & 精度.md', kind: 'file', location: 'root', docPath: 'vLLM可用后端扫描：性能 & 精度.md' },
+    { name: '完整流程与算子选择方法.md', kind: 'file', location: 'root', docPath: '完整流程与算子选择方法.md' }
+  ];
+
+  // The GitHub blob page for a document - derived when the entry carries no
+  // explicit .fallback (the API-derived entries set one; KNOWN does not).
+  function docFallback(doc) {
+    return doc.fallback || (ROOT + '/blob/' + BRANCH + '/' + encPath(doc.docPath));
+  }
+
+  // "3\.", "GLM\-5\.2", "debug\_vllm" -> the backslash escapes punctuation.
+  function unescapePunct(s) {
+    return String(s).replace(/\\([\\`*_{}\[\]()#+\-.!|>~])/g, '$1');
+  }
+
+  function slugify(text) {
+    return String(text).replace(/<[^>]*>/g, '').trim().toLowerCase()
+      .replace(/[^\w\u3000-\u303f\u4e00-\u9fff\u3040-\u30ff\uff00-\uffef\s-]/g, '')
+      .replace(/\s+/g, '-');
+  }
+
+  /* storage - always try/catch: private mode or a full quota degrades to memory */
+  function store(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }
+  function retrieve(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
+
+  /* -------------------------------------------------------------------------
+     2. network - one helper, hard timeout, never rejects on an HTTP status
+  ------------------------------------------------------------------------- */
+  function fetchText(url, ms) {
+    var ctl = (typeof AbortController === 'function') ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, ms || FETCH_MS);
+    var opts = { mode: 'cors', credentials: 'omit', redirect: 'follow' };
+    if (ctl) opts.signal = ctl.signal;
+    return fetch(url, opts).then(function (r) {
+      return r.text().then(function (t) {
+        clearTimeout(timer);
+        return { ok: r.ok, status: r.status, text: t };
+      });
+    }, function (err) {
+      clearTimeout(timer);
+      throw err;
+    });
+  }
+
+  /* -------------------------------------------------------------------------
+     3. the listing - the ONE api.github.com call of the happy path
+  ------------------------------------------------------------------------- */
+  function flatten(json) {
+    var out = [], i, e, name;
+    if (!json || !json.length) return out;
+    for (i = 0; i < json.length; i++) {
+      e = json[i];
+      if (!e || !e.name) continue;
+      name = String(e.name);
+      if (e.type === 'dir') {
+        if (name === '图片和附件') continue;              // an asset folder, not a doc
+        out.push({
+          name: name,
+          kind: 'dir',
+          location: 'folder',
+          docPath: name + '/' + name + '.md',             // convention; self-healed on 404
+          fallback: ROOT + '/blob/' + BRANCH + '/' + encPath(name + '/' + name + '.md')
+        });
+      } else if (/\.md$/i.test(name)) {
+        out.push({
+          name: name,
+          kind: 'file',
+          location: 'root',
+          docPath: name,
+          fallback: ROOT + '/blob/' + BRANCH + '/' + encPath(name)
+        });
+      }
+      /* anything else at the root is not a document and is ignored */
+    }
+    return out;
+  }
+
+  function loadListing() {
+    if (DEMO) return Promise.resolve({ list: DEMO_LIST, meta: 'demo · ' + DEMO_LIST.length + ' documents' });
+
+    var cached = retrieve(CACHE_LIST);
+    if (cached) {
+      try {
+        var p = JSON.parse(cached);
+        if (p && p.list && p.list.length) {
+          return Promise.resolve({ list: p.list, meta: 'cached · ' + p.list.length + ' documents' });
+        }
+      } catch (e) { /* corrupt entry - fall through to the network */ }
+    }
+
+    return fetchText(API + '?ref=' + encodeURIComponent(BRANCH), FETCH_MS).then(function (r) {
+      var json = null;
+      try { json = JSON.parse(r.text); } catch (e) { json = null; }
+      var list = flatten(json);
+      if (!r.ok || !list.length) return { list: [], meta: '', error: true };
+      store(CACHE_LIST, JSON.stringify({ list: list, at: Date.now() }));
+      return { list: list, meta: 'live · ' + list.length + ' documents' };
+    }, function () {
+      return { list: [], meta: '', error: true };
+    });
+  }
+
+  /* -------------------------------------------------------------------------
+     4. markdown -> html
+  ------------------------------------------------------------------------- */
+  // bare URLs: stop at whitespace, quotes, ASCII/CJK punctuation and our
+  // placeholder character; a leading char is captured and re-emitted so that
+  // URLs sitting after CJK punctuation ("…/38684、https://…") still split.
+  var RE_URL = /(^|[\s(\[（【「《〔、，。；：!！?？"'“”‘’»])((?:https?:\/\/)[^\s<>"'`\u0001\u3000-\u303f\uff01-\uff5f(),;\[\]]+)/g;
+  var BAD_URL = /^\s*(?:javascript|vbscript|data:text\/html)/i;
+
+  function isAbsolute(u) { return /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(u); }
+  function safeUrl(u) { return !BAD_URL.test(String(u || '')); }
+
+  // Resolve a markdown-relative target against the document's own folder.
+  //   kind 'img'  -> raw.githubusercontent.com (a plain file)
+  //   kind 'link' -> github.com/…/blob/…  (a readable page)
+  function resolveRel(base, value, kind) {
+    var raw = String(value == null ? '' : value).trim();
+    if (!raw) return null;
+    if (isAbsolute(raw) || raw.charAt(0) === '#') return raw;
+    var m = /^([^?#]*)([?#][\s\S]*)?$/.exec(raw);
+    var path = m[1] || '', suffix = m[2] || '';
+    var stack = base.dir ? base.dir.split('/') : [];
+    if (path.charAt(0) === '/') stack = [];               // repo-root absolute
+    path.split('/').forEach(function (seg) {
+      if (seg === '' || seg === '.') return;
+      if (seg === '..') { if (stack.length) stack.pop(); return; }
+      stack.push(seg);
+    });
+    if (!stack.length) return null;
+    return (kind === 'img' ? base.raw : base.html) + '/' + encPath(stack.join('/')) + suffix;
+  }
+
+  function inline(s, base) {
+    if (!s) return '';
+    s = String(s);
+    var spans = [];
+
+    // (a) inline code is protected first - its content must survive untouched
+    s = s.replace(/`([^`]*)`/g, function (m, c) {
+      spans.push('<code>' + esc(c) + '</code>');
+      return '\u0001' + (spans.length - 1) + '\u0001';
+    });
+
+    // (b) images (relative -> the sibling 图片和附件/ folder, via raw)
+    s = s.replace(/!\[([^\]]*)\]\(\s*([^)\s]+)(?:\s+[^)]*?)?\s*\)/g, function (m, alt, url) {
+      var txt = unescapePunct(alt) || '图片';
+      var u = resolveRel(base, unescapePunct(url), 'img');
+      if (!u || !safeUrl(u)) return esc(txt);
+      spans.push('<img src="' + esc(u) + '" alt="' + esc(txt) + '" loading="lazy">');
+      return '\u0001' + (spans.length - 1) + '\u0001';
+    });
+
+    // (c) markdown links
+    s = s.replace(/\[([^\]]*)\]\(\s*([^)\s]+)(?:\s+[^)]*?)?\s*\)/g, function (m, text, url) {
+      var u = resolveRel(base, unescapePunct(url), 'link');
+      if (!u || !safeUrl(u)) return unescapePunct(text);
+      var ext = /^(?:https?:)?\/\//i.test(u);
+      spans.push('<a href="' + esc(u) + '"' + (ext ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + unescapePunct(text) + '</a>');
+      return '\u0001' + (spans.length - 1) + '\u0001';
+    });
+
+    // (d) bare URLs, including backslash-escaped ones
+    s = s.replace(RE_URL, function (m, lead, url) {
+      var clean = unescapePunct(url).replace(/[.,;:]+$/, '');
+      if (!clean || !safeUrl(clean)) return m;
+      spans.push('<a href="' + esc(clean) + '" target="_blank" rel="noopener noreferrer">' + esc(clean) + '</a>');
+      return lead + '\u0001' + (spans.length - 1) + '\u0001';
+    });
+
+    // (e) escape the raw text left in place (real entities are kept), then
+    //     do emphasis - tags emitted by emphasis are created after the escape
+    //     pass, so they survive as markup instead of becoming &lt;strong&gt;
+    s = s.replace(/&(?!(?:[a-zA-Z][a-zA-Z0-9]{1,12}|#\d{1,7}|#x[0-9a-fA-F]{1,6});)/g, '&amp;')
+         .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+    s = s.replace(/\*\*(?=\S)([\s\S]*?\S)\*\*/g, '<strong>$1</strong>');
+    s = s.replace(/(^|[\s(\[“‘>])\*(?=\S)([^*\n]*?\S)\*/g, '$1<em>$2</em>');
+    s = s.replace(/~~(?=\S)([\s\S]*?\S)~~/g, '<del>$1</del>');
+
+    // (f) then unwrap the remaining backslash escapes, so an author's \* is
+    //     a literal asterisk (never re-read as markup) and \1. 概述 renders
+    //     as "1. 概述"
+    s = unescapePunct(s);
+
+    // (g) restore the protected pieces
+    s = s.replace(/\u0001(\d+)\u0001/g, function (m, n) { return spans[+n]; });
+    return s;
+  }
+
+  function listMarker(line) {
+    var m = /^(\s*)([-*+]|\d+[.)])\s+(.*)$/.exec(line);
+    if (!m) return null;
+    return { indent: m[1].replace(/\t/g, '    ').length, ordered: /^\d/.test(m[2]), text: m[3] };
+  }
+
+  function splitRow(line) {
+    var s = String(line).trim().replace(/^\|/, '').replace(/\|$/, '');
+    var out = [], cur = '', i = 0;
+    while (i < s.length) {
+      var ch = s.charAt(i);
+      if (ch === '\\' && i + 1 < s.length) { cur += s.charAt(i + 1); i += 2; continue; }
+      if (ch === '|') { out.push(cur); cur = ''; i++; continue; }
+      cur += ch; i++;
+    }
+    out.push(cur);
+    return out.map(function (c) { return c.trim(); });
+  }
+
+  function mdToHtml(src, base) {
+    var lines = String(src == null ? '' : src).replace(/\r\n?/g, '\n').replace(/^﻿/, '').split('\n');
+    var out = [], para = [], listStack = [], i = 0;
+
+    function flushPara() {
+      if (!para.length) return;
+      out.push('<p>' + inline(para.join(' '), base) + '</p>');
+      para = [];
+    }
+    function closeLists(indent) {
+      while (listStack.length && listStack[listStack.length - 1].indent > indent) {
+        var top = listStack.pop();
+        out.push('</li></' + top.tag + '>');
+      }
+    }
+
+    while (i < lines.length) {
+      var line = lines[i];
+
+      if (/^\s*$/.test(line)) { flushPara(); i++; continue; }
+
+      /* fenced code: contents are raw, never markdown */
+      if (/^\s*(`{3,}|~{3,})/.test(line)) {
+        flushPara(); closeLists(-1);
+        var fence = /^\s*(`{3,}|~{3,})\s*([^\s]*)/.exec(line);
+        var lang = fence ? fence[2] : '';
+        var buf = [];
+        i++;
+        while (i < lines.length && !/^\s*(`{3,}|~{3,})/.test(lines[i])) { buf.push(lines[i]); i++; }
+        i++;
+        out.push('<pre><code' + (lang ? ' class="language-' + esc(lang) + '"' : '') + '>' +
+                 esc(buf.join('\n')) + '</code></pre>');
+        continue;
+      }
+
+      /* ATX heading - ids are prefixed so they can never clash with the page.
+         Test and capture in ONE regex: testing on the raw line but capturing
+         from line.trim() used to disagree on a bare "## " (a heading with no
+         text after the hashes - two of them live in NCU讲解.md), which made
+         the match null and threw, blanking the whole document. */
+      var hm = /^\s*(#{1,6})(?:\s+(.*))?$/.exec(line);
+      if (hm) {
+        flushPara(); closeLists(-1);
+        var lvl = hm[1].length;
+        var htxt = hm[2] || '';
+        var id = slugify(htxt);
+        out.push('<h' + lvl + (id ? ' id="td-h-' + esc(id) + '"' : '') + '>' + inline(htxt, base) + '</h' + lvl + '>');
+        i++;
+        continue;
+      }
+
+      /* horizontal rule */
+      if (/^\s*(?:-{3,}|\*{3,}|_{3,})\s*$/.test(line)) { flushPara(); closeLists(-1); out.push('<hr>'); i++; continue; }
+
+      /* blockquote - recursed, so lists/code inside still work */
+      if (/^\s*>\s?/.test(line)) {
+        flushPara(); closeLists(-1);
+        var q = [];
+        while (i < lines.length && /^\s*>/.test(lines[i])) { q.push(lines[i].replace(/^\s*>\s?/, '')); i++; }
+        out.push('<blockquote>' + mdToHtml(q.join('\n'), base) + '</blockquote>');
+        continue;
+      }
+
+      /* pipe table (header row followed by a :---: separator row) */
+      if (line.indexOf('|') !== -1 && i + 1 < lines.length &&
+          /^[\s|:-]+$/.test(lines[i + 1]) && lines[i + 1].indexOf('-') !== -1) {
+        flushPara(); closeLists(-1);
+        var head = splitRow(line);
+        var aligns = splitRow(lines[i + 1]).map(function (c) {
+          var l = c.charAt(0) === ':', r = c.charAt(c.length - 1) === ':';
+          return l && r ? 'center' : (r ? 'right' : (l ? 'left' : ''));
+        });
+        i += 2;
+        var rows = [];
+        while (i < lines.length && lines[i].indexOf('|') !== -1 && !/^\s*$/.test(lines[i])) { rows.push(splitRow(lines[i])); i++; }
+        var t = '<div class="td-tablewrap"><table><thead><tr>';
+        head.forEach(function (c, n) {
+          t += '<th' + (aligns[n] ? ' style="text-align:' + aligns[n] + '"' : '') + '>' + inline(c, base) + '</th>';
+        });
+        t += '</tr></thead><tbody>';
+        rows.forEach(function (r) {
+          t += '<tr>';
+          for (var n = 0; n < head.length; n++) {
+            t += '<td' + (aligns[n] ? ' style="text-align:' + aligns[n] + '"' : '') + '>' + inline(r[n] || '', base) + '</td>';
+          }
+          t += '</tr>';
+        });
+        out.push(t + '</tbody></table></div>');
+        continue;
+      }
+
+      /* list item */
+      var mk = listMarker(line);
+      if (mk) {
+        flushPara();
+        var tag = mk.ordered ? 'ol' : 'ul';
+        if (listStack.length && listStack[listStack.length - 1].indent === mk.indent) {
+          out.push('</li>');
+        } else if (listStack.length && listStack[listStack.length - 1].indent < mk.indent) {
+          out.push('<' + tag + '>'); listStack.push({ tag: tag, indent: mk.indent });
+        } else {
+          closeLists(mk.indent);
+          if (listStack.length && listStack[listStack.length - 1].indent === mk.indent) { out.push('</li>'); }
+          else { out.push('<' + tag + '>'); listStack.push({ tag: tag, indent: mk.indent }); }
+        }
+        out.push('<li>' + inline(mk.text, base));
+        i++;
+        while (i < lines.length) {
+          var nl = lines[i];
+          if (/^\s*$/.test(nl)) break;
+          if (/^\s*(`{3,}|~{3,})/.test(nl)) break;
+          if (/^#{1,6}\s+/.test(nl)) break;
+          if (listMarker(nl)) break;
+          if (nl.replace(/\t/g, '    ').match(/^\s*/)[0].length > mk.indent) {
+            out.push('<div class="td-lpara">' + inline(nl.trim(), base) + '</div>');
+            i++;
+            continue;
+          }
+          break;
+        }
+        continue;
+      }
+
+      /* paragraph */
+      // A paragraph at or left of the open list's indent ENDS the list. Without
+      // this it is emitted while <li> is still open and nests inside the last item.
+      if (listStack.length) {
+        var pind = line.replace(/\t/g, '    ').match(/^\s*/)[0].length;
+        if (pind <= listStack[listStack.length - 1].indent) { flushPara(); closeLists(-1); }
+      }
+      para.push(line.trim());
+      i++;
+    }
+
+    flushPara(); closeLists(-1);
+    return out.join('\n');
+  }
+
+  /* -------------------------------------------------------------------------
+     5. sanitise. Script/iframe/object/form elements, every on* attribute and
+        javascript: URL are removed from the markdown-derived HTML before it is
+        inserted - on an INERT <template> fragment, where scripts cannot run
+        and images cannot load.
+  ------------------------------------------------------------------------- */
+  var DROP = { SCRIPT:1, IFRAME:1, OBJECT:1, EMBED:1, FORM:1, INPUT:1, BUTTON:1,
+    TEXTAREA:1, SELECT:1, OPTION:1, DATALIST:1, STYLE:1, LINK:1, META:1, BASE:1,
+    NOSCRIPT:1, FRAME:1, FRAMESET:1, APPLET:1, AUDIO:1, VIDEO:1, SOURCE:1,
+    TRACK:1, CANVAS:1, SVG:1, MATH:1, MARQUEE:1, TEMPLATE:1 };
+  var KEEP_ATTR = { href:1, src:1, alt:1, title:1, width:1, height:1, align:1,
+    id:1, colspan:1, rowspan:1, start:1, open:1, datetime:1, cite:1, class:1 };
+
+  function cleanHTML(html, base) {
+    var tpl = document.createElement('template');
+    tpl.innerHTML = String(html == null ? '' : html);
+    var frag = tpl.content;
+    var i;
+
+    /* comments */
+    var comments = [], cn;
+    var cit = document.createTreeWalker(frag, NodeFilter.SHOW_COMMENT, null, false);
+    while ((cn = cit.nextNode())) comments.push(cn);
+    comments.forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
+
+    var drops = [], el;
+    var it = document.createTreeWalker(frag, NodeFilter.SHOW_ELEMENT, null, false);
+    while ((el = it.nextNode())) {
+      // Foreign-namespace nodes (SVG/MathML) keep a LOWER-CASE tagName, so a
+      // plain DROP[el.tagName] lookup never matches them and an <svg><script>
+      // would sail through. Judge by the canonical upper-case name, and drop
+      // anything that is not plain HTML.
+      var tn = String(el.tagName || '').toUpperCase();
+      if (DROP[tn] || (el.namespaceURI && el.namespaceURI !== 'http://www.w3.org/1999/xhtml')) {
+        drops.push(el);
+        continue;
+      }
+
+      var attrs = [];
+      for (i = 0; i < el.attributes.length; i++) attrs.push(el.attributes[i]);
+      attrs.forEach(function (a) {
+        var n = a.name.toLowerCase();
+        if (n.slice(0, 2) === 'on' || n === 'style' || n === 'srcdoc' ||
+            n === 'action' || n === 'formaction' || n === 'srcset' || n === 'ping') {
+          el.removeAttribute(a.name);
+          return;
+        }
+        if (n !== 'href' && n !== 'src' && !KEEP_ATTR[n]) { el.removeAttribute(a.name); return; }
+        if (!safeUrl(a.value)) { el.removeAttribute(a.name); return; }
+        // ONLY href/src are URLs. Every other kept attribute (id, class, alt,
+        // width, height, align, colspan, start, datetime, cite) is literal text
+        // and must survive untouched - resolving it turned
+        // class="td-tablewrap" into "https://github.com/.../td-tablewrap",
+        // silently breaking the wide-table scroll wrapper, the code-language
+        // classes and the heading anchors.
+        if (n === 'href' || n === 'src') {
+          var fixed = resolveRel(base, a.value, n === 'src' ? 'img' : 'link');
+          if (fixed === null) el.removeAttribute(a.name);
+          else el.setAttribute(a.name, fixed);
+        }
+      });
+
+      if (tn === 'IMG') {
+        el.setAttribute('loading', 'lazy');
+        if (!el.getAttribute('src')) drops.push(el);
+      } else if (tn === 'A') {
+        var href = el.getAttribute('href');
+        if (!href) continue;
+        if (/^https?:/i.test(href)) { el.setAttribute('target', '_blank'); el.setAttribute('rel', 'noopener noreferrer'); }
+        else if (href.charAt(0) === '#') { el.removeAttribute('target'); }
+        else if (/^data:/i.test(href)) { el.removeAttribute('href'); }
+      }
+    }
+    drops.forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
+
+    var holder = document.createElement('div');
+    holder.appendChild(frag);
+    return holder.innerHTML;
+  }
+  /* -------------------------------------------------------------------------
+     6. UI - an accordion. EVERY row starts collapsed and shows only its
+        English title; opening one renders that write-up in place. Nothing is
+        fetched until a row is opened, and only one row is open at a time.
+  ------------------------------------------------------------------------- */
+  // English display titles. The repository's own (Chinese) file and folder
+  // names are kept verbatim and shown in the expanded header, so nothing is
+  // lost and the GitHub link still matches the real path.
+  var TITLES = {
+    'B300 GLM-5.2-FP8 部署': 'Deploying GLM-5.2-FP8 on B300',
+    'DSA indexer多流重叠优化记录': 'DSA Indexer: Multi-Stream Overlap Optimization',
+    'GLM-5.2-FP8用hpc_ops作为后端的适配.md': 'Adapting GLM-5.2-FP8 to the hpc_ops Backend',
+    'GLM-5.2-NVFP4、Kimi-K3测试报告（B300）': 'GLM-5.2-NVFP4 and Kimi-K3 Test Report (B300)',
+    'NCCL 通信算法': 'NCCL Communication Algorithms',
+    'NCU讲解': 'NCU Walkthrough',
+    'Profiling细节': 'Profiling Details',
+    'SGLang PD 分离梳理': 'SGLang PD Disaggregation Overview',
+    'vLLM PD分离性能测试': 'vLLM PD Disaggregation Performance Test',
+    'vllm DSV4 mhc调优': 'vLLM DSV4 MHC Tuning',
+    'vllm backend kernel benchmark': 'vLLM Backend Kernel Benchmark',
+    'NCU报错记录.md': 'NCU Error Log',
+    'dynamo.md': 'Dynamo',
+    'profile-deepseek-v4-complete.md': 'DeepSeek-V4 Profiling (complete run)',
+    'vLLM可用后端扫描：性能 & 精度.md': 'vLLM Backend Scan: Performance & Accuracy',
+    '完整流程与算子选择方法.md': 'Complete Workflow and Kernel Selection'
+  };
+
+  var statusEl = document.getElementById('td-status');
+  var listEl   = document.getElementById('td-ol');
+  if (!statusEl || !listEl) return;
+
+  var listing = [];        /* flattened documents */
+  var state = {};          /* document name -> {html} | {error} */
+  var inflight = {};       /* document name -> Promise */
+  var openIdx = -1;        /* the one expanded row, -1 = all collapsed */
+
+  function setStatus(kind, html) {
+    statusEl.className = 'td-status' + (kind ? ' is-' + kind : '');
+    statusEl.innerHTML = html || '';
+  }
+
+  function repoFallbackHTML() {
+    return '<li class="td-item"><a class="td-github-link" href="' + esc(ROOT) +
+      '" target="_blank" rel="noopener noreferrer">Browse the write-ups on GitHub ' +
+      '<span aria-hidden="true">\u2197</span></a></li>';
+  }
+
+  function docTitle(doc) { return TITLES[doc.name] || doc.title || doc.name; }
+
+  function renderList() {
+    if (!listing.length) { listEl.innerHTML = repoFallbackHTML(); return; }
+    var out = '';
+    for (var i = 0; i < listing.length; i++) {
+      out += '<li class="td-item">' +
+        '<button type="button" class="td-docbtn" data-i="' + i + '"' +
+        ' aria-expanded="false" aria-controls="td-doc-' + i + '">' +
+        '<span class="td-tri" aria-hidden="true">\u25b8</span>' +
+        '<span class="td-t">' + esc(docTitle(listing[i])) + '</span>' +
+        '</button>' +
+        '<div class="td-doc" id="td-doc-' + i + '" hidden></div>' +
+        '</li>';
+    }
+    listEl.innerHTML = out;
+  }
+
+  function btnFor(i) { return listEl.querySelector('.td-docbtn[data-i="' + i + '"]'); }
+  function bodyFor(i) { return document.getElementById('td-doc-' + i); }
+
+  // The expanded head: what it is, the repository's own name for it, and a
+  // link out. Kept out of cleanHTML()'s reach, so it is authored, not sanitised.
+  function docHeadHTML(doc) {
+    var meta = (doc.location === 'folder' ? 'folder document' : 'markdown file') +
+               ' \u00b7 ' + BRANCH;
+    return '<div class="td-dochead">' +
+        '<div>' +
+          '<div class="td-kicker">Technical document</div>' +
+          '<div class="td-docname">' + esc(doc.name) + '</div>' +
+          '<div class="td-docmeta">' + esc(meta) + '</div>' +
+        '</div>' +
+        '<a class="td-pane-link" href="' + esc(docFallback(doc)) + '" target="_blank"' +
+        ' rel="noopener noreferrer">Open on GitHub <span aria-hidden="true">\u2197</span></a>' +
+      '</div>';
+  }
+
+  function setRow(i, open) {
+    var b = btnFor(i), d = bodyFor(i);
+    if (b) b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (d) d.hidden = !open;
+  }
+
+  function toggleRow(i, force) {
+    if (openIdx === i && !force) { setRow(i, false); openIdx = -1; return; }
+    if (openIdx >= 0 && openIdx !== i) setRow(openIdx, false);
+    openIdx = i;
+    setRow(i, true);
+    loadInto(i, force);
+  }
+
+  function loadInto(i, force) {
+    var doc = listing[i];
+    var d = bodyFor(i);
+    if (!doc || !d) return;
+
+    var cached = (state[doc.name] && state[doc.name].html) || retrieve(DOC_PREFIX + doc.name);
+    if (cached && !force) {
+      state[doc.name] = { html: cached };
+      d.innerHTML = docHeadHTML(doc) + cached;
+      return;
+    }
+
+    d.innerHTML = docHeadHTML(doc) +
+      '<p class="td-note"><span class="td-spin" aria-hidden="true"></span>Fetching\u2026</p>';
+
+    loadDoc(doc).then(function (html) {
+      if (openIdx !== i) return;                 // visitor moved to another row
+      if (html) { d.innerHTML = docHeadHTML(doc) + html; return; }
+      var msg = (state[doc.name] || {}).error || 'Could not load this document.';
+      d.innerHTML = docHeadHTML(doc) +
+        '<p class="td-note">' + esc(msg) + ' The file is always on GitHub: ' +
+        '<a href="' + esc(docFallback(doc)) + '" target="_blank" rel="noopener noreferrer">open ' +
+        esc(doc.name) + ' \u2197</a> ' +
+        '<button type="button" class="td-retry" data-retry="' + i + '">Try again</button></p>';
+    });
+  }
+
+  function baseFor(doc) {
+    return {
+      dir: (doc.location === 'folder') ? doc.name : '',
+      raw: RAW,
+      html: ROOT + '/blob/' + BRANCH
+    };
+  }
+
+  function markdownURL(relPath) { return RAW + '/' + encPath(relPath); }
+
+  // Self-heal: a folder's document is normally "<folder>/<folder>.md", but one
+  // folder in this repo breaks that rule ("vllm DSV4 mhc调优" holds
+  // "TileLang 3. vllm DSV4 mhc调优.md"). Only when the conventional raw URL
+  // 404s do we spend ONE extra contents call to learn the real name, and the
+  // answer is cached for the session (FIX_PREFIX).
+  function resolveDocPath(doc) {
+    var key = FIX_PREFIX + doc.name;
+    var known = retrieve(key);
+    if (known) return Promise.resolve(doc.name + '/' + known);
+    return fetchText(API + encPath(doc.name) + '?ref=' + encodeURIComponent(BRANCH), FETCH_MS).then(function (r) {
+      var json = null;
+      try { json = JSON.parse(r.text); } catch (e) { json = null; }
+      if (!r.ok || !json || !json.length) return null;
+      var md = null;
+      for (var i = 0; i < json.length; i++) {
+        if (/\.md$/i.test((json[i] && json[i].name) || '')) { md = json[i].name; break; }
+      }
+      if (!md) return null;
+      store(key, md);
+      return doc.name + '/' + md;
+    }, function () { return null; });
+  }
+
+  function fetchDocText(doc) {
+    return fetchText(markdownURL(doc.docPath), FETCH_MS).then(function (r) {
+      if (r.ok) return { text: r.text };
+      if (doc.kind !== 'dir') return null;
+      return resolveDocPath(doc).then(function (rel) {
+        if (!rel) return null;
+        return fetchText(markdownURL(rel), FETCH_MS).then(function (r2) {
+          if (!r2.ok) return null;
+          doc.docPath = rel;                       /* remember for the GitHub link */
+          doc.fallback = ROOT + '/blob/' + BRANCH + '/' + encPath(rel);
+          return { text: r2.text };
+        });
+      });
+    });
+  }
+
+  function loadDoc(doc) {
+    var key = doc.name;
+    if (state[key] && state[key].html) return Promise.resolve(state[key].html);
+    if (inflight[key]) return inflight[key];
+
+    if (DEMO) {
+      var demoHTML = cleanHTML(mdToHtml(DEMO_MD, baseFor(doc)), baseFor(doc));
+      state[key] = { html: demoHTML };
+      return Promise.resolve(demoHTML);
+    }
+    if (navigator.onLine === false) {
+      state[key] = { error: 'You appear to be offline.' };
+      return Promise.resolve(null);
+    }
+
+    var p = fetchDocText(doc).then(function (res) {
+      if (!res || !String(res.text).trim()) {
+        state[key] = { error: res ? 'The document is empty.' : 'Could not load this document.' };
+        return null;
+      }
+      var base = baseFor(doc), html = '';
+      try { html = cleanHTML(mdToHtml(res.text, base), base); } catch (e) { html = ''; }
+      if (!html.trim()) { state[key] = { error: 'The document could not be rendered.' }; return null; }
+      state[key] = { html: html };
+      store(DOC_PREFIX + key, html);
+      return html;
+    }, function () {
+      state[key] = { error: 'Could not load this document.' };
+      return null;
+    });
+
+    inflight[key] = p.then(function (html) { delete inflight[key]; return html; },
+                           function () { delete inflight[key]; return null; });
+    return inflight[key];
+  }
+
+  /* ---- events ---- */
+  listEl.addEventListener('click', function (ev) {
+    var t = ev.target;
+    var retry = t.closest ? t.closest('.td-retry') : null;
+    if (retry) { toggleRow(+retry.getAttribute('data-retry'), true); return; }
+    var btn = t.closest ? t.closest('.td-docbtn') : null;
+    if (!btn) return;
+    toggleRow(+btn.getAttribute('data-i'), false);
+  });
+
+  listEl.addEventListener('keydown', function (ev) {
+    var k = ev.key;
+    if (k !== 'ArrowDown' && k !== 'ArrowUp' && k !== 'Home' && k !== 'End') return;
+    if (!listing.length) return;
+    ev.preventDefault();
+    var i = openIdx < 0 ? 0 : openIdx;
+    if (k === 'ArrowDown') i = Math.min(i + 1, listing.length - 1);
+    else if (k === 'ArrowUp') i = Math.max(i - 1, 0);
+    else if (k === 'Home') i = 0;
+    else i = listing.length - 1;
+    var b = btnFor(i);
+    if (b) b.focus();
+  });
+
+  /* a broken screenshot becomes a note, never a hole in the page */
+  listEl.addEventListener('error', function (ev) {
+    var img = ev.target;
+    if (!img || img.tagName !== 'IMG' || img.getAttribute('data-td-failed')) return;
+    var note = document.createElement('span');
+    note.className = 'td-imgfail';
+    note.textContent = img.getAttribute('alt')
+      ? '\u56fe\u7247\u4e0d\u53ef\u7528 \u00b7 ' + img.getAttribute('alt')
+      : '\u56fe\u7247\u4e0d\u53ef\u7528';
+    if (img.parentNode) img.parentNode.replaceChild(note, img);
+  }, true);
+
+  /* ---- boot: lazy, and NOTHING is expanded by default ---- */
+  var booted = false;
+  function start() {
+    if (booted) return;
+    booted = true;
+    setStatus('load', '<span class="td-spin" aria-hidden="true"></span>');
+    loadListing().then(function (res) {
+      var meta;
+      if (res.error || !res.list.length) {
+        // The listing is enrichment only: fall back to the built-in list so the
+        // section still works when the 60/hour IP quota is exhausted.
+        listing = KNOWN;
+        meta = 'index not refreshed';
+      } else {
+        listing = res.list;
+        meta = esc(res.meta);
+      }
+      renderList();
+      setStatus('', meta + ' \u00b7 <a href="' + esc(ROOT) +
+        '" target="_blank" rel="noopener noreferrer">browse on GitHub \u2197</a>');
+    });
+  }
+
+  var secEl = document.getElementById('td-embed');
+  if (!DEMO && secEl && typeof IntersectionObserver === 'function') {
+    var bio = new IntersectionObserver(function (entries) {
+      for (var n = 0; n < entries.length; n++) {
+        if (entries[n].isIntersecting) { bio.disconnect(); start(); return; }
+      }
+    }, { rootMargin: '400px 0px' });
+    bio.observe(secEl);
+  } else {
+    start();
+  }
+})();
+</script>
         </div></div></div>
       </div>
     </div>
@@ -494,7 +1477,7 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
           most cells yet closes essentially none of the gap pairs.</p>
         </div>
         <figure class="pub-figure">
-          <img src="mid-training-coverage.png" alt="Mid-only accuracy across mid-training data coverage levels" loading="lazy">
+          <img src="fig_midtrain_domain_lines.svg" alt="Per-domain evaluation accuracy plotted against the domain's portion of mid-training coverage, showing an interior optimum for each of the five KOR-Bench domains" loading="lazy">
         </figure>
       </div>
     </div>
@@ -1497,1054 +2480,9 @@ footer{border-top:1.5px solid var(--ink);margin-top:20px}
   });
 })();
 </script>
-
-<!-- ====================================================================
-     MODULE: UCloud writes - Technological-Documents browser
-     ==================================================================== -->
-
-<section id="tech" class="td-sec">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="no">05</span><h2>UCloud <em>writes</em></h2></div>
-
-    <p class="td-lede reveal">
-      The working log of the <b>UCloud · AI Infra internship</b>, copied straight from
-      <span class="type">Technological-Documents</span>. Every entry is a real report; each
-      screenshot it cites is pulled from the folder's sibling
-      <span class="type">图片和附件/</span> and shown here.
-    </p>
-
-    <div class="td-status" id="td-status" role="status" aria-live="polite"></div>
-
-    <div class="td-cols">
-      <nav class="td-list" aria-label="Technical documents">
-        <ul id="td-ol" class="td-ol">
-          <noscript>
-            <li class="td-item">
-              <a class="td-github-link" href="https://github.com/OLIVER-XYP/Technological-Documents" target="_blank" rel="noopener noreferrer">Browse the docs on GitHub <span aria-hidden="true">↗</span></a>
-            </li>
-          </noscript>
-        </ul>
-      </nav>
-
-      <aside class="td-pane" id="td-pane" aria-label="Document preview" hidden>
-        <div class="td-pane-head">
-          <div class="td-pane-id">
-            <div class="td-kicker">Technical document</div>
-            <h3 class="td-pane-title" id="td-pane-title"></h3>
-            <div class="td-pane-meta" id="td-pane-meta"></div>
-          </div>
-          <a class="td-pane-link" id="td-pane-link" target="_blank" rel="noopener noreferrer" href="#">Open on GitHub <span aria-hidden="true">↗</span></a>
-        </div>
-        <div class="td-doc" id="td-doc" tabindex="-1"></div>
-      </aside>
-    </div>
-
-    <p class="td-foot">
-      Files and images stream from <span class="type">raw.githubusercontent.com</span> ·
-      one listing call per session, then nothing ·
-      <a href="https://github.com/OLIVER-XYP/Technological-Documents" target="_blank" rel="noopener noreferrer">the whole repo ↗</a>.
-    </p>
-  </div>
-</section>
-
-<style>
-/* ---------------------------------------------------------------------------
-   Technical-Documents section. Every selector is namespaced under .td- so
-   nothing here can collide with the .gh- repo module or the rest of the page.
---------------------------------------------------------------------------- */
-.td-sec{position:relative}
-.td-lede{max-width:660px;margin:-24px 0 28px;color:var(--muted);font-size:18px;line-height:1.6}
-.td-lede b{color:var(--ink);font-weight:500}
-.td-lede .type{font-size:15.5px}
-.td-foot{font-family:'Courier Prime',monospace;font-size:11.5px;letter-spacing:.02em;color:var(--faint);margin-top:20px;line-height:1.7}
-.td-foot a{color:var(--clay-deep)}
-.td-foot a:hover{color:var(--clay)}
-
-/* status line - present for every state, never a permanent spinner */
-.td-status{font-family:'Courier Prime','Noto Sans Mono CJK SC','Microsoft YaHei',monospace;font-size:12.5px;line-height:1.6;margin-bottom:16px;min-height:1.3em}
-.td-status.is-load,.td-status.is-err{margin-bottom:18px}
-.td-status.is-err{color:var(--clay-deep)}
-.td-status.is-err a{color:var(--clay-deep);font-weight:700}
-.td-status.is-err a:hover{color:var(--clay)}
-.td-spin{
-  display:inline-block;width:11px;height:11px;margin-right:8px;vertical-align:-1px;
-  border:1.5px solid var(--line);border-top-color:var(--clay);border-radius:50%;
-  animation:tdspin .8s linear infinite;
-}
-@keyframes tdspin{to{transform:rotate(360deg)}}
-
-/* two columns: list | pane; single column below 880px */
-.td-cols{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:24px;align-items:start}
-@media (max-width:880px){.td-cols{grid-template-columns:1fr;gap:18px}}
-
-/* the document list */
-.td-list{border:1.5px solid var(--line-soft);border-radius:6px;background:rgba(246,240,228,.5);overflow:hidden;min-width:0}
-.td-ol{list-style:none;margin:0;padding:6px 0}
-.td-item{margin:0;padding:0}
-.td-item + .td-item{border-top:1px dashed var(--line)}
-.td-docbtn{
-  display:block;width:100%;text-align:left;cursor:pointer;border:0;background:none;
-  font-family:'Newsreader',Georgia,'Noto Serif CJK SC','Source Han Serif SC','Songti SC','STSong','SimSun',serif;
-  font-size:16.5px;line-height:1.4;color:var(--ink-soft);padding:12px 30px 12px 36px;position:relative;
-  transition:color .2s,background .2s;
-}
-.td-docbtn::before{
-  content:"";position:absolute;left:15px;top:50%;transform:translateY(-50%);
-  width:7px;height:7px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);
-  transition:background .2s,border-color .2s;
-}
-.td-docbtn .td-tri{display:inline-block;position:absolute;right:13px;top:50%;transform:translateY(-50%);font-size:9px;color:var(--faint);transition:transform .3s ease}
-.td-docbtn:hover{background:rgba(110,106,69,.06);color:var(--ink)}
-.td-docbtn:hover .td-tri{color:var(--clay)}
-.td-docbtn[aria-selected="true"]{background:rgba(187,90,56,.09);color:var(--ink);font-weight:500}
-.td-docbtn[aria-selected="true"]::before{background:var(--clay);border-color:var(--clay)}
-.td-docbtn[aria-selected="true"] .td-tri{transform:translateY(-50%) rotate(90deg);color:var(--clay)}
-.td-docbtn:focus-visible{outline:2.5px solid var(--clay);outline-offset:-2.5px;position:relative;z-index:1}
-
-.td-note{
-  font-family:'Newsreader',Georgia,'Noto Serif CJK SC','Songti SC','SimSun',serif;
-  color:var(--muted);font-size:16px;line-height:1.55;margin:0;
-}
-.td-list .td-note{padding:12px 16px}
-.td-note a{color:var(--clay-deep)}
-.td-note a:hover{color:var(--clay)}
-.td-github-link{
-  font-family:'Courier Prime',monospace;font-size:13px;letter-spacing:.04em;color:var(--clay-deep);
-  text-decoration:none;border:1.5px solid var(--line);border-radius:4px;padding:9px 14px;display:inline-block;margin:10px 12px;
-  transition:border-color .2s,color .2s;
-}
-.td-github-link:hover{border-color:var(--clay);color:var(--clay)}
-.td-github-link:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px}
-
-/* the shared reading pane */
-.td-pane{
-  background:var(--card);border:1.5px solid var(--line);border-radius:6px;min-width:0;
-  box-shadow:6px 7px 0 rgba(42,37,32,.06);overflow:hidden;
-  animation:tdfade .35s cubic-bezier(.2,.7,.2,1) both;
-}
-@keyframes tdfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.td-pane[hidden]{display:none}
-.td-pane-head{
-  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  padding:20px 26px 16px;border-bottom:1.5px dashed var(--line);
-}
-.td-pane-id{min-width:0}
-.td-kicker{font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--clay)}
-.td-pane-title{
-  font-family:'Fraunces',Georgia,'Noto Serif CJK SC','Source Han Serif SC','Songti SC','STSong','SimSun',serif;
-  font-weight:600;font-size:23px;line-height:1.25;letter-spacing:-.015em;margin:8px 0 0;overflow-wrap:anywhere;
-}
-.td-pane-meta{font-family:'Courier Prime','Noto Sans Mono CJK SC','Microsoft YaHei',monospace;font-size:12px;color:var(--muted);margin-top:7px}
-.td-pane-link{
-  flex:none;font-family:'Courier Prime',monospace;font-size:12.5px;letter-spacing:.04em;line-height:1;
-  padding:9px 14px;border:1.5px solid var(--line);border-radius:4px;color:var(--ink-soft);
-  text-decoration:none;transition:border-color .2s,color .2s;
-}
-.td-pane-link:hover{border-color:var(--clay);color:var(--clay)}
-.td-pane-link:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px}
-
-/* the rendered markdown surface */
-.td-doc{
-  padding:22px 26px 30px;max-width:820px;
-  font-family:'Newsreader',Georgia,'Noto Serif CJK SC','Source Han Serif SC','Songti SC','STSong','SimSun',serif;
-  font-size:17px;line-height:1.72;color:var(--ink-soft);overflow-wrap:anywhere;
-}
-.td-doc:empty{display:none}
-.td-doc>*:first-child{margin-top:0}
-.td-doc h1,.td-doc h2,.td-doc h3,.td-doc h4,.td-doc h5,.td-doc h6{
-  font-family:'Fraunces',Georgia,'Noto Serif CJK SC','Source Han Serif SC','Songti SC','STSong','SimSun',serif;
-  font-weight:600;color:var(--ink);line-height:1.28;letter-spacing:-.015em;margin:28px 0 10px;
-}
-.td-doc h1{font-size:27px}
-.td-doc h2{font-size:23px;padding-bottom:6px;border-bottom:1px solid var(--line-soft)}
-.td-doc h3{font-size:20px;color:var(--ink)}
-.td-doc h4,.td-doc h5,.td-doc h6{font-size:17px;color:var(--ink-soft)}
-.td-doc p{margin:0 0 14px}
-.td-doc ul,.td-doc ol{margin:0 0 14px;padding-left:24px}
-.td-doc li{margin-bottom:6px}
-.td-doc li>ul,.td-doc li>ol{margin:6px 0 4px}
-.td-doc .td-lpara{margin:6px 0 0}
-.td-doc a{color:var(--clay-deep);text-decoration-color:rgba(156,69,38,.45);text-decoration-thickness:1px;text-underline-offset:3px;overflow-wrap:anywhere}
-.td-doc a:hover{color:var(--clay)}
-.td-doc a:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px;border-radius:2px}
-.td-doc strong{color:var(--ink);font-weight:600}
-.td-doc em{font-style:italic}
-.td-doc del{color:var(--muted)}
-.td-doc code{
-  font-family:'Courier Prime','Noto Sans Mono CJK SC','Sarasa Mono SC','Microsoft YaHei',Consolas,monospace;
-  font-size:13.5px;background:rgba(110,106,69,.1);border:1px solid var(--line-soft);
-  border-radius:3px;padding:1px 5px;overflow-wrap:anywhere;
-}
-.td-doc pre{
-  font-family:'Courier Prime','Noto Sans Mono CJK SC','Sarasa Mono SC','Microsoft YaHei',Consolas,monospace;
-  font-size:13px;line-height:1.6;background:rgba(110,106,69,.08);border:1px solid var(--line-soft);
-  border-radius:4px;padding:14px 16px;margin:0 0 16px;overflow-x:auto;-webkit-overflow-scrolling:touch;
-}
-.td-doc pre code{background:none;border:0;padding:0;font-size:13px;white-space:pre;overflow-wrap:normal}
-.td-doc blockquote{margin:0 0 16px;padding:2px 0 2px 16px;border-left:2.5px solid var(--line);color:var(--muted)}
-.td-doc blockquote p:last-child{margin-bottom:0}
-.td-doc hr{border:0;border-top:1.5px solid var(--line-soft);margin:26px 0}
-.td-doc img{max-width:100%;height:auto;border-radius:3px;border:1px solid var(--line-soft);vertical-align:middle}
-.td-doc .td-imgfail{
-  display:block;font-family:'Courier Prime','Noto Sans Mono CJK SC','Microsoft YaHei',monospace;
-  font-size:11.5px;color:var(--muted);border:1px dashed var(--line);border-radius:3px;
-  padding:14px 12px;margin:0 0 16px;background:rgba(242,235,221,.4);overflow-wrap:anywhere;
-}
-.td-doc .td-tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 16px}
-.td-doc table{border-collapse:collapse;width:100%;font-size:15.5px}
-.td-doc th,.td-doc td{border:1px solid var(--line);padding:7px 11px;text-align:left;vertical-align:top}
-.td-doc th{
-  background:rgba(110,106,69,.09);color:var(--ink);font-weight:600;white-space:nowrap;
-  font-family:'Fraunces',Georgia,'Noto Serif CJK SC','Songti SC','STSong','SimSun',serif;
-}
-.td-retry{
-  margin-left:8px;font:inherit;color:inherit;background:none;border:0;
-  border-bottom:1.5px solid currentColor;cursor:pointer;padding:0 0 1px;font-family:inherit;
-}
-.td-retry:hover{color:var(--clay)}
-.td-retry:focus-visible{outline:2px solid var(--clay);outline-offset:2px}
-
-@media (prefers-reduced-motion: reduce){
-  .td-spin{animation:none;border-top-color:var(--line)}
-  .td-pane{animation:none}
-  .td-docbtn,.td-docbtn .td-tri,.td-doc *{transition:none!important}
-}
-@media (max-width:640px){
-  .td-doc{padding:18px 18px 22px;font-size:16.5px}
-  .td-pane-head{padding:16px 18px 13px}
-  .td-docbtn{padding:11px 26px 11px 32px;font-size:16px}
-  .td-docbtn::before{left:13px}
-}
-</style>
-
-<script>
-/* ===========================================================================
-   Technical-Documents section: live repository listing + in-page markdown
-   viewer.  Vanilla JS, no dependencies, one IIFE, no globals leaked.
-   =========================================================================== */
-(function () {
-  'use strict';
-
-  // The module runs unless the page explicitly opts out before this script.
-  if (window.TECHDOCS_BOOT === false) return;
-  var DEMO = /(?:[?&])demo=1/.test(location.search);
-
-  var OWNER  = 'OLIVER-XYP';
-  var REPO   = 'Technological-Documents';
-  var BRANCH = 'main';
-  var ROOT   = 'https://github.com/' + OWNER + '/' + REPO;
-  var RAW    = 'https://raw.githubusercontent.com/' + OWNER + '/' + REPO + '/' + BRANCH;
-  var API    = 'https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/';
-
-  var FETCH_MS = 9000;
-
-  var CACHE_LIST = 'td:list:' + OWNER + '/' + REPO;
-  var FIX_PREFIX = 'td:fix:' + OWNER + '/' + REPO + ':';   /* folder -> real .md name */
-  var DOC_PREFIX = 'td:doc:' + OWNER + '/' + REPO + ':';   /* document -> rendered html */
-
-  /* A tiny offline snapshot so ?demo=1 can exercise the whole UI with zero
-     network calls. It mirrors the real shape (folder docs + loose root .md). */
-  var DEMO_LIST = [
-    { name: 'GLM-5.2-FP8用hpc_ops作为后端的适配.md', kind: 'file', location: 'root' },
-    { name: 'DSA indexer多流重叠优化记录', kind: 'dir', location: 'folder' },
-    { name: 'NCU报错记录.md', kind: 'file', location: 'root' },
-    { name: 'B300 GLM-5.2-FP8 部署', kind: 'dir', location: 'folder' }
-  ];
-  var DEMO_MD = [
-    '# GLM\\-5\\.2\\-FP8用hpc\\_ops作为后端的适配（demo 快照）',
-    '',
-    '> DEMO MODE — \\?demo=1 时不请求 api.github.com；正式环境会从',
-    '> `raw.githubusercontent.com/OLIVER-XYP/Technological-Documents` 拉取仓库里的同名文件。',
-    '',
-    '**改动分四个阶段：**',
-    '',
-    '1. 后端盘点与维度适配判定',
-    '2. 算子库维度修复（`fused_rmsnorm_with_scale` 增加 hidden=6144）',
-    '3. A/B 压测 —— 4 组配置 × 每组 4 次 seeded 压测',
-    '4. 瓶颈定位与算子重写',
-    '',
-    '参考：https://docs\\.vllm\\.ai/en/stable/design/debug\\_vllm\\_compile/\\#use\\-tlparse',
-    '',
-    '```C++',
-    '  // 关键改动示意',
-    '  gemm_bf16xfp32::configure(split_k);',
-    '```',
-    '',
-    '截图（demo 下会显示“图片不可用”的回退提示）：',
-    '',
-    '![image.png](图片和附件/image.png)'
-  ].join('\n');
-
-  /* -------------------------------------------------------------------------
-     1. small helpers
-  ------------------------------------------------------------------------- */
-  function esc(s) {
-    return String(s == null ? '' : s)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  }
-
-  // Percent-encode ONE path segment. Never pass a whole path: encodeURIComponent
-  // would eat the "/" separators. Real paths here contain spaces, 、, ：, full
-  // width （） and CJK, so each segment is encoded and the path rejoined.
-  // DECODE FIRST: the documents reference their screenshots with ALREADY
-  // percent-encoded targets ("图片和附件/image%201.png"). Encoding those verbatim
-  // yields "image%25201.png", which 404s. decode -> encode is idempotent.
-  function encSeg(s) {
-    var v = String(s);
-    try { v = decodeURIComponent(v); } catch (e) { /* literal '%': keep as-is */ }
-    try {
-      return encodeURIComponent(v).replace(/[!'()*]/g, function (c) {
-        return '%' + c.charCodeAt(0).toString(16).toUpperCase();
-      });
-    } catch (e) { return v; }
-  }
-  function encPath(p) { return String(p).split('/').map(encSeg).join('/'); }
-
-  /* A built-in fallback listing. The unauthenticated api.github.com quota is
-     only 60 requests/hour PER CLIENT IP, and a visitor behind a shared
-     campus/office NAT routinely has none left - so the listing call must never
-     be what decides whether the section works. Fetching the documents
-     themselves goes through raw.githubusercontent.com (CDN-backed, no such
-     limit). The API call is therefore pure ENRICHMENT: when it does succeed it
-     can pick up documents added since this list was last updated.
-     Paths are exact; "vllm DSV4 mhc调优" deliberately breaks the
-     "<folder>/<folder>.md" convention, which is why it is listed explicitly. */
-  var KNOWN = [
-    { name: 'B300 GLM-5.2-FP8 部署', kind: 'dir', location: 'folder', docPath: 'B300 GLM-5.2-FP8 部署/B300 GLM-5.2-FP8 部署.md' },
-    { name: 'DSA indexer多流重叠优化记录', kind: 'dir', location: 'folder', docPath: 'DSA indexer多流重叠优化记录/DSA indexer多流重叠优化记录.md' },
-    { name: 'GLM-5.2-FP8用hpc_ops作为后端的适配.md', kind: 'file', location: 'root', docPath: 'GLM-5.2-FP8用hpc_ops作为后端的适配.md' },
-    { name: 'GLM-5.2-NVFP4、Kimi-K3测试报告（B300）', kind: 'dir', location: 'folder', docPath: 'GLM-5.2-NVFP4、Kimi-K3测试报告（B300）/GLM-5.2-NVFP4、Kimi-K3测试报告（B300）.md' },
-    { name: 'NCCL 通信算法', kind: 'dir', location: 'folder', docPath: 'NCCL 通信算法/NCCL 通信算法.md' },
-    { name: 'NCU讲解', kind: 'dir', location: 'folder', docPath: 'NCU讲解/NCU讲解.md' },
-    { name: 'Profiling细节', kind: 'dir', location: 'folder', docPath: 'Profiling细节/Profiling细节.md' },
-    { name: 'SGLang PD 分离梳理', kind: 'dir', location: 'folder', docPath: 'SGLang PD 分离梳理/SGLang PD 分离梳理.md' },
-    { name: 'vLLM PD分离性能测试', kind: 'dir', location: 'folder', docPath: 'vLLM PD分离性能测试/vLLM PD分离性能测试.md' },
-    { name: 'vllm DSV4 mhc调优', kind: 'dir', location: 'folder', docPath: 'vllm DSV4 mhc调优/TileLang 3. vllm DSV4 mhc调优.md' },
-    { name: 'vllm backend kernel benchmark', kind: 'dir', location: 'folder', docPath: 'vllm backend kernel benchmark/vllm backend kernel benchmark.md' },
-    { name: 'NCU报错记录.md', kind: 'file', location: 'root', docPath: 'NCU报错记录.md' },
-    { name: 'dynamo.md', kind: 'file', location: 'root', docPath: 'dynamo.md' },
-    { name: 'profile-deepseek-v4-complete.md', kind: 'file', location: 'root', docPath: 'profile-deepseek-v4-complete.md' },
-    { name: 'vLLM可用后端扫描：性能 & 精度.md', kind: 'file', location: 'root', docPath: 'vLLM可用后端扫描：性能 & 精度.md' },
-    { name: '完整流程与算子选择方法.md', kind: 'file', location: 'root', docPath: '完整流程与算子选择方法.md' }
-  ];
-
-  // The GitHub blob page for a document - derived when the entry carries no
-  // explicit .fallback (the API-derived entries set one; KNOWN does not).
-  function docFallback(doc) {
-    return doc.fallback || (ROOT + '/blob/' + BRANCH + '/' + encPath(doc.docPath));
-  }
-
-  // "3\.", "GLM\-5\.2", "debug\_vllm" -> the backslash escapes punctuation.
-  function unescapePunct(s) {
-    return String(s).replace(/\\([\\`*_{}\[\]()#+\-.!|>~])/g, '$1');
-  }
-
-  function slugify(text) {
-    return String(text).replace(/<[^>]*>/g, '').trim().toLowerCase()
-      .replace(/[^\w\u3000-\u303f\u4e00-\u9fff\u3040-\u30ff\uff00-\uffef\s-]/g, '')
-      .replace(/\s+/g, '-');
-  }
-
-  /* storage - always try/catch: private mode or a full quota degrades to memory */
-  function store(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }
-  function retrieve(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
-
-  /* -------------------------------------------------------------------------
-     2. network - one helper, hard timeout, never rejects on an HTTP status
-  ------------------------------------------------------------------------- */
-  function fetchText(url, ms) {
-    var ctl = (typeof AbortController === 'function') ? new AbortController() : null;
-    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, ms || FETCH_MS);
-    var opts = { mode: 'cors', credentials: 'omit', redirect: 'follow' };
-    if (ctl) opts.signal = ctl.signal;
-    return fetch(url, opts).then(function (r) {
-      return r.text().then(function (t) {
-        clearTimeout(timer);
-        return { ok: r.ok, status: r.status, text: t };
-      });
-    }, function (err) {
-      clearTimeout(timer);
-      throw err;
-    });
-  }
-
-  /* -------------------------------------------------------------------------
-     3. the listing - the ONE api.github.com call of the happy path
-  ------------------------------------------------------------------------- */
-  function flatten(json) {
-    var out = [], i, e, name;
-    if (!json || !json.length) return out;
-    for (i = 0; i < json.length; i++) {
-      e = json[i];
-      if (!e || !e.name) continue;
-      name = String(e.name);
-      if (e.type === 'dir') {
-        if (name === '图片和附件') continue;              // an asset folder, not a doc
-        out.push({
-          name: name,
-          kind: 'dir',
-          location: 'folder',
-          docPath: name + '/' + name + '.md',             // convention; self-healed on 404
-          fallback: ROOT + '/blob/' + BRANCH + '/' + encPath(name + '/' + name + '.md')
-        });
-      } else if (/\.md$/i.test(name)) {
-        out.push({
-          name: name,
-          kind: 'file',
-          location: 'root',
-          docPath: name,
-          fallback: ROOT + '/blob/' + BRANCH + '/' + encPath(name)
-        });
-      }
-      /* anything else at the root is not a document and is ignored */
-    }
-    return out;
-  }
-
-  function loadListing() {
-    if (DEMO) return Promise.resolve({ list: DEMO_LIST, meta: 'demo · ' + DEMO_LIST.length + ' documents' });
-
-    var cached = retrieve(CACHE_LIST);
-    if (cached) {
-      try {
-        var p = JSON.parse(cached);
-        if (p && p.list && p.list.length) {
-          return Promise.resolve({ list: p.list, meta: 'cached · ' + p.list.length + ' documents' });
-        }
-      } catch (e) { /* corrupt entry - fall through to the network */ }
-    }
-
-    return fetchText(API + '?ref=' + encodeURIComponent(BRANCH), FETCH_MS).then(function (r) {
-      var json = null;
-      try { json = JSON.parse(r.text); } catch (e) { json = null; }
-      var list = flatten(json);
-      if (!r.ok || !list.length) return { list: [], meta: '', error: true };
-      store(CACHE_LIST, JSON.stringify({ list: list, at: Date.now() }));
-      return { list: list, meta: 'live · ' + list.length + ' documents' };
-    }, function () {
-      return { list: [], meta: '', error: true };
-    });
-  }
-
-  /* -------------------------------------------------------------------------
-     4. markdown -> html
-  ------------------------------------------------------------------------- */
-  // bare URLs: stop at whitespace, quotes, ASCII/CJK punctuation and our
-  // placeholder character; a leading char is captured and re-emitted so that
-  // URLs sitting after CJK punctuation ("…/38684、https://…") still split.
-  var RE_URL = /(^|[\s(\[（【「《〔、，。；：!！?？"'“”‘’»])((?:https?:\/\/)[^\s<>"'`\u0001\u3000-\u303f\uff01-\uff5f(),;\[\]]+)/g;
-  var BAD_URL = /^\s*(?:javascript|vbscript|data:text\/html)/i;
-
-  function isAbsolute(u) { return /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(u); }
-  function safeUrl(u) { return !BAD_URL.test(String(u || '')); }
-
-  // Resolve a markdown-relative target against the document's own folder.
-  //   kind 'img'  -> raw.githubusercontent.com (a plain file)
-  //   kind 'link' -> github.com/…/blob/…  (a readable page)
-  function resolveRel(base, value, kind) {
-    var raw = String(value == null ? '' : value).trim();
-    if (!raw) return null;
-    if (isAbsolute(raw) || raw.charAt(0) === '#') return raw;
-    var m = /^([^?#]*)([?#][\s\S]*)?$/.exec(raw);
-    var path = m[1] || '', suffix = m[2] || '';
-    var stack = base.dir ? base.dir.split('/') : [];
-    if (path.charAt(0) === '/') stack = [];               // repo-root absolute
-    path.split('/').forEach(function (seg) {
-      if (seg === '' || seg === '.') return;
-      if (seg === '..') { if (stack.length) stack.pop(); return; }
-      stack.push(seg);
-    });
-    if (!stack.length) return null;
-    return (kind === 'img' ? base.raw : base.html) + '/' + encPath(stack.join('/')) + suffix;
-  }
-
-  function inline(s, base) {
-    if (!s) return '';
-    s = String(s);
-    var spans = [];
-
-    // (a) inline code is protected first - its content must survive untouched
-    s = s.replace(/`([^`]*)`/g, function (m, c) {
-      spans.push('<code>' + esc(c) + '</code>');
-      return '\u0001' + (spans.length - 1) + '\u0001';
-    });
-
-    // (b) images (relative -> the sibling 图片和附件/ folder, via raw)
-    s = s.replace(/!\[([^\]]*)\]\(\s*([^)\s]+)(?:\s+[^)]*?)?\s*\)/g, function (m, alt, url) {
-      var txt = unescapePunct(alt) || '图片';
-      var u = resolveRel(base, unescapePunct(url), 'img');
-      if (!u || !safeUrl(u)) return esc(txt);
-      spans.push('<img src="' + esc(u) + '" alt="' + esc(txt) + '" loading="lazy">');
-      return '\u0001' + (spans.length - 1) + '\u0001';
-    });
-
-    // (c) markdown links
-    s = s.replace(/\[([^\]]*)\]\(\s*([^)\s]+)(?:\s+[^)]*?)?\s*\)/g, function (m, text, url) {
-      var u = resolveRel(base, unescapePunct(url), 'link');
-      if (!u || !safeUrl(u)) return unescapePunct(text);
-      var ext = /^(?:https?:)?\/\//i.test(u);
-      spans.push('<a href="' + esc(u) + '"' + (ext ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + unescapePunct(text) + '</a>');
-      return '\u0001' + (spans.length - 1) + '\u0001';
-    });
-
-    // (d) bare URLs, including backslash-escaped ones
-    s = s.replace(RE_URL, function (m, lead, url) {
-      var clean = unescapePunct(url).replace(/[.,;:]+$/, '');
-      if (!clean || !safeUrl(clean)) return m;
-      spans.push('<a href="' + esc(clean) + '" target="_blank" rel="noopener noreferrer">' + esc(clean) + '</a>');
-      return lead + '\u0001' + (spans.length - 1) + '\u0001';
-    });
-
-    // (e) escape the raw text left in place (real entities are kept), then
-    //     do emphasis - tags emitted by emphasis are created after the escape
-    //     pass, so they survive as markup instead of becoming &lt;strong&gt;
-    s = s.replace(/&(?!(?:[a-zA-Z][a-zA-Z0-9]{1,12}|#\d{1,7}|#x[0-9a-fA-F]{1,6});)/g, '&amp;')
-         .replace(/</g, '&lt;').replace(/>/g, '&gt;');
-
-    s = s.replace(/\*\*(?=\S)([\s\S]*?\S)\*\*/g, '<strong>$1</strong>');
-    s = s.replace(/(^|[\s(\[“‘>])\*(?=\S)([^*\n]*?\S)\*/g, '$1<em>$2</em>');
-    s = s.replace(/~~(?=\S)([\s\S]*?\S)~~/g, '<del>$1</del>');
-
-    // (f) then unwrap the remaining backslash escapes, so an author's \* is
-    //     a literal asterisk (never re-read as markup) and \1. 概述 renders
-    //     as "1. 概述"
-    s = unescapePunct(s);
-
-    // (g) restore the protected pieces
-    s = s.replace(/\u0001(\d+)\u0001/g, function (m, n) { return spans[+n]; });
-    return s;
-  }
-
-  function listMarker(line) {
-    var m = /^(\s*)([-*+]|\d+[.)])\s+(.*)$/.exec(line);
-    if (!m) return null;
-    return { indent: m[1].replace(/\t/g, '    ').length, ordered: /^\d/.test(m[2]), text: m[3] };
-  }
-
-  function splitRow(line) {
-    var s = String(line).trim().replace(/^\|/, '').replace(/\|$/, '');
-    var out = [], cur = '', i = 0;
-    while (i < s.length) {
-      var ch = s.charAt(i);
-      if (ch === '\\' && i + 1 < s.length) { cur += s.charAt(i + 1); i += 2; continue; }
-      if (ch === '|') { out.push(cur); cur = ''; i++; continue; }
-      cur += ch; i++;
-    }
-    out.push(cur);
-    return out.map(function (c) { return c.trim(); });
-  }
-
-  function mdToHtml(src, base) {
-    var lines = String(src == null ? '' : src).replace(/\r\n?/g, '\n').replace(/^﻿/, '').split('\n');
-    var out = [], para = [], listStack = [], i = 0;
-
-    function flushPara() {
-      if (!para.length) return;
-      out.push('<p>' + inline(para.join(' '), base) + '</p>');
-      para = [];
-    }
-    function closeLists(indent) {
-      while (listStack.length && listStack[listStack.length - 1].indent > indent) {
-        var top = listStack.pop();
-        out.push('</li></' + top.tag + '>');
-      }
-    }
-
-    while (i < lines.length) {
-      var line = lines[i];
-
-      if (/^\s*$/.test(line)) { flushPara(); i++; continue; }
-
-      /* fenced code: contents are raw, never markdown */
-      if (/^\s*(`{3,}|~{3,})/.test(line)) {
-        flushPara(); closeLists(-1);
-        var fence = /^\s*(`{3,}|~{3,})\s*([^\s]*)/.exec(line);
-        var lang = fence ? fence[2] : '';
-        var buf = [];
-        i++;
-        while (i < lines.length && !/^\s*(`{3,}|~{3,})/.test(lines[i])) { buf.push(lines[i]); i++; }
-        i++;
-        out.push('<pre><code' + (lang ? ' class="language-' + esc(lang) + '"' : '') + '>' +
-                 esc(buf.join('\n')) + '</code></pre>');
-        continue;
-      }
-
-      /* ATX heading - ids are prefixed so they can never clash with the page.
-         Test and capture in ONE regex: testing on the raw line but capturing
-         from line.trim() used to disagree on a bare "## " (a heading with no
-         text after the hashes - two of them live in NCU讲解.md), which made
-         the match null and threw, blanking the whole document. */
-      var hm = /^\s*(#{1,6})(?:\s+(.*))?$/.exec(line);
-      if (hm) {
-        flushPara(); closeLists(-1);
-        var lvl = hm[1].length;
-        var htxt = hm[2] || '';
-        var id = slugify(htxt);
-        out.push('<h' + lvl + (id ? ' id="td-h-' + esc(id) + '"' : '') + '>' + inline(htxt, base) + '</h' + lvl + '>');
-        i++;
-        continue;
-      }
-
-      /* horizontal rule */
-      if (/^\s*(?:-{3,}|\*{3,}|_{3,})\s*$/.test(line)) { flushPara(); closeLists(-1); out.push('<hr>'); i++; continue; }
-
-      /* blockquote - recursed, so lists/code inside still work */
-      if (/^\s*>\s?/.test(line)) {
-        flushPara(); closeLists(-1);
-        var q = [];
-        while (i < lines.length && /^\s*>/.test(lines[i])) { q.push(lines[i].replace(/^\s*>\s?/, '')); i++; }
-        out.push('<blockquote>' + mdToHtml(q.join('\n'), base) + '</blockquote>');
-        continue;
-      }
-
-      /* pipe table (header row followed by a :---: separator row) */
-      if (line.indexOf('|') !== -1 && i + 1 < lines.length &&
-          /^[\s|:-]+$/.test(lines[i + 1]) && lines[i + 1].indexOf('-') !== -1) {
-        flushPara(); closeLists(-1);
-        var head = splitRow(line);
-        var aligns = splitRow(lines[i + 1]).map(function (c) {
-          var l = c.charAt(0) === ':', r = c.charAt(c.length - 1) === ':';
-          return l && r ? 'center' : (r ? 'right' : (l ? 'left' : ''));
-        });
-        i += 2;
-        var rows = [];
-        while (i < lines.length && lines[i].indexOf('|') !== -1 && !/^\s*$/.test(lines[i])) { rows.push(splitRow(lines[i])); i++; }
-        var t = '<div class="td-tablewrap"><table><thead><tr>';
-        head.forEach(function (c, n) {
-          t += '<th' + (aligns[n] ? ' style="text-align:' + aligns[n] + '"' : '') + '>' + inline(c, base) + '</th>';
-        });
-        t += '</tr></thead><tbody>';
-        rows.forEach(function (r) {
-          t += '<tr>';
-          for (var n = 0; n < head.length; n++) {
-            t += '<td' + (aligns[n] ? ' style="text-align:' + aligns[n] + '"' : '') + '>' + inline(r[n] || '', base) + '</td>';
-          }
-          t += '</tr>';
-        });
-        out.push(t + '</tbody></table></div>');
-        continue;
-      }
-
-      /* list item */
-      var mk = listMarker(line);
-      if (mk) {
-        flushPara();
-        var tag = mk.ordered ? 'ol' : 'ul';
-        if (listStack.length && listStack[listStack.length - 1].indent === mk.indent) {
-          out.push('</li>');
-        } else if (listStack.length && listStack[listStack.length - 1].indent < mk.indent) {
-          out.push('<' + tag + '>'); listStack.push({ tag: tag, indent: mk.indent });
-        } else {
-          closeLists(mk.indent);
-          if (listStack.length && listStack[listStack.length - 1].indent === mk.indent) { out.push('</li>'); }
-          else { out.push('<' + tag + '>'); listStack.push({ tag: tag, indent: mk.indent }); }
-        }
-        out.push('<li>' + inline(mk.text, base));
-        i++;
-        while (i < lines.length) {
-          var nl = lines[i];
-          if (/^\s*$/.test(nl)) break;
-          if (/^\s*(`{3,}|~{3,})/.test(nl)) break;
-          if (/^#{1,6}\s+/.test(nl)) break;
-          if (listMarker(nl)) break;
-          if (nl.replace(/\t/g, '    ').match(/^\s*/)[0].length > mk.indent) {
-            out.push('<div class="td-lpara">' + inline(nl.trim(), base) + '</div>');
-            i++;
-            continue;
-          }
-          break;
-        }
-        continue;
-      }
-
-      /* paragraph */
-      // A paragraph at or left of the open list's indent ENDS the list. Without
-      // this it is emitted while <li> is still open and nests inside the last item.
-      if (listStack.length) {
-        var pind = line.replace(/\t/g, '    ').match(/^\s*/)[0].length;
-        if (pind <= listStack[listStack.length - 1].indent) { flushPara(); closeLists(-1); }
-      }
-      para.push(line.trim());
-      i++;
-    }
-
-    flushPara(); closeLists(-1);
-    return out.join('\n');
-  }
-
-  /* -------------------------------------------------------------------------
-     5. sanitise. Script/iframe/object/form elements, every on* attribute and
-        javascript: URL are removed from the markdown-derived HTML before it is
-        inserted - on an INERT <template> fragment, where scripts cannot run
-        and images cannot load.
-  ------------------------------------------------------------------------- */
-  var DROP = { SCRIPT:1, IFRAME:1, OBJECT:1, EMBED:1, FORM:1, INPUT:1, BUTTON:1,
-    TEXTAREA:1, SELECT:1, OPTION:1, DATALIST:1, STYLE:1, LINK:1, META:1, BASE:1,
-    NOSCRIPT:1, FRAME:1, FRAMESET:1, APPLET:1, AUDIO:1, VIDEO:1, SOURCE:1,
-    TRACK:1, CANVAS:1, SVG:1, MATH:1, MARQUEE:1, TEMPLATE:1 };
-  var KEEP_ATTR = { href:1, src:1, alt:1, title:1, width:1, height:1, align:1,
-    id:1, colspan:1, rowspan:1, start:1, open:1, datetime:1, cite:1, class:1 };
-
-  function cleanHTML(html, base) {
-    var tpl = document.createElement('template');
-    tpl.innerHTML = String(html == null ? '' : html);
-    var frag = tpl.content;
-    var i;
-
-    /* comments */
-    var comments = [], cn;
-    var cit = document.createTreeWalker(frag, NodeFilter.SHOW_COMMENT, null, false);
-    while ((cn = cit.nextNode())) comments.push(cn);
-    comments.forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
-
-    var drops = [], el;
-    var it = document.createTreeWalker(frag, NodeFilter.SHOW_ELEMENT, null, false);
-    while ((el = it.nextNode())) {
-      // Foreign-namespace nodes (SVG/MathML) keep a LOWER-CASE tagName, so a
-      // plain DROP[el.tagName] lookup never matches them and an <svg><script>
-      // would sail through. Judge by the canonical upper-case name, and drop
-      // anything that is not plain HTML.
-      var tn = String(el.tagName || '').toUpperCase();
-      if (DROP[tn] || (el.namespaceURI && el.namespaceURI !== 'http://www.w3.org/1999/xhtml')) {
-        drops.push(el);
-        continue;
-      }
-
-      var attrs = [];
-      for (i = 0; i < el.attributes.length; i++) attrs.push(el.attributes[i]);
-      attrs.forEach(function (a) {
-        var n = a.name.toLowerCase();
-        if (n.slice(0, 2) === 'on' || n === 'style' || n === 'srcdoc' ||
-            n === 'action' || n === 'formaction' || n === 'srcset' || n === 'ping') {
-          el.removeAttribute(a.name);
-          return;
-        }
-        if (n !== 'href' && n !== 'src' && !KEEP_ATTR[n]) { el.removeAttribute(a.name); return; }
-        if (!safeUrl(a.value)) { el.removeAttribute(a.name); return; }
-        // ONLY href/src are URLs. Every other kept attribute (id, class, alt,
-        // width, height, align, colspan, start, datetime, cite) is literal text
-        // and must survive untouched - resolving it turned
-        // class="td-tablewrap" into "https://github.com/.../td-tablewrap",
-        // silently breaking the wide-table scroll wrapper, the code-language
-        // classes and the heading anchors.
-        if (n === 'href' || n === 'src') {
-          var fixed = resolveRel(base, a.value, n === 'src' ? 'img' : 'link');
-          if (fixed === null) el.removeAttribute(a.name);
-          else el.setAttribute(a.name, fixed);
-        }
-      });
-
-      if (tn === 'IMG') {
-        el.setAttribute('loading', 'lazy');
-        if (!el.getAttribute('src')) drops.push(el);
-      } else if (tn === 'A') {
-        var href = el.getAttribute('href');
-        if (!href) continue;
-        if (/^https?:/i.test(href)) { el.setAttribute('target', '_blank'); el.setAttribute('rel', 'noopener noreferrer'); }
-        else if (href.charAt(0) === '#') { el.removeAttribute('target'); }
-        else if (/^data:/i.test(href)) { el.removeAttribute('href'); }
-      }
-    }
-    drops.forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
-
-    var holder = document.createElement('div');
-    holder.appendChild(frag);
-    return holder.innerHTML;
-  }
-
-  /* -------------------------------------------------------------------------
-     6. UI
-  ------------------------------------------------------------------------- */
-  var statusEl = document.getElementById('td-status');
-  var listEl   = document.getElementById('td-ol');
-  var paneEl   = document.getElementById('td-pane');
-  var titleEl  = document.getElementById('td-pane-title');
-  var metaEl   = document.getElementById('td-pane-meta');
-  var linkEl   = document.getElementById('td-pane-link');
-  var docEl    = document.getElementById('td-doc');
-  if (!statusEl || !listEl || !paneEl || !titleEl || !metaEl || !linkEl || !docEl) return;
-
-  var listing = [];        /* flattened documents */
-  var state = {};          /* document name -> {html} | {error} */
-  var inflight = {};       /* document name -> Promise */
-  var activeIdx = -1;
-
-  function setStatus(kind, html) {
-    statusEl.className = 'td-status' + (kind ? ' is-' + kind : '');
-    statusEl.innerHTML = html || '';
-  }
-
-  function repoFallbackHTML() {
-    return '<li class="td-item"><a class="td-github-link" href="' + esc(ROOT) +
-      '" target="_blank" rel="noopener noreferrer">Browse the docs on GitHub <span aria-hidden="true">↗</span></a></li>';
-  }
-
-  function renderList() {
-    if (!listing.length) { listEl.innerHTML = repoFallbackHTML(); return; }
-    var html = '';
-    for (var i = 0; i < listing.length; i++) {
-      html += '<li class="td-item">' +
-        '<button type="button" class="td-docbtn" data-i="' + i + '"' +
-        ' aria-selected="false" aria-expanded="false" aria-controls="td-pane"' +
-        ' aria-label="Open document: ' + esc(listing[i].name) + '">' +
-        esc(listing[i].name) +
-        '<span class="td-tri" aria-hidden="true">▸</span>' +
-        '</button></li>';
-    }
-    listEl.innerHTML = html;
-  }
-
-  function markActive(i) {
-    activeIdx = i;
-    var btns = listEl.querySelectorAll('.td-docbtn');
-    for (var k = 0; k < btns.length; k++) {
-      var on = (+btns[k].getAttribute('data-i')) === i;
-      btns[k].setAttribute('aria-selected', on ? 'true' : 'false');
-      btns[k].setAttribute('aria-expanded', on ? 'true' : 'false');
-      if (on) btns[k].setAttribute('aria-current', 'true');
-      else btns[k].removeAttribute('aria-current');
-    }
-  }
-
-  function setPane(doc) {
-    paneEl.hidden = false;
-    titleEl.textContent = doc.name;
-    metaEl.textContent = (doc.location === 'folder')
-      ? 'folder document · ' + BRANCH
-      : 'markdown file · ' + BRANCH;
-    linkEl.href = docFallback(doc);
-  }
-
-  // Resolve-relative-targets against the document's own folder. base.raw and
-  // base.html point at the REPO ROOT; the folder itself lives only in base.dir,
-  // which resolveRel() seeds into the path stack. (Both are used exactly once -
-  // duplicating the folder here would produce "folder/folder/…" image paths.)
-  function baseFor(doc) {
-    return {
-      dir: (doc.location === 'folder') ? doc.name : '',
-      raw: RAW,
-      html: ROOT + '/blob/' + BRANCH
-    };
-  }
-
-  function markdownURL(relPath) { return RAW + '/' + encPath(relPath); }
-
-  // Self-heal: a folder's document is normally "<folder>/<folder>.md", but one
-  // folder in this repo breaks that rule ("vllm DSV4 mhc调优" holds
-  // "TileLang 3. vllm DSV4 mhc调优.md"). Only when the conventional raw URL
-  // 404s do we spend ONE extra contents call to learn the real name, and the
-  // answer is cached for the session (FIX_PREFIX).
-  function resolveDocPath(doc) {
-    var key = FIX_PREFIX + doc.name;
-    var known = retrieve(key);
-    if (known) return Promise.resolve(doc.name + '/' + known);
-    return fetchText(API + encPath(doc.name) + '?ref=' + encodeURIComponent(BRANCH), FETCH_MS).then(function (r) {
-      var json = null;
-      try { json = JSON.parse(r.text); } catch (e) { json = null; }
-      if (!r.ok || !json || !json.length) return null;
-      var md = null;
-      for (var i = 0; i < json.length; i++) {
-        if (/\.md$/i.test((json[i] && json[i].name) || '')) { md = json[i].name; break; }
-      }
-      if (!md) return null;
-      store(key, md);
-      return doc.name + '/' + md;
-    }, function () { return null; });
-  }
-
-  function fetchDocText(doc) {
-    return fetchText(markdownURL(doc.docPath), FETCH_MS).then(function (r) {
-      if (r.ok) return { text: r.text };
-      if (doc.kind !== 'dir') return null;
-      return resolveDocPath(doc).then(function (rel) {
-        if (!rel) return null;
-        return fetchText(markdownURL(rel), FETCH_MS).then(function (r2) {
-          if (!r2.ok) return null;
-          doc.docPath = rel;                       /* remember for the GitHub link */
-          doc.fallback = ROOT + '/blob/' + BRANCH + '/' + encPath(rel);
-          return { text: r2.text };
-        });
-      });
-    });
-  }
-
-  function loadDoc(doc) {
-    var key = doc.name;
-    if (state[key] && state[key].html) return Promise.resolve(state[key].html);
-    if (inflight[key]) return inflight[key];
-
-    if (DEMO) {
-      var demoHTML = cleanHTML(mdToHtml(DEMO_MD, baseFor(doc)), baseFor(doc));
-      state[key] = { html: demoHTML };
-      return Promise.resolve(demoHTML);
-    }
-    if (navigator.onLine === false) {
-      state[key] = { error: 'You appear to be offline.' };
-      return Promise.resolve(null);
-    }
-
-    var p = fetchDocText(doc).then(function (res) {
-      if (!res || !String(res.text).trim()) {
-        state[key] = { error: res ? 'The document is empty.' : 'Could not load this document.' };
-        return null;
-      }
-      var base = baseFor(doc), html = '';
-      try { html = cleanHTML(mdToHtml(res.text, base), base); } catch (e) { html = ''; }
-      if (!html.trim()) { state[key] = { error: 'The document could not be rendered.' }; return null; }
-      state[key] = { html: html };
-      store(DOC_PREFIX + key, html);
-      return html;
-    }, function () {
-      state[key] = { error: 'Could not load this document.' };
-      return null;
-    });
-
-    inflight[key] = p.then(function (html) { delete inflight[key]; return html; },
-                           function () { delete inflight[key]; return null; });
-    return inflight[key];
-  }
-
-  function renderDoc(doc, html) {
-    setStatus('', '');
-    docEl.innerHTML = html;
-    docEl.scrollTop = 0;
-  }
-
-  function renderDocError(doc, msg) {
-    setStatus('err', esc(msg) + ' <button type="button" class="td-retry">Try again</button>');
-    docEl.innerHTML = '<p class="td-note">' + esc(msg) + ' The file is always on GitHub: ' +
-      '<a href="' + esc(docFallback(doc)) + '" target="_blank" rel="noopener noreferrer">open ' +
-      esc(doc.name) + ' ↗</a>.</p>';
-  }
-
-  function openDoc(idx, force) {
-    var doc = listing[idx];
-    if (!doc) return;
-    if (idx === activeIdx && !paneEl.hidden && !force) return;
-
-    setPane(doc);
-    markActive(idx);
-
-    var cached = (state[doc.name] && state[doc.name].html) || retrieve(DOC_PREFIX + doc.name);
-    if (cached) { state[doc.name] = { html: cached }; renderDoc(doc, cached); return; }
-
-    setStatus('load', '<span class="td-spin" aria-hidden="true"></span>Fetching <span class="type">' + esc(doc.name) + '</span>…');
-    docEl.innerHTML = '<p class="td-note">Loading…</p>';
-
-    loadDoc(doc).then(function (html) {
-      if (activeIdx !== idx) return;                 /* the visitor moved on */
-      setPane(doc);                                  /* refresh the link after a self-heal */
-      if (html) { renderDoc(doc, html); return; }
-      renderDocError(doc, (state[doc.name] || {}).error || 'Could not load this document.');
-    });
-  }
-
-  /* ---- events ---- */
-  listEl.addEventListener('click', function (ev) {
-    var btn = ev.target.closest ? ev.target.closest('.td-docbtn') : null;
-    if (!btn) return;
-    var idx = +btn.getAttribute('data-i');
-    if (idx === activeIdx && !paneEl.hidden) return;   /* tapping the open doc does nothing */
-    openDoc(idx);
-  });
-
-  listEl.addEventListener('keydown', function (ev) {
-    var k = ev.key;
-    if (k !== 'ArrowDown' && k !== 'ArrowUp' && k !== 'Home' && k !== 'End') return;
-    if (!listing.length) return;
-    ev.preventDefault();
-    var idx = activeIdx < 0 ? 0 : activeIdx;
-    if (k === 'ArrowDown') idx = Math.min(idx + 1, listing.length - 1);
-    else if (k === 'ArrowUp') idx = Math.max(idx - 1, 0);
-    else if (k === 'Home') idx = 0;
-    else idx = listing.length - 1;
-    var btn = listEl.querySelectorAll('.td-docbtn')[idx];
-    if (btn) btn.focus();
-    openDoc(idx);
-  });
-
-  document.addEventListener('keydown', function (ev) {
-    if (ev.key !== 'Escape' && ev.keyCode !== 27) return;
-    if (paneEl.hidden) return;
-    var prev = activeIdx;
-    paneEl.hidden = true;
-    markActive(-1);
-    var btn = listEl.querySelectorAll('.td-docbtn')[prev];
-    if (btn) btn.focus();
-  });
-
-  /* a broken screenshot becomes a note, never a hole in the page */
-  docEl.addEventListener('error', function (ev) {
-    var img = ev.target;
-    if (!img || img.tagName !== 'IMG' || img.getAttribute('data-td-failed')) return;
-    var note = document.createElement('span');
-    note.className = 'td-imgfail';
-    note.textContent = img.getAttribute('alt') ? '图片不可用 · ' + img.getAttribute('alt') : '图片不可用';
-    if (img.parentNode) img.parentNode.replaceChild(note, img);
-  }, true);
-
-  function retryFrom(ev) {
-    var hit = ev.target.closest ? ev.target.closest('.td-retry') : null;
-    if (!hit || activeIdx < 0) return;
-    var doc = listing[activeIdx];
-    if (!doc) return;
-    delete state[doc.name];
-    try { sessionStorage.removeItem(DOC_PREFIX + doc.name); } catch (e) {}
-    openDoc(activeIdx, true);
-  }
-  docEl.addEventListener('click', retryFrom);
-  statusEl.addEventListener('click', retryFrom);
-
-  /* ---- boot ---- */
-  var booted = false;
-  function start() {
-    if (booted) return;
-    booted = true;
-    setStatus('load', '<span class="td-spin" aria-hidden="true"></span>Loading documents…');
-    loadListing().then(function (res) {
-      if (res.error || !res.list.length) {
-        // The listing is ENRICHMENT ONLY. Rate-limited (60/hour per client IP),
-        // offline, or a transient 403 must never empty the section - fall back
-        // to the built-in list and carry on. The documents themselves come from
-        // raw.githubusercontent.com, which is unaffected.
-        listing = KNOWN;
-        renderList();
-        setStatus('', 'Could not refresh the index just now · <a href="' + esc(ROOT) +
-          '" target="_blank" rel="noopener noreferrer">browse the repo ↗</a>');
-        if (location.hash !== '#list') openDoc(0);
-        return;
-      }
-      listing = res.list;
-      renderList();
-      setStatus('', esc(res.meta) + ' · <a href="' + esc(ROOT) +
-        '" target="_blank" rel="noopener noreferrer">browse the repo ↗</a>');
-      /* default: open the first document (see A4 in the header comment) */
-      if (location.hash !== '#list') openDoc(0);
-    });
-  }
-
-  // Boot lazily: the section sits far down the page, so a visitor who never
-  // scrolls this far costs ZERO api.github.com calls. The listing (and the
-  // first document) are only fetched once the section is within 400px of the
-  // viewport. Browsers without IntersectionObserver just boot immediately.
-  var secEl = document.getElementById('tech');
-  if (!DEMO && secEl && typeof IntersectionObserver === 'function') {
-    var bio = new IntersectionObserver(function (entries) {
-      for (var n = 0; n < entries.length; n++) {
-        if (entries[n].isIntersecting) { bio.disconnect(); start(); return; }
-      }
-    }, { rootMargin: '400px 0px' });
-    bio.observe(secEl);
-  } else {
-    start();
-  }
-})();
-</script>
-
 <section id="contact">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="no">06</span><h2>Let's <em>talk</em></h2></div>
+    <div class="sec-head reveal"><span class="no">05</span><h2>Let's <em>talk</em></h2></div>
     <div class="contact-grid reveal">
       <a class="cc" href="mailto:13588039544@163.com"><div class="k">Email</div><div class="v">13588039544@163.com</div></a>
       <a class="cc" href="https://github.com/OLIVER-XYP" target="_blank"><div class="k">GitHub</div><div class="v">github.com/OLIVER-XYP</div></a>
