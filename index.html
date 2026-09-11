@@ -10,43 +10,101 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Noto+Serif+SC:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 <style>
 /* ===========================================================================
-   Calibrated — a plotted sheet, not a brochure.
+   Nsight — a profiler's surface stack, not a brochure.
 
-   Ground is an UNTINTED plotting sheet (a 2-3 unit blue cast, no green, no
-   yellow). In a place where every generated page is cream- or sage-tinted,
-   an untinted sheet is the less-travelled choice. Ink is blue-black, not
-   black. Structure is carried by calibrated rules and ticks - never by a
-   card, a radius or a drop shadow. Cinnabar appears on under 1% of the page
-   and has exactly three jobs: the open interval of the current role, the
-   paper's venue mark, and one headline result per project.
+   The reference is NVIDIA Nsight Systems, the profiler this portfolio's owner
+   works in daily. Its values were sampled from NVIDIA's own documentation
+   screenshots rather than remembered, and three of them correct the obvious
+   assumption: nsys-ui is a LIGHT application with no dark theme at all, its
+   accent is the Qt Fusion Highlight blue #308cc6, and NVIDIA green #76b900
+   appears nowhere in the chrome - it lives only in the window icon.
+
+   The structure is the app's: a grey CHROME band (#e4e4e4, the menu and status
+   bars), a grey GROUND (#efefef, the panels and tab strips), pure WHITE PLATES
+   (#ffffff, the timeline canvas and the table rows), and a grey INSET (#eeeeee,
+   the table headers) for anything docked inside a plate. Depth is carried only
+   by that luminance step plus one 1px rule ladder - no card, no shadow.
+
+   Two deliberate refusals, both argued rather than assumed:
+
+   * The heterogeneous DATA palette (the saturated timeline lane colours) is
+     NOT adopted as decoration. It encodes measured durations in the application
+     and collapses under deuteranopia (mutual luminance bottoms out at 1.06:1).
+     Its one honest descendant here is the rounded measured BAR in the work
+     gutter - shape and position carry the meaning, and no text sits on a bar.
+   * Prose stays a serif. The app has a single UI font and no serif, but nine
+     long write-ups plus rendered third-party READMEs set in a grotesque would
+     be a readability regression the brief forbids. The app's own logic is kept
+     - one voice for chrome, normal-size reading text - not its literal face.
+
+   Cinnabar survives from the previous theme with its three jobs intact: the
+   open interval of the current role, the paper's venue mark, and errors.
    =========================================================================== */
 :root{
-  /* --- the palette ------------------------------------------------------- */
-  --sheet:#e6e8e9;        /* page ground  - untinted plotting sheet        */
-  --panel:#f4f6f6;        /* pasted plate - unfolded docs, figure mounts   */
-  --ink:#16243c;          /* blue-black   - all reading text, 12.6:1       */
-  --ink-2:#4c5769;        /* diluted ink  - apparatus, captions, dates     */
-  --axis:#1c4c86;         /* the one structural colour: rules, ticks, links */
-  --rule:#7a838a;         /* 1px geometry  - frames, table rules, ticks    */
-  --rule-soft:#c9ced1;    /* recessive hairline - list separators          */
-  --cinnabar:#a3211d;     /* seal ink      - under 1% of pixels            */
-  --faint:#98a0a8;
+  /* --- the surface stack, lightest first --------------------------------- */
+  --panel:#ffffff;        /* content plate - the app's canvas / table rows  */
+  --band:#eeeeee;         /* inset - the app's table-header grey            */
+  --sheet:#efefef;        /* page ground   - toolbar / tab / panel chrome   */
+  --menu:#e4e4e4;         /* chrome bands  - menu bar and status bar        */
+
+  /* --- ink --------------------------------------------------------------- */
+  --ink:#1a1d21;          /* reading text       - 14.7:1 on the ground      */
+  --ink-2:#5c6166;        /* apparatus, captions, dates - 5.4:1 on ground   */
+
+  /* --- the accent, split by the job it is doing --------------------------
+     #308cc6 is the sampled Qt Highlight. It measures only 3.69:1 on white and
+     3.21:1 on the ground, so it can never carry text - it is a FILL: the rule
+     under the tab strip, the open card's mark, the measured bar. Everything
+     that is actually read as text uses --axis-ink, a darkened derivative,
+     which is why the accent is two tokens and not one. */
+  --axis:#308cc6;         /* fill only  - never behind or in front of text    */
+  --axis-ink:#196498;     /* text       - links, focus rings, hover  5.9:1    */
+  --axis-tab:#2578ab;     /* active tab fill - a white 13px label clears 4.82:1 */
+  --axis-rgb:48,140,198;  /* == --axis, for the link-underline alpha */
+
+  /* --- the rule ladder, one weight, three greys -------------------------- */
+  --rule:#ababab;         /* plate frames, section rules, the gutter splitter.
+                             Sampled from the app. 2.0:1 is deliberate: every
+                             plate it frames is ALSO separated by a white-on-
+                             grey ground change, which is how the app draws it,
+                             so the rule is a boundary and not a carrier. */
+  --rule-soft:#c7c7c7;    /* the app's table grid, inside-plate hairlines and
+                             the row separators. Two steps are enough: the
+                             app's third step, #ececec, belongs to a 40-row
+                             dense timeline that this page does not draw, and
+                             at 1.18:1 on white it would be a token with no
+                             honest job here. */
+
+  /* --- the one red ------------------------------------------------------- */
+  --cinnabar:#a3211d;     /* the open interval, the venue mark, errors  6.5:1 */
+  --bar-edge:#7d1714;     /* its 1px border on the measured bar               */
+
+  --slate-rgb:138,138,138;/* neutral used by the broken-image note           */
+  --lane-r:3px;           /* THE ONE radius. The app rounds timeline DATA
+                             blocks at 3-4px and squares everything else. After
+                             this change the page contains exactly one mark of
+                             that class - a bar whose length encodes a real
+                             interval on a ruler - so the radius belongs to the
+                             thing depicted, not to a card. Set this to 0 and
+                             the design degrades cleanly to square. */
 
   /* --- legacy aliases so the .gh- / .td- module stylesheets keep resolving */
   --paper:var(--sheet);
-  --paper-2:#dfe2e3;
+  --paper-2:#e4e4e4;
   --card:var(--panel);
   --line:var(--rule);
   --line-soft:var(--rule-soft);
   --ink-soft:var(--ink-2);
-  --muted:#6b7480;
-  --clay:var(--axis);
-  --clay-deep:#163e6e;
+  --muted:#5c6166;        /* was 3.85:1 - it carries .gh-lede and the
+                             blockquotes, so it is fixed at the token */
+  --clay:var(--axis-ink); /* the modules use --clay for hover TEXT and focus
+                             rings, so it must alias the readable blue */
+  --clay-deep:#144f7c;
   --olive:var(--ink-2);
 
   /* --- metrics ----------------------------------------------------------- */
   --maxw:1060px;
-  --timeline-axis:132px;
+  --timeline-axis:144px;
   --serif:'Source Serif 4',Georgia,'Noto Serif SC','Source Han Serif SC','Songti SC','STSong',SimSun,serif;
   --sans:'Archivo','Helvetica Neue',Arial,'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
   --mono:'Sarasa Mono SC','Noto Sans Mono','Noto Sans Mono CJK SC',Consolas,monospace;
@@ -71,42 +129,78 @@ body{
    monospace face is allowed, because it is literally machine text */
 .type{font-family:var(--mono);font-size:.87em;color:var(--ink)}
 
-a{color:var(--axis);text-decoration:underline;
+/* Every link is --axis-ink, never --axis: the sampled accent is a fill and
+   carries text at only 3.69:1. The accent itself survives in the underline. */
+a{color:var(--axis-ink);text-decoration:underline;
   text-decoration-thickness:1px;text-underline-offset:3px;
-  text-decoration-color:rgba(28,76,134,.4)}
+  text-decoration-color:rgba(var(--axis-rgb),.45)}
 a:hover{text-decoration-color:currentColor}
-a:focus-visible,button:focus-visible{outline:2px solid var(--axis);outline-offset:2px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--axis-ink);outline-offset:2px}
 
-/* ---- masthead ----------------------------------------------------------- */
-.mast{border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:30;background:var(--sheet)}
-.mast-in{max-width:var(--maxw);margin:0 auto;padding:14px 34px;
-  display:flex;align-items:baseline;justify-content:space-between;gap:20px}
-.mast-name{font-family:var(--sans);font-weight:600;font-size:14.5px;letter-spacing:.01em}
-.mast-loc{font-family:var(--sans);font-size:12.5px;color:var(--ink-2)}
+/* ---- masthead: the app's menu bar --------------------------------------- */
+/* Deliberately NOT sticky any more. The tab strip below it is the page's one
+   pinned band, so the page carries one sticky row instead of two. */
+.mast{background:var(--menu);border-bottom:1px solid var(--rule)}
+.mast-in{max-width:var(--maxw);margin:0 auto;padding:6px 34px;min-height:34px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px}
+.mast-name{font-family:var(--sans);font-weight:600;font-size:12.5px;letter-spacing:0}
+.mast-loc{font-family:var(--sans);font-size:12px;color:var(--ink-2)}
+
+/* ---- tab strip: the app's filled active tab ----------------------------- */
+/* The strongest single Nsight cue, and the only one a page of sections rather
+   than documents has room for. It is also the navigation this site never had.
+   The rule under the bar is the sampled #308cc6 itself; the active tab's FILL
+   is a darkened derivative of it, because #308cc6 gives a white 13px label
+   only 3.69:1 and the label has to clear 4.5:1.
+   Five tabs exceed a 345px viewport, so the bar scrolls inside itself and must
+   never wrap - a wrapped tab bar would push the page sideways. */
+.tabbar{position:sticky;top:0;z-index:30;background:var(--sheet);
+  border-bottom:1px solid var(--axis);
+  display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tabbar::-webkit-scrollbar{display:none}
+.tabbar-in{max-width:var(--maxw);margin:0 auto;padding:0 34px;display:flex;flex:none}
+.tab{flex:none;display:inline-flex;align-items:center;height:36px;padding:0 16px;
+  border-right:1px solid var(--rule);background:transparent;border-radius:0;
+  font-family:var(--sans);font-size:13px;color:var(--ink);
+  text-decoration:none;white-space:nowrap}
+.tab:first-child{border-left:1px solid var(--rule)}
+.tab:hover{background:rgba(var(--axis-rgb),.10);color:var(--ink)}
+.tab.is-active{background:var(--axis-tab);color:#fff}
+/* offset +2, not -2: a negative offset paints the ring INSIDE the border box,
+   and on the active tab that is its own --axis-tab fill - measured 1.31:1,
+   i.e. no visible focus indicator at all. Outside, it lands on the bar. */
+.tab:focus-visible{outline:2px solid var(--axis-ink);outline-offset:2px}
 
 /* ---- hero: a drawing title block, not a poster -------------------------- */
-header{padding:52px 0 8px}
+header{padding:44px 0 8px}
+/* the app's document plate: pure white on the grey ground, square, no shadow */
 .titleblock{display:grid;grid-template-columns:minmax(0,1fr) 232px;gap:0;
   border:1px solid var(--rule);border-top-width:2px;border-top-color:var(--ink);
-  background:var(--sheet)}
+  background:var(--panel)}
 @media(max-width:760px){.titleblock{grid-template-columns:1fr}}
-.tb-main{padding:30px 32px 26px;min-width:0}
+.tb-main{padding:26px 30px 24px;min-width:0}
 /* The name and the section titles are APPARATUS: they are set in the same
    grotesque as the labels. Source Serif is reserved for prose, so the two
-   voices on the page never blur into one. */
-h1{font-family:var(--sans);font-weight:600;font-size:clamp(38px,5.8vw,64px);
-  line-height:1;letter-spacing:-.032em;margin-bottom:24px}
+   voices on the page never blur into one. The name is sized like a title, not
+   like a poster - the reference application has no display type at all. */
+h1{font-family:var(--sans);font-weight:600;font-size:clamp(34px,5.4vw,56px);
+  line-height:1.02;letter-spacing:-.03em;margin-bottom:22px}
 .tb-rows{border-top:1px solid var(--rule-soft)}
-.tb-row{display:flex;gap:16px;align-items:baseline;padding:8px 0;
+.tb-row{display:flex;gap:16px;align-items:baseline;padding:6px 0;
   border-bottom:1px solid var(--rule-soft)}
-.tb-k{flex:none;width:96px;font-family:var(--sans);font-size:12.5px;color:var(--ink-2);
-  letter-spacing:.01em;text-transform:none}
+/* the app's inspector grammar: the label column is right-aligned against the
+   value column, dim, and tabular, so the values start on one vertical line */
+.tb-k{flex:none;width:96px;font-family:var(--sans);font-size:12px;color:var(--ink-2);
+  letter-spacing:0;text-transform:none;text-align:right}
 .tb-v{min-width:0;font-size:17px;line-height:1.5;overflow-wrap:anywhere}
-.tb-v .sep{color:var(--faint);padding:0 6px}
+/* --rule is a boundary token and this is the one place a boundary greys a
+   literal text glyph (the "/" separators), where it measures 2.30:1. Back to
+   a text-carrying grey - still recessive against --ink at 5.4:1. */
+.tb-v .sep{color:var(--muted);padding:0 6px}
 @media(max-width:560px){
   .tb-main{padding:22px 18px 20px}
   .tb-row{flex-direction:column;gap:2px}
-  .tb-k{width:auto}
+  .tb-k{width:auto;text-align:left}
   /* The email and the GitHub URL were one unbreakable run, so the contact row
      pushed the whole page ~25px past a 385px viewport. Let those two links
      wrap onto their own lines, and drop the separator that would otherwise be
@@ -124,10 +218,13 @@ h1{font-family:var(--sans);font-weight:600;font-size:clamp(38px,5.8vw,64px);
 @media(max-width:760px){.portrait-plate{border-left:0;border-top:1px solid var(--rule)}}
 .portrait{display:block;width:100%;height:auto}
 .portrait-plate figcaption{margin-top:9px;font-family:'Kaiti SC','STKaiti',KaiTi,var(--serif);
-  font-size:14px;color:var(--ink-2)}
+  font-size:12.5px;color:var(--ink-2)}
 
 /* ---- sections ----------------------------------------------------------- */
-section{padding:66px 0 10px}
+/* scroll-margin-top: the file had none while .mast was sticky, so every
+   in-page anchor parked its heading underneath the bar. The tab strip sticks
+   at 36px; 52 clears it with breathing room. */
+section{padding:58px 0 10px;scroll-margin-top:52px}
 .sec-head{display:flex;align-items:baseline;justify-content:space-between;
   gap:24px;padding-top:16px;margin-bottom:38px;border-top:1px solid var(--rule);
   /* The axis origin: a short heavy segment where the section rule begins.
@@ -150,10 +247,19 @@ section{padding:66px 0 10px}
 .about p{margin-bottom:22px;font-size:19px;line-height:1.75;max-width:64ch}
 .about p b{font-weight:600}
 
-.facts{border-top:1px solid var(--rule);padding-top:0}
-.fact{padding:13px 0;border-bottom:1px solid var(--rule-soft)}
-.fact .k{font-family:var(--sans);font-size:12px;color:var(--ink-2);margin-bottom:4px}
+/* the inspector pane: a white plate with ruled rows, square, no shadow */
+.facts{background:var(--panel);border:1px solid var(--rule);padding:2px 20px 4px}
+.fact{padding:11px 0;border-bottom:1px solid var(--rule-soft)}
+.fact:last-child{border-bottom:0}
+.fact .k{font-family:var(--sans);font-size:12px;color:var(--ink-2);margin-bottom:4px;
+  letter-spacing:0}
 .fact .v{font-size:16.5px;line-height:1.55}
+/* Tools sits under the prose rather than in the facts column: the right column
+   carried seven rows against the left column's two paragraphs, and the page
+   read lopsided. Moving it here gives the two columns comparable weight. */
+.tools{margin-top:32px;padding-top:18px;border-top:1px solid var(--rule-soft)}
+.tools-k{font-family:var(--sans);font-size:12px;color:var(--ink-2);margin-bottom:12px;
+  letter-spacing:0}
 .tool-grp{margin-bottom:13px}
 .tool-grp:last-child{margin-bottom:0}
 .tool-grp em{display:block;font-style:normal;font-family:var(--sans);font-size:12px;
@@ -162,37 +268,78 @@ section{padding:66px 0 10px}
 .chip-sm{font-family:var(--sans);font-size:11.5px;padding:3px 8px;
   border:1px solid var(--rule-soft);color:var(--ink-2)}
 
-/* ---- work: a ruled ledger on a calibrated axis -------------------------- */
-.work-timeline{--timeline-axis:132px;position:relative}
-/* the timeline spine */
-.work-timeline::before{content:"";position:absolute;z-index:0;
-  left:calc(var(--timeline-axis) - 1px);top:0;bottom:0;width:1px;background:var(--rule)}
+/* ---- work: the app's row-header gutter beside a lane canvas ------------- */
+/* The whole ledger is one white plate. Its left column is the application's
+   row header - a grey band of dim right-aligned readouts - and its right column
+   is the canvas. The gutter's border-right IS the pane splitter, which is why
+   the old drawn spine and its per-row tick are gone: the splitter already says
+   everything those two measured, and they measured nothing else. */
+.work-timeline{position:relative;background:var(--panel);border:1px solid var(--rule)}
+
+/* The ruler. The app measures its lanes against one, so this one is real and
+   the bars below are answerable to it. 22px is the application's own Events
+   view row height; ticks hang from the bottom edge so the labels sit clear. */
+/* 26px, not the app's 22px Events row: at 22 the 9px quarter ticks ran straight
+   through the 11.5px labels. The label gets line-height:1 so its box ends
+   before the tallest tick begins. */
+.ruler{display:grid;grid-template-columns:var(--timeline-axis) minmax(0,1fr);
+  height:26px;border-bottom:1px solid var(--rule-soft)}
+.ruler-gutter{background:var(--menu);border-right:1px solid var(--rule)}
+.ruler-track{position:relative}
+.ruler-tick{position:absolute;bottom:0;width:1px;height:5px;background:var(--rule)}
+.ruler-tick.is-q{height:9px;background:var(--ink-2)}
+.ruler-lab{position:absolute;top:2px;line-height:1;
+  font-family:var(--sans);font-size:11.5px;
+  color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap;
+  transform:translateX(-50%)}
+/* the first and last labels would hang off their own track if centred */
+.ruler-lab.is-edge-l{transform:none}
+.ruler-lab.is-edge-r{transform:translateX(-100%)}
+
 .proj{position:relative;display:grid;grid-template-columns:var(--timeline-axis) minmax(0,1fr);
   padding:0}
-/* a tick per entry, crossing the spine */
-.proj::before{content:"";position:absolute;z-index:2;top:30px;
-  left:calc(var(--timeline-axis) - 5px);width:9px;height:1px;background:var(--rule)}
-/* the open interval: the current role's tick is the one hot mark */
-.proj:first-child::before{background:var(--cinnabar);height:2px;
-  left:calc(var(--timeline-axis) - 7px);width:13px}
-.proj-side{padding:22px 20px 26px 0;text-align:right}
-.proj-side .yr{font-family:var(--sans);font-size:12.5px;color:var(--ink-2);line-height:1.45}
-.proj:first-child .proj-side .yr{color:var(--cinnabar)}
-.proj-main{padding:22px 0 30px 30px;border-bottom:1px solid var(--rule-soft);min-width:0}
-.proj:last-child .proj-main{border-bottom:0}
+.proj-side{background:var(--menu);border-right:1px solid var(--rule);
+  border-bottom:1px solid var(--rule-soft);padding:14px 14px 16px 8px;text-align:right}
+.proj-side .yr{font-family:var(--sans);font-size:12.5px;color:var(--ink-2);line-height:1.4;
+  font-variant-numeric:tabular-nums}
+.proj-side .dur{font-family:var(--sans);font-size:12.5px;color:var(--ink-2);
+  margin-top:2px;font-variant-numeric:tabular-nums}
+/* the open interval: the current role's readout is the one hot mark.
+   `.ruler + .proj`, NOT `:first-child` - the ruler is the first child of
+   .work-timeline, so :first-child matches no project at all and this rule was
+   dead: the cinnabar readout it promises has never been painted. */
+.ruler + .proj .proj-side .yr{color:var(--cinnabar)}
+.proj-main{padding:14px 0 22px 26px;border-bottom:1px solid var(--rule-soft);min-width:0}
+.proj:last-child .proj-side,.proj:last-child .proj-main{border-bottom:0}
+
+/* THE ONE ROUNDED CORNER ON THE PAGE. Length encodes a real interval measured
+   against the ruler above; the radius is a property of the thing depicted, not
+   of a card, which is exactly how the application draws a timeline data block.
+   No text ever sits inside a bar - the gutter readout says the same thing. */
+/* The strip spans the WHOLE grid column, not .proj-main's padded content box.
+   With the 26px inset left on, every bar's percentage was measured on a track
+   26px narrower and 26px to the right of the ruler's own axis, so a left:0%
+   bar started 26px away from the ruler's 0% tick - the numbers said the bars
+   were answerable to the ruler and the geometry said otherwise. */
+.lane{position:relative;height:18px;margin:0 0 7px -26px;width:calc(100% + 26px)}
+.lane-bar{position:absolute;top:3px;height:12px;border-radius:var(--lane-r);
+  background:var(--axis);border:1px solid var(--axis-ink)}
+.lane-bar.is-open{background:var(--cinnabar);border-color:var(--bar-edge)}
+
+/* Below 760px the ruler and the bars go. The .yr readout already carries the
+   same interval in words, so nothing is lost, and the page cannot be pushed
+   sideways by a track that no longer fits. */
 @media(max-width:760px){
-  .work-timeline{--timeline-axis:0px}
-  .work-timeline::before{left:0}
-  .proj{grid-template-columns:1fr;padding-left:26px}
-  .proj::before{left:-5px}
-  .proj:first-child::before{left:-7px}
-  .proj-side{padding:20px 0 0;text-align:left}
-  .proj-main{padding:6px 0 26px}
+  .ruler,.lane{display:none}
+  .proj{grid-template-columns:1fr}
+  .proj-side{background:transparent;border-right:0;border-bottom:0;
+    padding:16px 0 0;text-align:left}
+  .proj-main{padding:4px 0 22px}
 }
 .proj h3{font-family:var(--serif);font-weight:600;font-size:25px;line-height:1.22;
   letter-spacing:-.014em;margin-bottom:11px}
 .proj h3 a{color:inherit;text-decoration:none}
-.proj h3 a:hover{color:var(--axis);text-decoration:underline;
+.proj h3 a:hover{color:var(--axis-ink);text-decoration:underline;
   text-decoration-thickness:1px;text-underline-offset:4px}
 .proj .desc{max-width:66ch;margin-bottom:14px;font-size:17.5px;color:var(--ink-2)}
 .proj .desc b{color:var(--ink);font-weight:600}
@@ -202,8 +349,8 @@ section{padding:66px 0 10px}
   border:1px solid var(--rule-soft);color:var(--ink-2)}
 .toggle{display:inline-flex;align-items:center;gap:8px;cursor:pointer;background:none;
   border:0;border-bottom:1px solid transparent;padding:4px 0;
-  font-family:var(--sans);font-size:13px;color:var(--axis);transition:border-color .18s}
-.toggle:hover{border-bottom-color:var(--axis)}
+  font-family:var(--sans);font-size:13px;color:var(--axis-ink);transition:border-color .18s}
+.toggle:hover{border-bottom-color:var(--axis-ink)}
 .toggle .tri{width:0;height:0;font-size:0;line-height:0;display:inline-block;
   border-left:5px solid currentColor;border-top:3.5px solid transparent;
   border-bottom:3.5px solid transparent;transition:transform .3s ease}
@@ -212,7 +359,7 @@ section{padding:66px 0 10px}
 .proj.open .star{grid-template-rows:1fr}
 .star-inner{overflow:hidden;min-height:0}
 /* an unfolded plate - ground change and a top rule only, never a card */
-.star-pad{margin-top:18px;padding:22px 26px;background:var(--panel);
+.star-pad{margin-top:18px;padding:20px 24px;background:var(--band);
   border-top:1px solid var(--rule);max-width:70ch}
 .star-intro{font-size:17px;color:var(--ink-2);margin-bottom:2px}
 .star-row{display:grid;grid-template-columns:54px minmax(0,1fr);gap:18px;
@@ -230,11 +377,16 @@ section{padding:66px 0 10px}
 
 /* ---- paper: a figure plate ---------------------------------------------- */
 .pub{border:1px solid var(--rule);background:var(--panel)}
-.pub-head{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;
-  padding:14px 24px;border-bottom:1px solid var(--rule)}
-.pub-head .venue{font-family:var(--sans);font-size:12.5px;color:var(--cinnabar)}
-.pub-head .auth{font-family:var(--sans);font-size:12.5px;color:var(--ink-2);
-  font-variant-numeric:tabular-nums}
+/* These two were written as `.pub-head .venue` / `.pub-head .auth`, but no
+   element carrying `pub-head` has EVER existed in this file (absent from every
+   commit), so both rules were dead and the venue was rendering as plain body
+   serif. That silently removed one of cinnabar's three stated jobs - the
+   paper's venue mark - from the page. Styled against the classes that are
+   actually in the markup. */
+.pub-copy .venue{font-family:var(--sans);font-size:12.5px;color:var(--cinnabar);
+  letter-spacing:0;margin-bottom:7px}
+.pub-copy .auth{font-family:var(--sans);font-size:12.5px;color:var(--ink-2);
+  font-variant-numeric:tabular-nums;margin-bottom:15px}
 .pub-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:0}
 @media(max-width:780px){.pub-grid{grid-template-columns:1fr}}
 .pub-copy{padding:26px 30px;min-width:0}
@@ -245,7 +397,9 @@ section{padding:66px 0 10px}
 .pub-figure{margin:0;padding:24px;border-left:1px solid var(--rule);
   display:flex;flex-direction:column;justify-content:center}
 @media(max-width:780px){.pub-figure{border-left:0;border-top:1px solid var(--rule)}}
-.pub-figure img{display:block;width:100%;height:auto;background:#fff;
+/* the paper's chart is drawn for a light ground, so its mount must resolve to
+   white and must NOT follow the page ground. --panel is white by design. */
+.pub-figure img{display:block;width:100%;height:auto;background:var(--panel);
   border:1px solid var(--rule)}
 .pub-figure figcaption{margin-top:10px;font-family:var(--sans);font-size:11.5px;
   color:var(--ink-2);line-height:1.6}
@@ -262,14 +416,14 @@ section{padding:66px 0 10px}
   .contact-grid>*:nth-child(odd){padding-right:0;border-right:0}
   .contact-grid>*:nth-child(even){padding-left:0}
 }
-.cc:hover .v{color:var(--axis);text-decoration:underline;
+.cc:hover .v{color:var(--axis-ink);text-decoration:underline;
   text-decoration-thickness:1px;text-underline-offset:3px}
 .cc .k{font-family:var(--sans);font-size:12px;color:var(--ink-2);margin-bottom:5px}
 .cc .v{font-family:var(--serif);font-size:19px;word-break:break-word}
 
-/* ---- footer ------------------------------------------------------------- */
-footer{border-top:1px solid var(--rule);margin-top:56px}
-.foot-in{max-width:var(--maxw);margin:0 auto;padding:22px 34px 46px;
+/* ---- footer: the app's status bar --------------------------------------- */
+footer{background:var(--menu);border-top:1px solid var(--rule);margin-top:56px}
+.foot-in{max-width:var(--maxw);margin:0 auto;padding:12px 34px 18px;
   display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .foot-in span{font-family:var(--sans);font-size:12px;color:var(--ink-2)}
 
@@ -294,6 +448,16 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
   </div>
 </div>
 
+<nav class="tabbar" aria-label="Sections">
+  <div class="tabbar-in">
+    <a class="tab" href="#about">About</a>
+    <a class="tab" href="#work">Work</a>
+    <a class="tab" href="#research">Paper</a>
+    <a class="tab" href="#github">On GitHub</a>
+    <a class="tab" href="#contact">Contact</a>
+  </div>
+</nav>
+
 <header>
   <div class="wrap">
     <div class="titleblock">
@@ -301,7 +465,7 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
         <h1>Yunpeng Xu</h1>
         <div class="tb-rows">
           <div class="tb-row"><span class="tb-k">Focus</span><span class="tb-v">AI infrastructure — kernel and inference optimization, distributed parallelism, mid- and post-training, agent frameworks</span></div>
-          <div class="tb-row"><span class="tb-k">Institution</span><span class="tb-v">Sichuan University, Computer Science (B.Eng, 2023–2027)<span class="sep">/</span>GPA 3.62 / 4.0</span></div>
+          <div class="tb-row"><span class="tb-k">Institution</span><span class="tb-v">Sichuan University, Pittsburgh Institute, Computer Science (B.Eng, 2023–2027)<span class="sep">/</span>GPA 3.62 / 4.0</span></div>
           <div class="tb-row"><span class="tb-k">Lab</span><span class="tb-v"><a href="https://ids.scu.edu.cn/" target="_blank" rel="noopener noreferrer">SCU IDS Lab</a></span></div>
           <div class="tb-row"><span class="tb-k">Now</span><span class="tb-v"><span class="now">UCloud, AI Infra Intern</span></span></div>
           <div class="tb-row tb-row-contact"><span class="tb-k">Contact</span><span class="tb-v"><a href="mailto:13588039544@163.com">13588039544@163.com</a><span class="sep">/</span><a href="https://github.com/OLIVER-XYP" target="_blank" rel="noopener noreferrer">github.com/OLIVER-XYP</a></span></div>
@@ -319,7 +483,7 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
   <div class="wrap">
     <div class="sec-head reveal"><h2>About</h2><span class="sec-note">B.Eng, 2023–2027</span></div>
     <div class="about reveal">
-      <div>
+      <div class="about-main">
         <p>I'm a Computer Science undergraduate at <b>Sichuan University</b> (2023–2027), doing research in
         the <a href="https://ids.scu.edu.cn/" target="_blank" rel="noopener noreferrer">SCU IDS Lab</a>. I read
         two or three LLM papers a week, and I love building things alongside people who
@@ -329,6 +493,18 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
         side, I focus on post-training, especially Agentic MARL, and I've contributed PRs to open-source projects like
         Slime. On the <b>application</b> side, I learned from the leaked Claude source code and LangGraph, and am now
         working on an agent evaluation project.</p>
+        <div class="tools">
+          <div class="tools-k">Tools</div>
+          <div class="tool-grp"><em>Infra and systems</em><div class="chips-sm">
+            <span class="chip-sm">CUDA</span><span class="chip-sm">Triton</span><span class="chip-sm">Kernel Optimization</span><span class="chip-sm">vLLM</span><span class="chip-sm">SGLang</span><span class="chip-sm">FlashInfer</span><span class="chip-sm">DeepEP</span><span class="chip-sm">Nsight NSYS / NCU</span><span class="chip-sm">Model Quantization</span>
+          </div></div>
+          <div class="tool-grp"><em>Training and post-training</em><div class="chips-sm">
+            <span class="chip-sm">PyTorch</span><span class="chip-sm">Megatron-LM</span><span class="chip-sm">SFT / RL</span><span class="chip-sm">GRPO / GSPO</span><span class="chip-sm">VERL</span><span class="chip-sm">Slime</span>
+          </div></div>
+          <div class="tool-grp"><em>Agents</em><div class="chips-sm">
+            <span class="chip-sm">LangGraph</span><span class="chip-sm">Agent Evaluation</span>
+          </div></div>
+        </div>
       </div>
       <div class="about-right">
         <div class="facts">
@@ -338,17 +514,6 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
           <div class="fact"><div class="k">Languages</div><div class="v">CET-6 554, IELTS 7.0<br>Reads English papers and technical documentation daily</div></div>
           <div class="fact"><div class="k">Coursework</div><div class="v">Introduction to AI, Data Mining, Computer Architecture, Operating Systems, Machine Learning Fundamentals, Deep Learning, Statistics, Data Structures and Algorithms, Computer Vision, Database Principles, Data Analysis, Probability, Computer Organization</div></div>
           <div class="fact"><div class="k">Interests</div><div class="v">Football (playing and watching), music, games</div></div>
-          <div class="fact"><div class="k">Tools</div><div class="v">
-            <div class="tool-grp"><em>Infra and systems</em><div class="chips-sm">
-              <span class="chip-sm">CUDA</span><span class="chip-sm">Triton</span><span class="chip-sm">Kernel Optimization</span><span class="chip-sm">vLLM</span><span class="chip-sm">SGLang</span><span class="chip-sm">FlashInfer</span><span class="chip-sm">DeepEP</span><span class="chip-sm">Nsight NSYS / NCU</span><span class="chip-sm">Model Quantization</span>
-            </div></div>
-            <div class="tool-grp"><em>Training and post-training</em><div class="chips-sm">
-              <span class="chip-sm">PyTorch</span><span class="chip-sm">Megatron-LM</span><span class="chip-sm">SFT / RL</span><span class="chip-sm">GRPO / GSPO</span><span class="chip-sm">VERL</span><span class="chip-sm">Slime</span>
-            </div></div>
-            <div class="tool-grp"><em>Agents</em><div class="chips-sm">
-              <span class="chip-sm">LangGraph</span><span class="chip-sm">Agent Evaluation</span>
-            </div></div>
-          </div></div>
         </div>
       </div>
     </div>
@@ -357,16 +522,35 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
 
 <section id="work">
   <div class="wrap">
-    <div class="sec-head reveal"><h2>Work</h2><span class="sec-note">9 entries</span></div>
+    <div class="sec-head reveal"><h2>Work</h2></div>
 
     <div class="work-timeline" role="list" aria-label="Selected work timeline">
-    <div class="proj reveal" role="listitem">
-      <div class="proj-side"><div class="yr">2026.07.16 — now</div></div>
+    <div class="ruler" aria-hidden="true">
+      <div class="ruler-gutter"></div>
+      <div class="ruler-track">
+        <span class="ruler-tick is-q" style="left:0%"></span>
+        <span class="ruler-lab is-edge-l" style="left:0%">2025.07</span>
+        <span class="ruler-tick" style="left:20%"></span>
+        <span class="ruler-lab" style="left:20%">2025.10</span>
+        <span class="ruler-tick is-q" style="left:40%"></span>
+        <span class="ruler-lab" style="left:40%">2026.01</span>
+        <span class="ruler-tick" style="left:60%"></span>
+        <span class="ruler-lab" style="left:60%">2026.04</span>
+        <span class="ruler-tick is-q" style="left:80%"></span>
+        <span class="ruler-lab" style="left:80%">2026.07</span>
+        <span class="ruler-tick" style="right:0"></span>
+        <span class="ruler-lab is-edge-r" style="left:100%">2026.10</span>
+      </div>
+    </div>
+
+    <div class="proj reveal" data-from="2026.07" data-to="2026.10" role="listitem">
+      <div class="proj-side"><div class="yr">2026.07.16 — now</div><div class="dur"></div></div>
       <div class="proj-main">
+        <div class="lane" aria-hidden="true"><span class="lane-bar is-open" style="left:80%;width:20%"></span></div>
         <h3>UCloud · AI Infra Summer Internship</h3>
         <p class="desc">Operator-level and distributed inference optimization on a <b>1,000-GPU</b> production cluster — covering <b>GLM-5.2</b>, <b>DeepSeek-V4-Flash-0731</b>, <b>Kimi-K3</b> and others.</p>
         <div class="topics"><span class="topic">Inference Optimization</span><span class="topic">TP · DP · PP · CP · SP</span><span class="topic">PD Disaggregation</span><span class="topic">Cluster Scheduling</span></div>
-        <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
+        <button class="toggle" aria-expanded="false"><span class="tri" aria-hidden="true">▸</span> <span class="lbl">Read details</span></button>
         <div class="star"><div class="star-inner"><div class="star-pad">
           <p class="star-intro">Operator paths, parallel schemes and cluster-level scheduling on a production cluster. (2026.07 – now)</p>
           <div class="star-row"><span class="sk">S / T</span><p>Testing operator-level and distributed / parallel schemes for <b>DeepSeek-V4-Flash-0731</b> — <b>TP, DP, PP, CP, SP</b> and <b>PD disaggregation</b> — plus cluster-level scheduling with <b>dynamo</b> and <b>llm-d</b>.</p></div>
@@ -397,15 +581,15 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
    Each row is COLLAPSED by default: only its English title shows until the row
    is expanded.
 --------------------------------------------------------------------------- */
-.td-embed{position:relative;margin-top:22px;padding-top:18px;border-top:1px dashed var(--line);min-width:0}
+.td-embed{position:relative;margin-top:22px;padding-top:18px;border-top:1px solid var(--rule-soft);min-width:0}
 .td-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:10px}
-.td-status{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:11.5px;letter-spacing:.02em;color:var(--muted);line-height:1.5;min-height:1em}
-.td-status.is-err{color:var(--clay-deep)}
+.td-status{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:0;color:var(--muted);line-height:1.5;min-height:1em}
+.td-status.is-err{color:var(--cinnabar)}
 .td-status a{color:var(--clay-deep)}
 .td-status a:hover{color:var(--clay)}
 .td-spin{
   display:inline-block;width:10px;height:10px;margin-right:7px;vertical-align:-1px;
-  border:1.5px solid var(--line);border-top-color:var(--clay);border-radius:50%;
+  border:1px solid var(--rule);border-top-color:var(--clay);border-radius:50%;
   animation:tdspin .8s linear infinite;
 }
 @keyframes tdspin{to{transform:rotate(360deg)}}
@@ -421,14 +605,14 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
   font-size:17px;line-height:1.4;font-weight:500;color:var(--ink);
   padding:13px 16px;transition:background .2s,color .2s;
 }
-.td-docbtn:hover{background:rgba(28,76,134,.05)}
-.td-docbtn:focus-visible{outline:2.5px solid var(--clay);outline-offset:-2.5px;position:relative;z-index:1}
+.td-docbtn:hover{background:rgba(var(--axis-rgb),.05)}
+.td-docbtn:focus-visible{outline:2px solid var(--axis-ink);outline-offset:-2.5px;position:relative;z-index:1}
 .td-docbtn .td-tri{
   flex:none;width:0;height:0;font-size:0;line-height:0;margin-top:7px;
   border-left:5px solid var(--axis);border-top:3.5px solid transparent;
   border-bottom:3.5px solid transparent;transition:transform .3s ease;
 }
-.td-docbtn[aria-expanded="true"]{background:rgba(28,76,134,.08)}
+.td-docbtn[aria-expanded="true"]{background:rgba(var(--axis-rgb),.08)}
 .td-docbtn[aria-expanded="true"] .td-tri{transform:rotate(90deg)}
 .td-docbtn .td-t{min-width:0;overflow-wrap:anywhere}
 
@@ -441,7 +625,7 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
 .td-note a:hover{color:var(--clay)}
 .td-github-link{
   font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:12.5px;letter-spacing:.04em;color:var(--clay-deep);
-  text-decoration:none;border:1.5px solid var(--line);border-radius:0;padding:9px 14px;display:inline-block;margin:10px 12px;
+  text-decoration:none;border:1px solid var(--rule);border-radius:0;padding:9px 14px;display:inline-block;margin:10px 12px;
   transition:border-color .2s,color .2s;
 }
 .td-github-link:hover{border-color:var(--clay);color:var(--clay)}
@@ -449,27 +633,31 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
 /* the expanded body */
 .td-doc[hidden]{display:none}
 .td-doc{
-  padding:0 16px 20px 37px;
+  background:var(--panel);border-top:1px solid var(--rule);
+  /* 32px left: the .td-docbtn text above starts at 16px padding + 5px triangle
+     + 11px gap, and the previous sheet aligned the two. The white plate is a
+     new inner surface, but the text column still has to line up. */
+  padding:18px 20px 20px 32px;
   font-family:'Source Serif 4',Georgia,'Noto Serif SC','Noto Serif CJK SC','Source Han Serif SC','Songti SC','STSong','SimSun',serif;
   font-size:16px;line-height:1.7;color:var(--ink-soft);overflow-wrap:anywhere;
 }
 .td-dochead{
   display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;
-  padding:0 0 12px;margin-bottom:14px;border-bottom:1.5px dashed var(--line);
+  padding:0 0 12px;margin-bottom:14px;border-bottom:1px solid var(--rule-soft);
 }
-.td-kicker{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--clay)}
+.td-kicker{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:0;text-transform:none;color:var(--ink-2)}
 .td-docname{
   font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:13px;color:var(--muted);
   margin-top:6px;overflow-wrap:anywhere;
 }
-.td-docmeta{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:11.5px;color:var(--faint);margin-top:3px}
+.td-docmeta{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:12.5px;color:var(--ink-2);margin-top:3px}
 .td-pane-link{
   flex:none;font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:11.5px;letter-spacing:.04em;line-height:1;
-  padding:8px 12px;border:1.5px solid var(--line);border-radius:0;color:var(--ink-soft);
+  padding:8px 12px;border:1px solid var(--rule);border-radius:0;color:var(--ink-soft);
   text-decoration:none;transition:border-color .2s,color .2s;
 }
 .td-pane-link:hover{border-color:var(--clay);color:var(--clay)}
-.td-pane-link:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px}
+.td-pane-link:focus-visible{outline:2px solid var(--axis-ink);outline-offset:2px}
 
 .td-doc>*:first-child{margin-top:0}
 .td-doc h1,.td-doc h2,.td-doc h3,.td-doc h4,.td-doc h5,.td-doc h6{
@@ -485,50 +673,50 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
 .td-doc li{margin-bottom:5px}
 .td-doc li>ul,.td-doc li>ol{margin:5px 0 4px}
 .td-doc .td-lpara{margin:5px 0 0}
-.td-doc a{color:var(--clay-deep);text-decoration-color:rgba(28,76,134,.45);text-decoration-thickness:1px;text-underline-offset:3px;overflow-wrap:anywhere}
+.td-doc a{color:var(--clay-deep);text-decoration-color:rgba(var(--axis-rgb),.45);text-decoration-thickness:1px;text-underline-offset:3px;overflow-wrap:anywhere}
 .td-doc a:hover{color:var(--clay)}
-.td-doc a:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px;border-radius:0}
+.td-doc a:focus-visible{outline:2px solid var(--axis-ink);outline-offset:2px;border-radius:0}
 .td-doc strong{color:var(--ink);font-weight:600}
 .td-doc del{color:var(--muted)}
 .td-doc code{
   font-family:'Sarasa Mono SC','Noto Sans Mono','Noto Sans Mono CJK SC',Consolas,monospace;
-  font-size:12.5px;background:rgba(28,76,134,.07);border:1px solid var(--line-soft);
+  font-size:12.5px;background:var(--band);border:1px solid var(--line-soft);
   border-radius:0;padding:1px 5px;overflow-wrap:anywhere;
 }
 .td-doc pre{
   font-family:'Sarasa Mono SC','Noto Sans Mono','Noto Sans Mono CJK SC',Consolas,monospace;
-  font-size:12px;line-height:1.6;background:rgba(28,76,134,.05);border:1px solid var(--line-soft);
+  font-size:12px;line-height:1.6;background:var(--band);border:1px solid var(--rule-soft);
   border-radius:0;padding:12px 14px;margin:0 0 15px;overflow-x:auto;-webkit-overflow-scrolling:touch;
 }
 .td-doc pre code{background:none;border:0;padding:0;font-size:12px;white-space:pre;overflow-wrap:normal}
-.td-doc blockquote{margin:0 0 15px;padding:2px 0 2px 14px;border-left:2.5px solid var(--line);color:var(--muted)}
+.td-doc blockquote{margin:0 0 15px;padding:2px 0 2px 14px;border-left:2px solid var(--rule);color:var(--muted)}
 .td-doc blockquote p:last-child{margin-bottom:0}
-.td-doc hr{border:0;border-top:1.5px solid var(--line-soft);margin:22px 0}
-.td-doc img{max-width:100%;height:auto;border-radius:0;border:1px solid var(--line-soft);vertical-align:middle}
+.td-doc hr{border:0;border-top:1px solid var(--rule-soft);margin:22px 0}
+.td-doc img{max-width:100%;height:auto;border-radius:0;border:1px solid var(--rule-soft);background:var(--panel);vertical-align:middle}
 .td-doc .td-imgfail{
   display:block;font-family:'Archivo','Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif;
-  font-size:11px;color:var(--muted);border:1px dashed var(--line);border-radius:0;
-  padding:13px 11px;margin:0 0 15px;background:rgba(120,132,146,.08);overflow-wrap:anywhere;
+  font-size:11px;color:var(--muted);border:1px solid var(--rule-soft);border-radius:0;
+  padding:13px 11px;margin:0 0 15px;background:rgba(var(--slate-rgb),.08);overflow-wrap:anywhere;
 }
 .td-doc .td-tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 15px}
 .td-doc table{border-collapse:collapse;width:100%;font-size:14.5px}
-.td-doc th,.td-doc td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+.td-doc th,.td-doc td{border:1px solid var(--rule-soft);padding:6px 10px;text-align:left;vertical-align:top}
 .td-doc th{
-  background:rgba(28,76,134,.06);color:var(--ink);font-weight:600;white-space:nowrap;
+  background:var(--band);color:var(--ink);font-weight:600;white-space:nowrap;
   font-family:'Source Serif 4',Georgia,'Noto Serif SC','Noto Serif CJK SC','Songti SC','STSong','SimSun',serif;
 }
 .td-retry{
   margin-left:6px;font:inherit;color:inherit;background:none;border:0;
-  border-bottom:1.5px solid currentColor;cursor:pointer;padding:0 0 1px;font-family:inherit;
+  border-bottom:1px solid currentColor;cursor:pointer;padding:0 0 1px;font-family:inherit;
 }
 .td-retry:hover{color:var(--clay)}
 .td-retry:focus-visible{outline:2px solid var(--clay);outline-offset:2px}
 
-.td-foot{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:.02em;color:var(--faint);margin-top:12px;line-height:1.7}
+.td-foot{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:0;color:var(--ink-2);margin-top:12px;line-height:1.7}
 .td-foot a{color:var(--clay-deep)}
 
 @media (prefers-reduced-motion: reduce){
-  .td-spin{animation:none;border-top-color:var(--line)}
+  .td-spin{animation:none;border-top-color:var(--axis-ink)}
   .td-docbtn .td-tri{transition:none}
   .td-doc *{transition:none!important}
 }
@@ -1370,12 +1558,13 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
       </div>
     </div>
 
-    <div class="proj reveal" role="listitem">
-      <div class="proj-side"><div class="yr">2026.05 — now</div></div>
+    <div class="proj reveal" data-from="2026.05" data-to="2026.10" role="listitem">
+      <div class="proj-side"><div class="yr">2026.05 — now</div><div class="dur"></div></div>
       <div class="proj-main">
+        <div class="lane" aria-hidden="true"><span class="lane-bar is-open" style="left:66.6667%;width:33.3333%"></span></div>
         <h3><a href="https://github.com/OLIVER-XYP/OMEGA-Arena" target="_blank">OMEGA-Arena</a></h3>
         <div class="topics"><span class="topic">Agent Evaluation</span><span class="topic">Kernel Optimization</span></div>
-        <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
+        <button class="toggle" aria-expanded="false"><span class="tri" aria-hidden="true">▸</span> <span class="lbl">Read details</span></button>
         <div class="star"><div class="star-inner"><div class="star-pad">
           <p class="star-intro">An agent evaluation targeted at optimization and graded with an Elo mechanism.</p>
           <div class="star-row"><span class="sk">S / T</span><p>(1) Current agent evaluation focuses on correctness, but in practice many problems are <b>optimization problems with no absolute right or wrong</b>. (2) Unlike optimizers such as AdamW, an agent tuning parameters often abruptly increases or decreases a parameter when it sees no obvious improvement, causing it to miss the chance of reaching the optimum. Optimization problems therefore test whether an agent can align well with human instructions in a specific optimization scenario.</p></div>
@@ -1384,12 +1573,13 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
       </div>
     </div>
 
-    <div class="proj reveal" role="listitem">
-      <div class="proj-side"><div class="yr">2026.06 — 2026.07</div></div>
+    <div class="proj reveal" data-from="2026.06" data-to="2026.07" role="listitem">
+      <div class="proj-side"><div class="yr">2026.06 — 2026.07</div><div class="dur"></div></div>
       <div class="proj-main">
+        <div class="lane" aria-hidden="true"><span class="lane-bar" style="left:73.3333%;width:6.66667%"></span></div>
         <h3>Efficient AWQ Quantization Tuning (LLM-Compressor)</h3>
         <div class="topics"><span class="topic">Quantization</span><span class="topic">AWQ</span><span class="topic">Inference Optimization</span></div>
-        <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
+        <button class="toggle" aria-expanded="false"><span class="tri" aria-hidden="true">▸</span> <span class="lbl">Read details</span></button>
         <div class="star"><div class="star-inner"><div class="star-pad">
           <p class="star-intro">Model-quantization tuning: efficient AWQ based on LLM-Compressor.</p>
           <div class="star-row"><span class="sk">S / T</span><p>Deploying <b>Qwen3-32B</b> required 4-bit weight quantization (W4A16) to reduce memory usage. An AWQ-quantized model produced with llm-compressor v0.6.0 and its default settings scored substantially below an equivalent model produced with the widely used AutoAWQ implementation on GSM8K and MMLU, and generated text with severe formatting errors (including many invalid "*" symbols). This project set out to identify the source of that degradation.</p></div>
@@ -1399,12 +1589,13 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
       </div>
     </div>
 
-    <div class="proj reveal" role="listitem">
-      <div class="proj-side"><div class="yr">2026.05 — 2026.06</div></div>
+    <div class="proj reveal" data-from="2026.05" data-to="2026.06" role="listitem">
+      <div class="proj-side"><div class="yr">2026.05 — 2026.06</div><div class="dur"></div></div>
       <div class="proj-main">
+        <div class="lane" aria-hidden="true"><span class="lane-bar" style="left:66.6667%;width:6.66667%"></span></div>
         <h3>MoE Expert-Parallel Communication Optimization</h3>
         <div class="topics"><span class="topic">Expert Parallel</span><span class="topic">Inference Optimization</span><span class="topic">Profiling</span></div>
-        <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
+        <button class="toggle" aria-expanded="false"><span class="tri" aria-hidden="true">▸</span> <span class="lbl">Read details</span></button>
         <div class="star"><div class="star-inner"><div class="star-pad">
           <p class="star-intro">Expert-parallel inference profiling around SGLang + DeepEP on 4×A100.</p>
           <div class="star-row"><span class="sk">S / T</span><p>In a 4×A100 environment, set up expert-parallel inference experiments around <b>SGLang + DeepEP</b> to analyze how communication overhead affects time-to-first-token, per-token latency, and output throughput under different concurrency, input lengths, and expert-routing loads.</p></div>
@@ -1414,12 +1605,13 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
       </div>
     </div>
 
-    <div class="proj reveal" role="listitem">
-      <div class="proj-side"><div class="yr">2026.04 — 2026.05</div></div>
+    <div class="proj reveal" data-from="2026.04" data-to="2026.05" role="listitem">
+      <div class="proj-side"><div class="yr">2026.04 — 2026.05</div><div class="dur"></div></div>
       <div class="proj-main">
+        <div class="lane" aria-hidden="true"><span class="lane-bar" style="left:60%;width:6.66667%"></span></div>
         <h3>vLLM Inference &amp; Kernel Optimization on RTX 4050 &amp; A800×2</h3>
         <div class="topics"><span class="topic">Kernel Optimization</span><span class="topic">Inference Optimization</span><span class="topic">vLLM</span></div>
-        <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
+        <button class="toggle" aria-expanded="false"><span class="tri" aria-hidden="true">▸</span> <span class="lbl">Read details</span></button>
         <div class="star"><div class="star-inner"><div class="star-pad">
           <p class="star-intro">Four experiments across a RTX 4050 laptop and A800×2. (2026.04 – 2026.05)</p>
 
@@ -1446,12 +1638,13 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
       </div>
     </div>
 
-    <div class="proj reveal" role="listitem">
-      <div class="proj-side"><div class="yr">2026.03 — 2026.05</div></div>
+    <div class="proj reveal" data-from="2026.03" data-to="2026.05" role="listitem">
+      <div class="proj-side"><div class="yr">2026.03 — 2026.05</div><div class="dur"></div></div>
       <div class="proj-main">
+        <div class="lane" aria-hidden="true"><span class="lane-bar" style="left:53.3333%;width:13.3333%"></span></div>
         <h3>Full-Stack Q&amp;A Generation Agent for Data Synthesis</h3>
         <div class="topics"><span class="topic">Agent</span><span class="topic">LangGraph</span><span class="topic">Data Synthesis</span></div>
-        <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
+        <button class="toggle" aria-expanded="false"><span class="tri" aria-hidden="true">▸</span> <span class="lbl">Read details</span></button>
         <div class="star"><div class="star-inner"><div class="star-pad">
           <p class="star-intro">A data-synthesis Q/A generation agent from a paper project. (2026.03 – 2026.05)</p>
           <div class="star-row"><span class="sk">S / T</span><p>Today's LLMs are weak at creatively generating logical-reasoning problems (especially puzzles), mainly because they are weak at understanding puzzle rules and enumerating every case; they badly need an external harness to correct them before they can generate high-quality Q/A pairs for later mid-training and post-training.</p></div>
@@ -1461,12 +1654,13 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
       </div>
     </div>
 
-    <div class="proj reveal" role="listitem">
-      <div class="proj-side"><div class="yr">2026.02 — 2026.03</div></div>
+    <div class="proj reveal" data-from="2026.02" data-to="2026.03" role="listitem">
+      <div class="proj-side"><div class="yr">2026.02 — 2026.03</div><div class="dur"></div></div>
       <div class="proj-main">
+        <div class="lane" aria-hidden="true"><span class="lane-bar" style="left:46.6667%;width:6.66667%"></span></div>
         <h3>Multi-Role RL: Planner, Coder, Reviewer</h3>
         <div class="topics"><span class="topic">Post-Training</span><span class="topic">Agentic MARL</span><span class="topic">Reinforcement Learning</span></div>
-        <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
+        <button class="toggle" aria-expanded="false"><span class="tri" aria-hidden="true">▸</span> <span class="lbl">Read details</span></button>
         <div class="star"><div class="star-inner"><div class="star-pad">
           <p class="star-intro">Reproduction of arXiv:2602.01244 plus Agentic MARL. (2026.02 – 2026.03)</p>
           <div class="star-row"><span class="sk">S / T</span><p>Coding agents in the CLI face inherent limitations: planning and execution are decoupled, credit assignment is ambiguous, and role capabilities are highly entangled. Built on the <b>Qwen3-Coder-30B-A3B-Instruct</b> base model, this project uses TerminalTraj (50k single-agent command sequences) and its Docker environment to build a Planner–Coder–Reviewer three-role collaborative multi-agent system, aiming to break the single-agent performance ceiling on TerminalBench (1.0 / 2.0).</p></div>
@@ -1476,12 +1670,13 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
       </div>
     </div>
 
-    <div class="proj reveal" role="listitem">
-      <div class="proj-side"><div class="yr">2025.10 — 2025.12</div></div>
+    <div class="proj reveal" data-from="2025.10" data-to="2025.12" role="listitem">
+      <div class="proj-side"><div class="yr">2025.10 — 2025.12</div><div class="dur"></div></div>
       <div class="proj-main">
+        <div class="lane" aria-hidden="true"><span class="lane-bar" style="left:20%;width:13.3333%"></span></div>
         <h3><a href="https://github.com/OLIVER-XYP/agro_sql" target="_blank">AGRO-SQL: Agentic RL for Text-to-SQL</a></h3>
         <div class="topics"><span class="topic">Agentic RL</span><span class="topic">Text-to-SQL</span><span class="topic">GRPO</span></div>
-        <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
+        <button class="toggle" aria-expanded="false"><span class="tri" aria-hidden="true">▸</span> <span class="lbl">Read details</span></button>
         <div class="star"><div class="star-inner"><div class="star-pad">
           <p class="star-intro">A practice of agentic RL for Text-to-SQL. (2025.10 – 2025.12)</p>
           <div class="star-row"><span class="sk">S / T</span><p>Progress in Text-to-SQL has long been constrained by two bottlenecks: a severe shortage of high-quality training data, and insufficient model reasoning on complex queries. Samples from traditional data-synthesis methods suffer from logical misalignment and semantic deviation, hard to use directly for RL training. A holistic solution is needed to crack both "data scarcity" and "weak model reasoning" and push Text-to-SQL to a more advanced level.</p></div>
@@ -1491,12 +1686,13 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
       </div>
     </div>
 
-    <div class="proj reveal" role="listitem">
-      <div class="proj-side"><div class="yr">2025.07 — 2025.08</div></div>
+    <div class="proj reveal" data-from="2025.07" data-to="2025.08" role="listitem">
+      <div class="proj-side"><div class="yr">2025.07 — 2025.08</div><div class="dur"></div></div>
       <div class="proj-main">
+        <div class="lane" aria-hidden="true"><span class="lane-bar" style="left:0%;width:6.66667%"></span></div>
         <h3>Tmall Campus · AI Engineering Intern</h3>
         <div class="topics"><span class="topic">Computer Vision</span><span class="topic">Model Deployment</span></div>
-        <button class="toggle" aria-expanded="false"><span class="tri">▸</span> <span class="lbl">Read details</span></button>
+        <button class="toggle" aria-expanded="false"><span class="tri" aria-hidden="true">▸</span> <span class="lbl">Read details</span></button>
         <div class="star"><div class="star-inner"><div class="star-pad">
           <p class="star-intro">A lightweight recognition model for smart-shelf product detection. (2025.07 – 2025.08)</p>
           <div class="star-row"><span class="sk">S / T</span><p>The smart-shelf product-recognition scenario needed a lightweight model that was both accurate and deployable.</p></div>
@@ -1515,9 +1711,9 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
     <div class="pub reveal">
       <div class="pub-grid">
         <div class="pub-copy">
-          <div class="venue">arXiv preprint · preparing for ICLR · Co-first author</div>
+          <div class="venue">arXiv preprint · preparing for ICLR · First author</div>
           <h3>Everything in Moderation: Per-Domain Coverage Optima and Alignment-Resistant Domain Gaps in Multi-Domain Mid-Training</h3>
-          <div class="auth">Yunpeng Xu (co-first author) · 2025.3 – present · <a href="https://arxiv.org/abs/2609.09081" target="_blank" rel="noopener noreferrer">arXiv:2609.09081</a></div>
+          <div class="auth">Yunpeng Xu (first author) · 2025.3 – present · <a href="https://arxiv.org/abs/2609.09081" target="_blank" rel="noopener noreferrer">arXiv:2609.09081</a></div>
           <p>A systematic test of a rarely-examined assumption — that uneven domain coverage during mid-training can
           simply be corrected by later SFT/RL. Training 30 allocations over five rule-disjoint KOR-Bench domains on
           Qwen3-8B-Base, we find that
@@ -1540,7 +1736,7 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
 
 <section id="github" class="gh-sec">
   <div class="wrap">
-    <div class="sec-head reveal"><h2>On GitHub</h2><span class="sec-note">6 repositories</span></div>
+    <div class="sec-head reveal"><h2>On GitHub</h2></div>
 
     <p class="gh-lede reveal">
       The public repos worth a look - not a mirror of the whole account. Open one and
@@ -1574,11 +1770,6 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
       <div class="gh-doc" id="gh-doc" tabindex="-1"></div>
     </div>
 
-    <p class="gh-foot">
-      Curated list · READMEs are fetched straight from
-      <span class="type">raw.githubusercontent.com</span> and rendered in the page ·
-      no API polling, no tracking.
-    </p>
   </div>
 </section>
 
@@ -1589,7 +1780,7 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
 --------------------------------------------------------------------------- */
 .gh-lede{max-width:660px;margin:-24px 0 30px;color:var(--muted);font-size:18px;line-height:1.6}
 .gh-lede b{color:var(--ink);font-weight:500}
-.gh-foot{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:11.5px;letter-spacing:.02em;color:var(--faint);margin-top:20px;line-height:1.7}
+.gh-foot{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:12.5px;letter-spacing:0;color:var(--ink-2);margin-top:20px;line-height:1.7}
 .gh-foot a{color:var(--clay-deep)}
 
 /* grid + cards */
@@ -1612,22 +1803,22 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
   background-size:0% 1.5px;background-position:0 100%;background-repeat:no-repeat;transition:background-size .3s;
 }
 .gh-name a:hover{color:var(--clay);background-size:100% 1.5px}
-.gh-name a:focus-visible{outline:2.5px solid var(--clay);outline-offset:3px;border-radius:0}
+.gh-name a:focus-visible{outline:2px solid var(--axis-ink);outline-offset:3px;border-radius:0}
 .gh-topics{display:flex;flex-wrap:wrap;gap:6px}
 .gh-topics .topic{font-size:11px;padding:4px 10px}
 .gh-blurb{
   font-family:'Source Serif 4',Georgia,'Noto Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif;
   color:var(--ink-soft);font-size:17px;line-height:1.55;margin:0;
 }
-.gh-meta{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:11.5px;letter-spacing:.06em;color:var(--muted);margin-top:-2px}
+.gh-meta{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:0;color:var(--muted);margin-top:-2px}
 .gh-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
 .gh-btn{
   font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:12.5px;letter-spacing:.04em;line-height:1;
   display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:0;
   background:none;cursor:pointer;text-decoration:none;transition:border-color .2s,color .2s,background .2s;
 }
-.gh-btn:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px}
-.gh-btn-s{border:1.5px solid var(--line);color:var(--ink-soft)}
+.gh-btn:focus-visible{outline:2px solid var(--axis-ink);outline-offset:2px}
+.gh-btn-s{border:1px solid var(--rule);color:var(--ink-soft)}
 .gh-btn-s:hover{border-color:var(--clay);color:var(--clay)}
 .gh-card.active .gh-btn-s{border-color:var(--clay);color:var(--clay-deep)}
 .gh-tri{width:0;height:0;font-size:0;line-height:0;display:inline-block;
@@ -1636,10 +1827,10 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
 .gh-card.active .gh-tri{transform:rotate(90deg)}
 .gh-link{
   font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:12.5px;letter-spacing:.04em;color:var(--ink-soft);
-  text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:2px;transition:.2s;
+  text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px;transition:.2s;
 }
 .gh-link:hover{color:var(--clay);border-color:var(--clay)}
-.gh-link:focus-visible{outline:2.5px solid var(--clay);outline-offset:2px}
+.gh-link:focus-visible{outline:2px solid var(--axis-ink);outline-offset:2px}
 
 /* shared preview stage */
 .gh-stage{
@@ -1651,29 +1842,29 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
 .gh-stage[hidden]{display:none}
 .gh-stage-head{
   display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap;
-  padding:20px 26px 16px;border-bottom:1.5px dashed var(--line);
+  padding:20px 26px 16px;border-bottom:1px solid var(--rule-soft);
 }
 .gh-stage-id{min-width:0}
-.gh-stage-kicker{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--clay)}
+.gh-stage-kicker{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:0;text-transform:none;color:var(--ink-2)}
 .gh-stage-title{
   font-family:'Source Serif 4',Georgia,'Noto Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif;
   font-weight:600;font-size:23px;line-height:1.2;letter-spacing:-.015em;margin:8px 0 0;overflow-wrap:anywhere;
 }
 .gh-stage-title a{color:var(--ink);text-decoration:none}
 .gh-stage-title a:hover{color:var(--clay)}
-.gh-stage-title a:focus-visible{outline:2.5px solid var(--clay);outline-offset:3px;border-radius:0}
+.gh-stage-title a:focus-visible{outline:2px solid var(--axis-ink);outline-offset:3px;border-radius:0}
 .gh-stage-meta{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:12px;color:var(--muted);margin-top:7px}
 .gh-close{flex:none}
 .gh-status{font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:12.5px;line-height:1.6;color:var(--muted)}
 .gh-status.is-on{padding:16px 26px 4px}
-.gh-status.is-err{color:var(--clay-deep)}
+.gh-status.is-err{color:var(--cinnabar)}
 .gh-spin{
   display:inline-block;width:11px;height:11px;margin-right:9px;vertical-align:-1px;
-  border:1.5px solid var(--line);border-top-color:var(--clay);border-radius:50%;
+  border:1px solid var(--rule);border-top-color:var(--clay);border-radius:50%;
   animation:ghspin .8s linear infinite;
 }
 @keyframes ghspin{to{transform:rotate(360deg)}}
-.gh-retry{margin-left:10px;font:inherit;color:var(--clay-deep);background:none;border:0;border-bottom:1.5px solid currentColor;cursor:pointer;padding:0 0 1px}
+.gh-retry{margin-left:10px;font:inherit;color:var(--clay-deep);background:none;border:0;border-bottom:1px solid currentColor;cursor:pointer;padding:0 0 1px}
 .gh-retry:hover{color:var(--clay)}
 .gh-notice{font-family:'Source Serif 4',Georgia,'Noto Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif;font-size:17.5px;line-height:1.6;color:var(--ink-soft)}
 .gh-notice a{color:var(--clay-deep)}
@@ -1700,44 +1891,44 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
 .gh-doc li{margin-bottom:6px}
 .gh-doc li>ul,.gh-doc li>ol{margin:6px 0 4px}
 .gh-doc .gh-lpara{margin:6px 0 0;color:var(--ink-soft)}
-.gh-doc a{color:var(--clay-deep);text-decoration-color:rgba(28,76,134,.45);text-decoration-thickness:1px;text-underline-offset:3px;overflow-wrap:anywhere}
+.gh-doc a{color:var(--clay-deep);text-decoration-color:rgba(var(--axis-rgb),.45);text-decoration-thickness:1px;text-underline-offset:3px;overflow-wrap:anywhere}
 .gh-doc a:hover{color:var(--clay)}
 .gh-doc strong{color:var(--ink);font-weight:600}
 .gh-doc em{font-style:italic}
 .gh-doc del{color:var(--muted)}
 .gh-doc code{
   font-family:'Sarasa Mono SC','Noto Sans Mono','Noto Sans Mono CJK SC',Consolas,monospace;
-  font-size:13.5px;background:rgba(28,76,134,.07);border:1px solid var(--line-soft);
+  font-size:13.5px;background:var(--band);border:1px solid var(--line-soft);
   border-radius:0;padding:1px 5px;overflow-wrap:anywhere;
 }
 .gh-doc pre{
   font-family:'Sarasa Mono SC','Noto Sans Mono','Noto Sans Mono CJK SC',Consolas,monospace;
-  font-size:13px;line-height:1.6;background:rgba(28,76,134,.05);border:1px solid var(--line-soft);
+  font-size:13px;line-height:1.6;background:var(--band);border:1px solid var(--rule-soft);
   border-radius:0;padding:14px 16px;margin:0 0 16px;overflow-x:auto;-webkit-overflow-scrolling:touch;
 }
 .gh-doc pre code{background:none;border:0;padding:0;font-size:13px;white-space:pre;overflow-wrap:normal}
-.gh-doc blockquote{margin:0 0 16px;padding:2px 0 2px 16px;border-left:2.5px solid var(--line);color:var(--muted)}
+.gh-doc blockquote{margin:0 0 16px;padding:2px 0 2px 16px;border-left:2px solid var(--rule);color:var(--muted)}
 .gh-doc blockquote p:last-child{margin-bottom:0}
-.gh-doc hr{border:0;border-top:1.5px solid var(--line-soft);margin:26px 0}
-.gh-doc img{max-width:100%;height:auto;border-radius:0;vertical-align:middle}
+.gh-doc hr{border:0;border-top:1px solid var(--rule-soft);margin:26px 0}
+.gh-doc img{max-width:100%;height:auto;border-radius:0;background:var(--panel);vertical-align:middle}
 .gh-doc .gh-tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 16px}
 .gh-doc table{border-collapse:collapse;width:100%;font-size:15.5px}
-.gh-doc th,.gh-doc td{border:1px solid var(--line);padding:7px 11px;text-align:left;vertical-align:top}
+.gh-doc th,.gh-doc td{border:1px solid var(--rule-soft);padding:7px 11px;text-align:left;vertical-align:top}
 .gh-doc th{
-  background:rgba(28,76,134,.06);color:var(--ink);font-weight:600;
+  background:var(--band);color:var(--ink);font-weight:600;
   font-family:'Source Serif 4',Georgia,'Noto Serif SC','Noto Serif CJK SC','Songti SC','SimSun',serif;white-space:nowrap;
 }
 .gh-doc [align="center"]{text-align:center}
 .gh-doc [align="right"]{text-align:right}
 .gh-imgfail{
   display:inline-block;font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-size:11.5px;color:var(--muted);
-  border:1px dashed var(--line);border-radius:0;padding:3px 8px;
+  border:1px solid var(--rule-soft);border-radius:0;padding:3px 8px;
 }
 
 @media (prefers-reduced-motion: reduce){
   .gh-card,.gh-card:hover{transform:none;transition:none}
   .gh-tri,.gh-doc *{transition:none!important}
-  .gh-spin{animation:none;border-top-color:var(--line)}
+  .gh-spin{animation:none;border-top-color:var(--axis-ink)}
   .gh-stage{animation:none}
 }
 @media (max-width:640px){
@@ -1807,7 +1998,7 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
       repo: 'Paper-Everything-in-Moderation',
       branch: 'main',
       lang: '',
-      blurb: 'arXiv preprint (co-first author) on per-domain coverage optima and alignment-resistant capability gaps in mid-training.',
+      blurb: 'arXiv preprint (first author) on per-domain coverage optima and alignment-resistant capability gaps in mid-training.',
       topics: ['Paper', 'Mid-Training', 'Alignment'],
       notice: 'This repository ships the manuscript only - there is no README to preview. ' +
               'The paper itself is on GitHub.'
@@ -2551,10 +2742,17 @@ footer{border-top:1px solid var(--rule);margin-top:56px}
 </footer>
 
 <script>
-const io=new IntersectionObserver((es)=>{
-  es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*55);io.unobserve(e.target)}});
-},{threshold:.12,rootMargin:"0px 0px -8% 0px"});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+/* Guarded. This is the FIRST statement in the block, so an unconditional
+   `new IntersectionObserver` on an engine without it throws here and takes the
+   disclosure buttons, the load handler and the bar geometry down with it -
+   silently, because the failure is above them. The reveal pass is decoration;
+   everything below it is not. */
+if (typeof IntersectionObserver === 'function') {
+  const io=new IntersectionObserver((es)=>{
+    es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*55);io.unobserve(e.target)}});
+  },{threshold:.12,rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}
 document.querySelectorAll('.toggle').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const proj=btn.closest('.proj');
@@ -2563,6 +2761,73 @@ document.querySelectorAll('.toggle').forEach(btn=>{
     btn.querySelector('.lbl').textContent=open?'Hide details':'Read details';
   });
 });
+/* ---- the measured bars ---------------------------------------------------
+   The inline left/width already in the markup are the no-JS fallback; these
+   data-from / data-to attributes are authoritative, so changing a date on the
+   page is a one-attribute edit and can never leave a bar measuring the old
+   interval. Adding a state class rather than leaving it to the fallback keeps
+   the two in step. */
+(function(){
+  var rows=[].slice.call(document.querySelectorAll('.proj[data-from]'));
+  if(!rows.length) return;
+  var val=function(s){var p=s.split('.');return (+p[0])*12+(+p[1]);};
+  var from=rows.map(function(r){return val(r.getAttribute('data-from'));});
+  var to=rows.map(function(r){return val(r.getAttribute('data-to'));});
+  var start=Math.min.apply(null,from), end=Math.max.apply(null,to);
+  var span=(end-start)||1;
+  rows.forEach(function(r,i){
+    var bar=r.querySelector('.lane-bar'), dur=r.querySelector('.dur');
+    var yr=r.querySelector('.yr');
+    var open=!!yr&&/\bnow\b/.test(yr.textContent);
+    if(bar){
+      bar.style.left=((from[i]-start)*100/span)+'%';
+      bar.style.width=((to[i]-from[i])*100/span)+'%';
+      bar.classList.toggle('is-open',open);
+    }
+    if(dur) dur.textContent=(to[i]-from[i])+' mo';
+  });
+})();
+
+/* ---- the tab strip -------------------------------------------------------
+   Set from where the reader actually is. Not :target, which reports the wrong
+   section the moment someone scrolls without clicking; and not intersection
+   ratios either, which leave the strip blank above the first section and then
+   STALE in the gap between two sections, because leaving a band never cleared
+   the previous mark.
+
+   Instead: a reading line just under the sticky bar, and the active tab is the
+   LAST section whose top has passed it. 56px clears the bar's 37px (36 + its
+   1px rule) and the scroll-margin-top:52px that anchors land on, so a tab
+   clicked by the reader marks itself. While the reader is still up in the
+   masthead and hero, no section has been entered and none is marked - which is
+   correct, not a gap. */
+(function(){
+  const tabs=[].slice.call(document.querySelectorAll('.tabbar .tab'));
+  if(!tabs.length) return;
+  const secs=tabs.map(t=>document.querySelector(t.getAttribute('href')));
+  if(!secs.some(Boolean)) return;
+  let ticking=false;
+  function sync(){
+    ticking=false;
+    const line=56;
+    let best=-1;
+    for(let i=0;i<secs.length;i++){
+      if(secs[i]&&secs[i].getBoundingClientRect().top<=line) best=i;
+    }
+    tabs.forEach((t,i)=>{
+      const on=(i===best);
+      t.classList.toggle('is-active',on);
+      if(on) t.setAttribute('aria-current','true');
+      else t.removeAttribute('aria-current');
+    });
+  }
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(sync); } }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  window.addEventListener('load',sync);
+  sync();
+})();
+
 window.addEventListener('load',()=>{
   document.querySelectorAll('header .reveal').forEach((el,i)=>setTimeout(()=>el.classList.add('in'),120+i*100));
 });
